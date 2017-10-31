@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>告警管理</title>
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/warningCall.css"/>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="horizontal-menu-page">
+<!--模态框-->
+
+<section>
+    <!--公共头部-->
+    <div class="header"></div>
+    <!--表格数据-->
+    <div class="wrapper">
+
+        <!--处理弹出框-->
+        <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" data-backdrop="static" tabindex="-1"
+             id="myModal" class="modal fade" data-id="">
+            <div class="modal-dialog" style="margin: 150px auto">
+                <div class="modal-content">
+                    <div class="modal-header " style="background: #5bc0de">
+                        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                        <h4 class="modal-title">告警处理</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="get" class="form-horizontal bucket-form">
+                            <div class="form-group" style="margin-bottom: 0">
+                                <div style="width: 90%;margin-left: auto;margin-right: auto">
+                                    <textarea rows="6" class="form-control" placeholder="请填写处理方法" id="processMode"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-info" onclick="sureMethod()">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading custom-tab  blue-tab">
+                        <ul class="nav nav-tabs" id="typeselector">
+                            <li class="active" value="" onclick="selector()"><a data-toggle="tab">全部</a></li>
+                            <li class="" value="" onclick="selector('区域报警')"><a data-toggle="tab">区域告警</a></li>
+                            <li class="" value="" onclick="selector('事故报警')"><a data-toggle="tab">事故告警</a></li>
+                        </ul>
+                    </header>
+                    <div class="panel-body">
+                        <div class="adv-table">
+
+                            <div class="domab">
+                                <div id="dynamic-table_filter" class="dataTables_filter">
+                                    <label>模糊查询：
+                                        <input type="search" class="form-control input-sm" placeholder=""
+                                        aria-controls="dynamic-table" id="keyword" onchange="selector()">
+                                    </label>
+                                </div>
+                                <div  class="btnClass">
+                                    <form class="" method="get">
+                                        <div class="form-group">
+                                            <select class="form-control m-bot15" id="statusselector" onchange="selector()">
+                                                <option value="">全部</option>
+                                                <option value="已处理">已处理</option>
+                                                <option value="未处理">未处理</option>
+                                            </select>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+
+                            <table class="display table general-table table-striped" id="dynamic-table">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">序号</th>
+                                    <th>卡号</th>
+                                    <th>姓名</th>
+                                    <th>告警类型</th>
+                                    <th>告警时间</th>
+                                    <th>告警地点</th>
+                                    <th>告警状态</th>
+                                    <th>处理人</th>
+                                    <th>处理方法</th>
+                                    <th>处理时间</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../public/js/jquery-1.10.2.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+
+<!--dynamic table-->
+<script type="text/javascript" src="../public/js/data-tables/jquery.dataTables1.js"></script>
+<script type="text/javascript" src="../public/js/data-tables/dataTables.bootstrap.js"></script>
+<!--common scripts for all pages-->
+<script src="html-js/main.js"></script>
+<script src="html-js/warningCall/warningCall.js"></script>
+<script src="../public/js/jquery.spin.merge.js"></script>
+</body>
+</html>

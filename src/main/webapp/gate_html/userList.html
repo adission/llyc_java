@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人员列表</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrapValidator.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="zyupload/skins/zyupload-1.0.0.min.css">
+    <link rel="stylesheet" href="css/jquery-confirm.css">
+    <style>
+    	
+    </style>
+</head>
+<body>
+<!--头部导航-->
+<div class="header row"></div>
+<!--身体-->
+<div class="content row">
+    <!--左侧--导航-->
+    <div class="content-left col-md-2 col-sm-1"></div>
+
+    <!--右侧table-->
+    <div class="content-right col-md-10 col-sm-11 col-xs-12">
+    	<div class="alert alert-success" role="alert" style="display: none">添加人员成功</div>
+   		<div class="alert alert-danger" role="alert" style="display: none"></div>
+        <div class="right-body">
+            <!--路径导航-->
+            <div class="body-navbar">
+                <ol class="breadcrumb">
+                    <li>人员</li>
+                    <li class="active">人员列表</li>
+                </ol>
+            </div>
+            <!--搜索-->
+            <div class="search-content">
+                <form class="form-inline well  clearfix">
+                    <div class="form-group col-sm-4 col-xs-6">
+                        <!--<label>姓名:</label>-->
+                        <input type="email" class="form-control" placeholder="姓名" id="username">
+                    </div>
+                    <div class="form-group col-sm-4 col-xs-6">
+                        <!--<label>身份证号码:</label>-->
+                        <input type="text" class="form-control" placeholder="身份证号码" id="id_card">
+                    </div>
+                    <div class="form-group col-sm-4 col-xs-6">
+                        <!--<label>手机号:</label>-->
+                        <input type="text" class="form-control" placeholder="手机号" id="mobile">
+                    </div>
+                    <div class="form-group col-sm-4 col-xs-6">
+                        <!--<label>卡号:</label>-->
+                        <input type="text" class="form-control" placeholder="卡号" id="cid">
+                    </div>
+                    <button type="button" class="btn btn-primary pull-right" id="searchBtn">
+                        <i class="fa fa-search"></i> 查询
+                    </button>
+                </form>
+            </div>
+
+            <!--新增-->
+            <div class="modal fade" tabindex="-1" role="dialog" id="myModal" data-id="" data-backdrop="static"></div>
+
+            <!--打卡记录列表-->
+            <div class="modal fade" tabindex="-1" role="dialog" id="myModal2">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">打卡记录列表</h4>
+                        </div>
+                        <div class="modal-body clearfix">
+                            <form class="form-inline">
+                                <div class="form-group col-xs-12">
+                                    <label class="control-label col-xs-3 text-right">选择时间:</label>
+                                    <input type="date" class="form-control" value="2017/05/05" name="start_time">---<input type="date" class="form-control" name="end_time" value="2017/05/06">
+                                    <button type="button" class="btn btn-primary search-gate1">搜索</button>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <table class="table table-striped table-bordered table-hover table-condensed" style="width: 67%" id="attendanceLog">
+                                        <thead>
+                                        <tr  style="height: 41px">
+                                            <th>时间</th>
+                                            <th>闸机号</th>
+                                            <th>行为</th>
+                                            <th>班组</th>
+                                            <th>职位</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary">确定</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+
+			<!--人员卡片权限管理-->
+            <div class="modal fade" tabindex="-1" role="dialog" data-id="" id="myModal3" data-backdrop="static">
+            	<div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">人员卡片权限管理</h4>
+                        </div>
+                        <div class="modal-body clearfix">
+                            <form class="form-inline">
+                                <div class="form-group col-xs-12 " style="line-height: 20px;margin-bottom: 10px;">
+                                    <label class="control-label col-xs-3 text-right">卡片类型:</label>
+                                    <label class="checkbox-inline">
+									  	<input type="checkbox" id="type1" name="type"> IC卡
+									</label>
+									<label class="checkbox-inline">
+									  	<input type="checkbox" id="type2" name="type"> 人脸识别
+									</label>
+									<label class="checkbox-inline">
+									  	<input type="checkbox" id="type3" name="type"> 身份证
+									</label>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                	<label class="control-label col-xs-3 text-right">IC卡卡号:</label>
+                                	<input type="text" class="form-control" name="ic_card" >
+                                </div>
+                                <div class="form-group col-xs-12">
+                                	<label class="control-label col-xs-3 text-right">闸机权限选择:</label>
+                                	<select class="form-control" style="width: 172px;height: 80px;margin-bottom: 10px" multiple name="gate_id">
+			                        </select>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                	<label class="control-label col-xs-3 text-right">是否为临时卡:</label>
+                                	<select class="form-control" style="width: 172px" name="is_tmp">
+			                            <option value="1">是</option>
+			                            <option value="0">否</option>
+			                        </select>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                	<label class="control-label col-xs-3 text-right">到期时间:</label>
+                                	<input type="date" class="form-control" name="end_time" >
+                                </div>
+                                <div class="form-group col-xs-12">
+                                	<label class="control-label col-xs-3 text-right">使用次数:</label>
+                                	<input type="number" class="form-control" min=0 name="use_times" >
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary" onclick="addPloe()">确定</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            
+            <!-- 操作按钮组 -->
+            <div class="body-content">
+
+                <div style=" position:relative; z-index:9;height:100%; margin-bottom: 10px">
+                    <button class="btn btn-primary inline-block" onclick="openModal('')">
+                        <i class="glyphicon glyphicon-plus"></i>添加
+                    </button>
+                    <button class="btn btn-info inline-block" style="margin-left: 20px" id="stopCard">
+                        <i class="glyphicon glyphicon-pause"></i>停卡
+                    </button>
+                    <button class="btn btn-success inline-block" id="resetCard">
+                    	<i class="glyphicon glyphicon-play"></i>复卡</button>
+                    <button class="btn btn-danger inline-block" style="margin-right: 20px" id="delCard">
+                        <i class="glyphicon glyphicon-floppy-remove"></i>销卡
+                    </button>
+                    <button class="btn btn-danger inline-block" id="delRow">
+                        <i class="glyphicon glyphicon-remove"></i>删除
+                    </button>
+                    <button class="btn btn-primary pull-right" id="exportData">
+                        <i class="glyphicon glyphicon-print"></i>导出execl
+                    </button>
+                    <button class="btn btn-primary pull-right" style="margin-right: 10px">
+                        <i class="glyphicon glyphicon-cloud"></i>云端同步数据
+                    </button>
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+
+            <!--人员列表-->
+            <div class="wt100  container" style="position:relative; height:100%">
+                <div class="span12" id="div-table-container">
+                    <table class="table table-striped table-bordered table-hover table-condensed" id="table-detail"
+                           cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th style=" width:10px; padding:0"></th>
+                            <th style="width:30px; padding:10px 0 10px 10px">
+                                <input type="checkbox" id="checkAll" name="checkList"></th>
+                            <th>工号</th>
+                            <th>姓名</th>
+                            <th>类别</th>
+                            <th>工种</th>
+                            <th>班组</th>
+                            <th>开卡状态</th>
+                            <!--<th>卡类型  </th>-->
+                            <th>打卡记录</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--table-->
+    </div>
+</div>
+</div>
+
+<!--底部-->
+<div class="text-center">
+    <div class=""> 2017 &copy; 蓝领劳务管理系统 By <a href="index.html">管理系统</a>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/dataTables.bootstrap.js"></script>
+<script src="zyupload/zyupload.tailor-1.0.0.js"></script>
+<script type="text/javascript" src="js/jquery.spin.merge.js"></script>
+<script type="text/javascript" src="js/jquery-confirm.js"></script>
+<script type="text/javascript" src="js/bootstrapValidator.js"></script>
+<script src="js/main.js"></script>
+<script src="html-js/userList/userList.js"></script>
+
+</body>
+</html>

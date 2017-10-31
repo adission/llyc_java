@@ -1,0 +1,37 @@
+/*.panel-body {*/
+    /*height: 600px;*/
+/*}*/
+
+.body-left, .body-right  {
+    height: 580px;
+}
+.body-right .table {
+    height: 100%;
+}
+.body-left .table:first-child  {
+    height: 8%;
+}
+.body-left .table:last-child tr  {
+    height: 11%;
+}
+.table.table-bordered tbody tr td {
+    vertical-align: middle;
+    font-size: 1.5em;
+}
+.panel-heading p:first-child {
+    font-size: 3em;
+}
+.panel-heading p:last-child {
+    font-size: 2em;
+}
+
+ul:not(:last-child){
+    padding-right: 0;
+    text-align: center;
+}
+ul:not(:last-child) .list-group-item {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-right: 0;
+}
+

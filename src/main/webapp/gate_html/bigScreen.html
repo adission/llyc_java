@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>屏幕显示</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/bigScreen.css">
+    <style>
+    	.panel .panel-body {
+    		overflow: scroll;	
+    	}
+    </style>
+</head>
+<body>
+<!--头部导航-->
+<div class="panel panel-default" style="margin-bottom: 0">
+    <div class="panel-heading text-center">
+
+        <p class="">
+            <button class="btn btn-default pull-left" id="back">
+            	<i class="glyphicon glyphicon-backward"></i></button>
+        		<span id="welcome"></span>
+        </p>
+        <p class=" clearfix primary">
+            <span class="pull-left" id="time"></span>
+            <span class="pull-right" style="margin-right: 20px" id="wen"></span>
+            <span class="pull-right" id="tian"> </span>
+        </p>
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-7 body-left">
+            <table class="table table-bordered text-center" id="typeInfo">
+                <tbody id="scrollTable">
+                </tbody>
+            </table>
+           
+            <table class="table table-bordered text-center" id="workerInfo">
+                <tbody id="scrollTable2">
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-xs-5 body-right personInfo">
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td>
+                        <table class="table table-bordered"  style="margin-bottom: 0">
+                            <tbody>
+                            <tr>
+                                <td rowspan="4" class="col-xs-7"><img src="" alt=""
+                                                                      style="width: 100%" id="img"></td>
+                                <td>姓名: <span id="personname"></span></td>
+                            </tr>
+                            <tr>
+                                <td>班组: <span id="team"></span></td>
+                            </tr>
+                            <tr>
+                                <td>工种: <span id="worker_type"></span></td>
+                            </tr>
+                            <tr>
+                                <td>惩罚次数: <span id="punish_record"></span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="danger text-center" style="height: 50px"><h1>结果: 请通过</h1></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <marquee style="WIDTH: 100%; HEIGHT: 40px" scrollamount="1" direction="up">
+            <center>
+                <p><font color="#ff6600" size="4">小家班组&nbsp;&nbsp;&nbsp;班组长: 刘长海&nbsp;&nbsp;&nbsp;&nbsp;班组总人数: 20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进场人员18</font></p>
+
+                <p><font color="#ff6600" size="4">金娃班组&nbsp;&nbsp;&nbsp;班组长: 王金红&nbsp;&nbsp;&nbsp;&nbsp;班组总人数: 45&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进场人员34</font></p>
+
+                <p><font color="#ff6600" size="4">维和班组&nbsp;&nbsp;&nbsp;班组长: 宏伟和&nbsp;&nbsp;&nbsp;&nbsp;班组总人数: 32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进场人员23</font></p>
+                </p >
+            </center>
+        </marquee>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<!--<script src="js/bootstrap.min.js"></script>-->
+<script src="js/vue.min.js"></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/dataTables.bootstrap.js"></script>
+<script src="js/main.js"></script>
+<script src="html-js/bigScreen/bigScreen.js"></script>
+<script src="../public/js/jquery.leoweather.min.js"></script>
+</body>
+</html>

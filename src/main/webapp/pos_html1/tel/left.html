@@ -1,0 +1,138 @@
+<button href="#myModal" class="btn btn-info"  onclick="addMap('{{ map.id }}')" style="width:100%;border-radius:0;" data-toggle="modal"><i class="fa fa-plus"></i>添加图层</button>
+ <!--添加图层弹出框-->
+        <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" data-backdrop="static" tabindex="-1"
+             id="myModal" class="modal fade">
+            <div class="modal-dialog" style="margin: 150px auto">
+                <div class="modal-content">
+                    <div class="modal-header " style="background: #5bc0de">
+                        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                        <h4 class="modal-title">添加图层</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="get" class="form-horizontal bucket-form" style="width: 90%;margin: auto">
+                            <div class="form-group">
+                                <label class="col-sm-3 col-sm-3 control-label" style="color:black">图层名称:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="map-name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label col-lg-3" for="inputSuccess" style="color:black">空间名称:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="space-name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label col-lg-3" for="inputSuccess" style="color:black">数据集名称:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="datas_name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label col-lg-3" for="inputSuccess" style="color:black">URL:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="url">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label col-lg-3" for="inputSuccess" style="color:black">MIN_X:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="MIN_X" value="0">
+                                </div>
+                                <label class="col-sm-2 control-label col-lg-2" for="inputSuccess" style="color:black">默认</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label col-lg-3" for="inputSuccess" style="color:black">MIN_Y:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="MIN_Y" value="0">
+                                </div>
+                                <label class="col-sm-2 control-label col-lg-2" for="inputSuccess" style="color:black">默认</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label col-lg-3" for="inputSuccess" style="color:black">MAN_X:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="MAN_X">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label col-lg-3" for="inputSuccess" style="color:black">MAN_Y:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="MAN_Y">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label col-lg-3" for="inputSuccess" style="color:black">比例尺:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="scale">
+                                </div>
+                                <label class="col-sm-5 control-label col-lg-5" for="inputSuccess" style="color:black;float:left">公式:实际长度/(MAXX-MINX)</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label col-lg-3" for="inputSuccess" style="color:black">背景图片:</label>
+                                <div class="col-sm-5">
+                                    <input type="file" class="form-control" id="scale">
+                                </div>
+                                <button type="button" class="btn btn-info">清空</button>
+                               <button type="button" class="btn btn-info" >选择图片</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-info" id="addCardModal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+<!--删除图层弹出框-->
+ 		<div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" data-backdrop="static" tabindex="-1"
+             id="myModalDelete" class="modal fade">
+            <div class="modal-dialog" style="margin: 150px auto">
+                <div class="modal-content">
+                    <div class="modal-header " style="background: #5bc0de">
+                        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                        <h4 class="modal-title-dele">删除图层</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-info" id="addCardModal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+<section class="panel">
+    <header class="panel-heading custom-tab ">
+    	
+        <ul class="nav nav-tabs">
+            <li class="active" style="border-right: 1px solid #909090;">
+                <a href="#locationMap" data-toggle="tab" style="background: #fff;">定位地图</a>
+            </li>
+            <li class="">
+                <a href="#personManage" data-toggle="tab" style="background: #fff;">人员管理</a>
+            </li>
+        </ul>
+    
+    </header>
+    <div class="panel-body user-body" id="left-content">
+        <div class="tab-content">
+            <div class="tab-pane active" id="locationMap">
+                <ul class="nav nav-pills nav-stacked labels-info mapList" id="div-table-container"></ul>
+            </div>
+            <div class="tab-pane" id="personManage">
+                <div class="panel">
+                    <div class="panel-heading mapName">
+                      	
+                    </div>
+                    <div class="panel-body userType">
+                        <div class="panel-group " id="accordion2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    
+    <link rel="shortcut icon" href="#" type="image/png">
+    <link href="../public/js/bootstrap-datepicker/css/datepicker-custom.css" rel="stylesheet">
+    <link href="../public/js/bootstrapValidator/bootstrapValidator.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/js/zyupload-1.0.0/zyupload-1.0.0.css">
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css"/>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    	.user-show div.form-group {
+    		line-height: 55px;
+    	}
+    	.dataTable .row-details.row-details-close {
+		    background: url(images/datatable-row-openclose.png) no-repeat 0 0;
+		}
+		.dataTable .row-details.row-details-open {
+		     background: url(images/datatable-row-openclose.png) no-repeat 0 -23px !important;
+		}
+		.dataTable .row-details {
+		    margin-top: 3px;
+		    display: inline-block;
+		    cursor: pointer;
+		    width: 14px;
+		    height: 14px;
+		}
+    </style>
+</head>
+<body class="horizontal-menu-page">
+
+<section>
+    <div class="header"></div>
+	<!--新增和编辑模态框-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal" data-id="" data-backdrop="static"></div>
+    <!-- main content start-->
+    <div class="wrapper">
+		<div class="body-content">
+	        <!-- page heading start-->
+	        <div class="page-heading">
+	            <h3><span id="venue_lbl_head">用户列表</span></h3>
+	            <ul class="breadcrumb">
+	                <li>闸机管理</li>
+	                <li class="active">用户列表</li>
+	            </ul>
+	        </div>
+	        <!-- page heading end-->
+			<hr>
+        	<!--body wrapper start-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <div class="panel-body">
+                            <div class="adv-table">
+                                <div class="row" style="margin-bottom: 20px">
+                                    <div class="col-lg-6">
+                                        <button class="btn btn-primary" onclick="openModal('')">
+                                            <i class="fa fa-plus"></i> 添加
+                                        </button>
+                                        <button class="btn btn-danger" id="delRow">
+                                            <i class="fa fa-times"></i> 删除
+                                        </button>
+                                        <button class="btn btn-primary" id="exportData">
+                                            <i class="fa fa-print"></i> 导出Excel
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="col-lg-5">
+                                        	<input class="form-control" type="text" placeholder="用户名" id="username">
+                                        </div>
+                                        <div class="col-lg-5">
+                                        	<input class="form-control" type="text" placeholder="电话号码" id="mobile">
+                                        </div>
+                                        <div class="col-lg-2">
+                                        	<button class="btn btn-primary" id="searchBtn"><i class="fa fa-search"></i>搜索</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="span12" id="div-table-container">
+	                                <table class="display table general-table table-striped" id="userList">
+	                                    <thead>
+	                                    <tr>
+				                            <th style="width: 10px"></th>
+				                            <th style="width:30px; padding:10px 0 10px 10px">
+				                                <input type="checkbox" id="checkAll" name="checkAll"></th>
+				                            <th>用户名</th>
+				                            <th>手机号</th>
+				                            <th>创建时间</th>
+				                            <th>最近登录</th>
+				                            <th>删除</th>
+				                        </tr>
+	                                    </thead>
+	                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!--body wrapper end-->
+
+        
+
+    </div>
+    <!-- main content end-->
+    <!--footer section start-->
+    <footer>
+        Copyright © 2017 Lanlyc
+    </footer>
+    <!--footer section end-->
+</section>
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../public/js/jquery-1.11.3.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/modernizr.min.js"></script>
+<script src="../public/js/jquery.nicescroll.js"></script>
+<!-- <script src="../public/js/scripts.js"></script> -->
+<script src="../public/js/vue.min.js"></script>
+<script type="text/javascript" src="../public/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+<script type="text/javascript" src="../public/js/jquery-confirm/jquery.spin.merge.js"></script>
+<script type="text/javascript" src="../public/js/jquery-confirm/jquery-confirm.js"></script>
+<script type="text/javascript" src="../public/js/bootstrapValidator/bootstrapValidator.js"></script>
+<script type="text/javascript" src="../public/js/zyupload-1.0.0/zyupload.tailor-1.0.0.js"></script>
+
+<!--dynamic table-->
+<script src="../public/js/data-tables/jquery.dataTables1.js"></script>
+<script type="text/javascript" src="../public/js/data-tables/dataTables.bootstrap.js"></script>
+
+<script src="html-js/main.js"></script>
+<script src="html-js/userList/userList.js"></script>
+
+</body>
+</html>

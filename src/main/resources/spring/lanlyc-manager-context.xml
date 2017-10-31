@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                                                		  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                                                		  http://www.springframework.org/schema/context 
+                                                		  http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                                                		  http://www.springframework.org/schema/aop 
+                                                		  http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+                                                		  http://www.springframework.org/schema/tx 
+                                                		  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+                                                		  http://www.springframework.org/schema/mvc 
+                                                		  http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+                                                		  http://www.springframework.org/schema/context 
+                                                		  http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                                                		  http://www.springframework.org/schema/task
+														  http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+	<!-- 自动扫描注入 -->
+	<context:component-scan base-package="cn.com.lanlyc"></context:component-scan>
+	<context:component-scan base-package="gate.cn.com.lanlyc"></context:component-scan>
+	<context:component-scan base-package="video.cn.com.lanlyc"></context:component-scan>
+	<context:component-scan base-package="pos.cn.com.lanlyc"></context:component-scan>
+	
+	<mvc:resources mapping="/main/**/*.{:js|css|html|data}" location="/html/"
+		cache-period="31536000" />
+		
+	<mvc:resources mapping="/main/**/*.{:js|css|html|data}" location="/gate_html/"
+		cache-period="31536000" />
+		<mvc:resources mapping="/main/**/*.{:js|css|html|data}" location="/gate_html/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/main/**/*.{:js|css|html|data}" location="/pos_html1/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/main/**/*.{:js|css|html|data}" location="/public/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/main/**/*.{:(?!js|css|html|data).+}"
+		location="/main/" cache-period="2592000" />
+	<mvc:resources mapping="/main/**/*.{:js|css|html|data}" location="/video_html/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/main/**/*.{:js|css|html|data}" location="/video_html2/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/main/**/*.{:js|css|html|data}" location="/pos_html/"
+		cache-period="31536000" />
+			
+	<mvc:resources mapping="/html/**/*.{:js|css|json|html|png|gif|jpg|woff|woff2|ttf|map|properties}" location="/html/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/html/**/*.{:(?!js|css|json|html|png|gif|jpg|woff|woff2|ttf|map|properties).+}"
+		location="/main/" cache-period="2592000" />	
+			
+	<mvc:resources mapping="/gate_html/**/*.{:js|css|json|html|png|gif|jpg|woff|woff2|ttf|map|properties}" location="/gate_html/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/gate_html/**/*.{:(?!js|css|json|html|png|gif|jpg|woff|woff2|ttf|map|properties).+}"
+		location="/main/" cache-period="2592000" />	
+	<mvc:resources mapping="/file/**" location="/file/" />
+	
+	<mvc:resources mapping="/gate_html1/**/*.{:js|css|json|html|png|gif|jpg|woff|woff2|ttf|map|properties}" location="/gate_html1/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/gate_html1/**/*.{:(?!js|css|json|html|png|gif|jpg|woff|woff2|ttf|map|properties).+}"
+		location="/main/" cache-period="2592000" />	
+	<mvc:resources mapping="/file/**" location="/file/" />
+	
+	<mvc:resources mapping="/pos_html1/**/*.{:js|css|json|geojson|html|png|gif|jpg|woff|woff2|ttf|map|properties}" location="/pos_html1/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/pos_html1/**/*.{:(?!js|css|json|geojson|html|png|gif|jpg|woff|woff2|ttf|map|properties).+}"
+		location="/main/" cache-period="2592000" />	
+	<mvc:resources mapping="/file/**" location="/file/" />
+	
+	<mvc:resources mapping="/public/**/*.{:js|css|json|html|png|gif|jpg|woff|woff2|ttf|map|properties}" location="/public/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/public/**/*.{:(?!js|css|json|html|png|gif|jpg|woff|woff2|ttf|map|properties).+}"
+		location="/main/" cache-period="2592000" />	
+	<mvc:resources mapping="/file/**" location="/file/" />
+		
+	<mvc:resources mapping="/video_html/**/*.{:js|css|html|png|gif|jpg|woff|woff2|ttf|map|properties}" location="/video_html/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/video_html/**/*.{:(?!js|css|html|png|gif|jpg|woff|woff2|ttf|map|properties).+}"
+		location="/main/" cache-period="2592000" />
+	<mvc:resources mapping="/file/**" location="/file/" />
+	
+	<mvc:resources mapping="/video_html2/**/*.{:js|css|html|png|gif|jpg|woff|woff2|ttf|map|properties}" location="/video_html2/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/video_html2/**/*.{:(?!js|css|html|png|gif|jpg|woff|woff2|ttf|map|properties).+}"
+		location="/main/" cache-period="2592000" />
+	<mvc:resources mapping="/file/**" location="/file/" />
+	
+	<mvc:resources mapping="/pos_html/**/*.{:js|css|json|html|png|gif|jpg|woff|woff2|ttf|map|properties}" location="/pos_html/"
+		cache-period="31536000" />
+	<mvc:resources mapping="/gate_html/**/*.{:(?!js|css|json|html|png|gif|jpg|woff|woff2|ttf|map|properties).+}"
+		location="/main/" cache-period="2592000" />
+			
+	<mvc:resources mapping="/file/**" location="/file/" />
+	
+	<!-- 任务调度注解,为项目启动任务调度的注解驱动 -->
+	<task:annotation-driven />
+	
+	<!-- Spring上传文件辅助类 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置上传文件的最大尺寸为500MB -->
+		<property name="maxUploadSize">
+			<value>524288000</value>
+		</property>
+	</bean>
+	
+	<mvc:interceptors>
+            <bean class="cn.com.lanlyc.handler.AuthorizationHandler"/>
+    </mvc:interceptors>
+    
+    <mvc:annotation-driven/>
+    
+     <bean id="mappingJacksonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="mappingJacksonHttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+</beans>

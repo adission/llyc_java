@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                                                		  http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                                                		  http://www.springframework.org/schema/context 
+                                                		  http://www.springframework.org/schema/context/spring-context-3.1.xsd
+                                                		  http://www.springframework.org/schema/aop 
+                                                		  http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+                                                		  http://www.springframework.org/schema/tx 
+                                                		  http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+                                                		  http://www.springframework.org/schema/mvc 
+                                                		  http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+                                                		  http://www.springframework.org/schema/context 
+                                                		  http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<!-- Maps view names to JSP templates in /WEB-INF/views -->
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<!-- 
+		<property name="mediaTypes">
+			<map>
+				<entry key="atom" value="application/atom+xml" />
+				<entry key="html" value="text/html" />
+				<entry key="json" value="application/json" />
+			</map>
+		</property>
+		-->
+		<property name="viewResolvers">
+			<list>
+				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+				<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+					<property name="prefix" value="${view.prefix}" />
+					<property name="suffix" value="${view.suffix}" />
+				</bean>
+			</list>
+		</property>
+		<!-- 
+		<property name="defaultViews">
+			<list>
+				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+			</list>
+		</property>
+		-->
+	</bean>
+	<!-- bean id="freemarkerConfig"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/htmls/" />
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">0</prop>
+                <prop key="default_encoding">UTF-8</prop>
+                <prop key="number_format">0.##########</prop>
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+                <prop key="classic_compatible">true</prop>
+                <prop key="template_exception_handler">ignore</prop>
+            </props>
+        </property>
+    </bean>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="exposeRequestAttributes" value="true" />
+        <property name="exposeSessionAttributes" value="true" />
+        <property name="viewClass">
+            <value>org.springframework.web.servlet.view.freemarker.FreeMarkerView</value>
+        </property>
+        <property name="cache"><value>true</value></property>
+        这里需要注意一下，我注释了下面这样一行代码，这行代码的意思就是指引freemarker需要解析的文件的位置。注释掉原因是因为
+         applicationContext.xml里有这样一行代码：<property name="templateLoaderPath" value="/WEB-INF/views/" /> 已经指定了视图位置。如果我们这里依然保留下方代码，页面回报406的找不到的错误
+        <property name="prefix"><value>/WEB-INF/htmls/</value></property>
+        <property name="suffix"><value>.html</value></property>
+        <property name="contentType">
+            <value>text/html; charset=UTF-8</value>
+        </property>
+    </bean> -->
+	
+	
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="maxUploadSize" value="${upload.maxFileSize}" />
+	</bean>
+	
+</beans>

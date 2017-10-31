@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>人员定位</title>
+
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+    <link href="../public/js/openlayer/ol.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../public/js/bootstrap-datepicker/css/datepicker-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../public/js/bootstrap-timepicker/css/timepicker.css" />
+    <!--iron slider-->
+    <link href="../public/js/ion.rangeSlider-1.8.2/css/rangeSlider.css" rel="stylesheet" />
+    <link href="../public/js/ion.rangeSlider-1.8.2/css/rangeSlider.skinHtml5.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/indexMap.css"/>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+    <style>				
+		.ol-popup {
+            position: absolute;
+            background-color: white;
+            -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+            padding: 15px;
+            /* border-radius: 10px; */
+            border: 1px solid #cccccc;
+            bottom: 12px;
+            left: -200px;
+            min-width: 400px;
+        }
+        .ol-popup:after, .ol-popup:before {
+            top: 100%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+        .ol-popup:after {
+            border-top-color: white;
+            border-width: 10px;
+            left: 190px;
+            margin-left: -10px;
+        }
+        .ol-popup:before {
+            border-top-color: #cccccc;
+            border-width: 11px;
+            left: 190px;
+            margin-left: -11px;
+        }
+        .ol-popup-closer {
+            text-decoration: none;
+            position: absolute;
+            top: 2px;
+            right: 8px;
+        }
+        .ol-popup-closer:after {
+            content: "✖";
+        }
+        #popup {
+            background: #ffffff;
+        }
+        
+        
+        #videoParent{
+    		position: relative;
+    		width: 650px;
+    		height: 600px;
+    		top: 700px;
+    		left: 270px;
+    		margin-top: -620px;
+    		z-index: 100;
+    		background: #ffffff;
+   		}
+    	#divPlugin {
+    		position: absolute;
+    		top: 42px;
+    		left: 0;
+    	}
+    	.icon {
+    		position: absolute;
+    		width: 92%;
+    		/* height: 20px; */
+    		top: 15px;
+    		right: 30px;
+    	}
+    	.icon .fa.fa-times {
+    		cursor: pointer;
+    	}
+
+    </style>
+</head>
+
+<body class="horizontal-menu-page">
+<div id="anchor" style="width: 30px;height: 30px;" ><img id='anchorImg' src="../images/user.png" alt=""/></div>
+<section>
+    <div class="header"></div>
+    <!--body wrapper start-->
+    
+    <!-- 视频播放 -->
+    <div class="panel" id="videoParent" style="display: none;" data-id=''>
+       	<div class="icon"  id="close">
+       		<span id="videoName"></span>
+       		<i class="fa fa-times pull-right"></i>
+   		</div>
+       	<!-- 插件 -->
+		<div id="divPlugin" class="plugin" ></div>
+   	</div>
+   	
+    <div id="body-content" style="">
+        <div class="openLabel">
+            <a id="left-panel-link" href="#left-panel"  class="btn btn-default active left">
+                <i class="fa fa-angle-double-left open"></i></a>
+        </div>
+        
+        
+        <!--项目信息-->
+        <div class="projectInfo well">
+            <h3>项目基本信息</h3>
+            <p>项目名称：<span id="name"></span></p>
+            <p>占地面积： <span id=conLongth></span>平方米</p>
+            <p>投资金额： <span id="investAmount"></span></p>
+            <p>开始日期： <span id="startDate"></span></p>
+            <p>计划竣工日期： <span id="planComDate"></span></p>
+        </div>
+        <!-- 左侧导航栏 -->
+        <div id="left-panel"></div>
+        <!-- 地图位置 -->
+        <div id="map"></div>
+        <!-- 地图左侧控件 -->
+        <div id="layerControl1">
+		    <form class="contrilForm">
+		        <input type="sesarch" id="searchParam" placeholder="人员姓名/卡号"/>
+		        <a class="dropdown-toggle" id="searchBtn" data-toggle="dropdown"><i class="fa fa-search"></i></a>
+		        <ul class="dropdown-menu pull-right">
+                </ul>
+		    </form>
+		</div>
+		<!--右侧控件-->
+		<div id="layerControl2">
+		    <ul class="nav navbar-nav clearfix">
+		        <li class="active"><a id="projectInfo">信息</a></li>
+		        <li class="dropdown">
+		        	<a class="dropdown-toggle" data-toggle="dropdown" id="base">基站</a>
+		        	<ul class="dropdown-menu">
+		                <li><a onclick="openBase(this,'1')"><i class="fa fa-eye-slash"></i>无线</a></li>
+		                <li><a onclick="openBase(this,'2')"><i class="fa fa-eye-slash"></i>网关</a></li>
+		                <li><a onclick="openBase(this,'3')"><i class="fa fa-eye-slash"></i>双监</a></li>
+		            </ul>
+		        </li>
+		        <li><a onclick="openArea(this)"><i class="fa fa-eye-slash"></i>区域</a></li>
+		        <li><a onclick="openVideo(this)"><i class="fa fa-eye-slash"></i>摄像头</a></li>
+		        <li><a onclick="openUserName(this)"><i class="fa fa-eye-slash"></i>人名</a></li>
+		        <li><a onclick="backStart(this)">还原</a></li>
+		    </ul>
+		</div>
+        <!-- 轨迹回放  时间选择框-->
+        <div aria-hidden="true" tabindex="-1" id="myModal1" data-backdrop="static" class="modal fade" style="display: none;"></div>
+      
+        <div class="panel panel-default pathMap">
+            <div class="panel-body" id="mapLoad">
+                <div id="map1" style="height: 70%;width: 100%"></div>
+                <!-- 地图左侧控件 -->
+                <div id="pathControl1">
+                    <div onclick="selectMap(this)" id="currentMap">
+                    	<span></span> <i class="fa fa-angle-double-down"></i></a>  
+                    </div>
+                    <ul class="dropdown-menu pull-right maps">
+                    	<!-- <li><a onclick='sureMap(this,"12425")'>图层111</a></li>
+                    	<li><a onclick='sureMap(this,"12425")'>图层222</a></li>
+                    	<li><a onclick='sureMap(this,"12425")'>图层333</a></li> -->
+                	</ul>
+                </div>
+                <!--右侧控件-->
+                <div id="pathControl2">
+                    <ul class="nav navbar-nav clearfix">
+                        <li class="dropdown">
+                            <a id="openUser" class="dropdown-toggle pathIcon" title="选择人员" data-toggle="dropdown">
+                                <span><i class="fa fa-users"></i></span>
+                            </a>
+                            <ul class="dropdown-menu" id="userList">
+                            </ul>
+                        </li>
+                        <li><a class="pathIcon" title="回放时间"  onclick="selectTime()">
+                        	<span><i   class="fa fa-clock-o"></i></span></a></li>
+                        <li><a class="pathIcon" title="关闭" onclick="closePathMap()">
+                        	<span><i  class="fa fa-times"></i></span></a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <input id="range_5" type="text" name="range_5" value="" />
+                <div class="clearfix">
+                    <div class="col-md-7 col-xs-12">
+                        <div class="col-xs-8">
+	                        <form class="form-horizontal adminex-form">
+		                        <label class="control-label col-xs-3">跳转至</label>
+			                    <div class="col-xs-9">
+			                        <div class="input-group bootstrap-timepicker">
+			                            <input type="text" class="form-control timepicker-241" id="goToTime">
+			                            <span class="input-group-btn">
+			                                <button class="btn btn-default" type="button">
+			                                    <i class="fa fa-clock-o"></i></button>
+			                            </span>
+			                        </div>
+			                    </div>
+			                </form>
+		                </div>
+		                <div class="col-xs-4">
+                        	<button class="btn btn-default sure" onclick="goTo()">确定</button>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-xs-12">
+                    	<button class="btn btn-default" data-toggle="button" title="快进" id="fast">快进</button>
+                    	<button class="btn btn-default" data-toggle="button" title="播放" id="animateBtn">播放</button>
+                    	<button class="btn btn-default" data-toggle="button" title="暂停" id="zanStop">暂停</button>
+                        <button class="btn btn-default" data-toggle="button" title="快退" id="low">快退</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="popup" class="ol-popup">
+		    <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+		    <div id="popup-content">
+		       <form class="form-horizontal" id="user_worker">
+    	            <div class="form-group" style="margin-top:-10px">
+    	                 <div  class="fa  fa-user text-danger col-md-1 pull-right" style="left:-65px" onclick="dingwei()"></div>
+    	                 <div  class="fa  fa-video-camera text-danger col-md-1 pull-right" onclick="showVideo()"></div>
+    	            </div>
+    	            <div class="form-group">
+    	                <div class="col-md-4">
+    	                    <img src="" style="width:80px;height:80px;border-radius:50%;" id="userimage">
+    	                </div>
+    	                <div class="col-md-8">
+	    	                <div class="form-group">
+	    	                    <label class="control-label pull-left" id="username1">姓名:</label>
+	    	                    <div class="col-md-6">
+	    	                        <label class="control-label" style="margin-left:-10px;" id="username"></label>
+	    	                    </div>
+	    	                </div>
+	    	                <div class="form-group">
+	    	                    <label class="control-label pull-left" id="label_id1">标签ID:</label>
+	    	                    <div class="col-md-4">
+	    	                        <label class="control-label" style="margin-left:-10px;" id="label_id"></label>
+	    	                    </div>
+	    	                </div>
+    	                    <div class="form-group">
+    	                        <label class="control-label pull-left"  id="workerstype1">工种:</label>
+    	                        <div class="col-md-8">
+    	                           <label class="control-label" style="margin-left:-10px;" id="workerstype"></label>
+    	                        </div>
+    	                    </div>
+    	                </div>
+                    </div>
+                    <div class="hr"></div>
+
+   	                <div class="form-group" style="margin-top:-15px;margin-left:10px;">
+   	                    <label class="control-label pull-left"  id="gender1">性别:</label>
+   	                    <div class="col-md-4">
+   	                    <div class="row">
+   	                       <label class="control-label" style="margin-left:-10px;" id="gender"></label>
+   	                    </div>   
+   	                    </div>			      
+   	                    <label class="control-label pull-left" style="margin-left:8px;"  id="birthday1">出生日期:</label>
+   	                    <div class="col-md-4">
+   	                    <div class="row">
+   	                        <label class="control-label" style="margin-left:-10px;" id="birthday"></label>
+   	                    </div>     
+   	                    </div>
+   	                </div>
+   	              
+   	                <div class="form-group">
+   	                    <label class="control-label pull-left" style="margin-left:24px;"  id="nation1">民族:</label>
+   	                    <div class="col-md-4">
+   	                        <label class="control-label" style="margin-left:-10px;" id="nation"></label>
+   	                    </div>			       
+   	                    <label class="control-label pull-left"  id="native_place1">籍贯:</label>
+   	                    <div class="col-md-4">
+   	                        <label class="control-label" style="margin-left:-10px;" id="native_place"></label>
+   	                    </div>
+   	                </div>
+     
+   	                <div class="form-group">
+   	                    <label class="control-label pull-left" style="margin-left:24px;"  id="mobile1">联系方式:</label>
+   	                    <div class="col-md-4">
+   	                        <label class="control-label" style="margin-left:-10px;" id="mobile"></label>
+   	                    </div>			       
+   	                    <label class="control-label pull-left" style="margin-left:-29px;"  id="department1">所属部门:</label>
+   	                    <div class="col-md-5">
+   	                        <label class="control-label" style="margin-left:-10px;" id="department"></label>
+   	                    </div>
+   	                </div>
+   	                <div class="form-group"><label class="control-label pull-left" style="margin-left:24px;"  id="cid1">身份证号:</label>
+   	                    <div class="col-md-4">
+   	                        <label class="control-label" style="margin-left:-10px;" id="cid"></label>
+   	                    </div>
+   	                </div>	
+   	                
+   	                <div class="form-group col-md-12" style="display:none" id="abc">
+                    <label class="control-label pull-left" style="margin-left:7px;"  id="yy1">有效距离(米):</label>
+                    <div class="col-md-9">
+                        <label class="control-label" style="margin-left:-10px;" id="yy"></label>
+                    </div>
+                </div>		             
+             </form> 
+                  
+             <form class="form-horizontal" id="baseStation">
+                 <div class="form-group">
+                     <div class="col-md-4">
+                        <img src="images/l.jpg" style="width:80px;height:80px;border-radius:50%;">
+                     </div>
+                     <div class="col-md-8">
+                         <div class="form-group">
+                            <label class="control-label pull-left">名称:</label>
+                            <div class="col-md-8">
+                               <label class="control-label" style="margin-left:-10px;" id="mc"></label>
+                            </div>
+                         </div>
+                         <div class="form-group">
+                             <label class="control-label pull-left">编号:</label>
+                             <div class="col-md-4">
+                                <label class="control-label" style="margin-left:-10px;" id="number"></label>
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <label class="control-label pull-left">类型:</label>
+                             <div class="col-md-4">
+                                <label class="control-label" style="margin-left:-10px;" id="type"></label>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="hr"></div>
+
+                 <div class="form-group" style="margin-top:-15px;margin-left:10px;">
+                     <label class="control-label pull-left">所在地图:</label>
+                     <div class="col-md-5">
+                         <label class="control-label" style="margin-left:-10px;" id="mapname"></label>
+                     </div>			       
+                     <label class="control-label pull-left" style="margin-left:-14px;">状态:</label>
+                     <div class="col-md-4">
+                         <label class="control-label" style="margin-left:-10px" id="status"></label>
+                     </div>
+                </div>
+ 		        <div class="form-group">
+ 		             <label class="control-label pull-left" style="margin-left:24px;">坐标(X):</label>
+ 		             <div class="col-md-4">
+                         <label class="control-label" style="margin-left:-10px;" id="x_coordinate"></label>
+                     </div>		       
+                     <label class="control-label pull-left" style="margin-left:21px;">坐标(Y):</label>
+                     <div class="col-md-3">
+                         <label class="control-label" style="margin-left:-10px;" id="y_coordinate"></label>
+                     </div>
+                </div>
+                  
+                <div class="form-group">
+                    <label class="control-label pull-left" style="margin-left:24px;">IP:</label>
+                    <div class="col-md-4">
+                        <label class="control-label" style="margin-left:-10px;" id="ip"></label>
+                    </div>			       
+                    <label class="control-label pull-left" style="margin-left:53px;">端口:</label>
+                    <div class="col-md-4">
+                        <label class="control-label" style="margin-left:-10px;" id="port"></label>
+                    </div>
+                </div>
+                  
+                <div class="form-group col-md-12">
+                    <label class="control-label pull-left" style="margin-left:7px;">有效距离(米):</label>
+                    <div class="col-md-4">
+                        <label class="control-label" style="margin-left:-10px;" id="yxjl"></label>
+                    </div>
+                </div>	
+             </form>
+		    
+		    </div>
+		</div>
+    </div>
+	<!--模态框-->
+   	<div class="modal fade" tabindex="-1" role="dialog" id="myModal" data-id="" data-backdrop="static"></div>
+
+</section>
+<script src="../public/js/jquery-1.10.2.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/modernizr.min.js"></script>
+<script src="../public/js/openlayer/ol2.js"></script>
+<script src="../public/js/vue.min.js"></script>
+<!-- <script src="../public/js/jquery.nicescroll.js"></script> -->
+<script src="../public/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script src="../public/js/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+<script src="../public/js/jquery-confirm/jquery.spin.merge.js"></script>
+
+<script src="../public/js/ion.rangeSlider-1.8.2/js/ion-rangeSlider/rangeSlider.js" type="text/javascript"></script>
+<script src="../public/js/webVideoCtrl.js" type="text/javascript"></script>
+
+<!-- <script src="../public/js/openlayer/ol.js"></script> -->
+<script src="html-js/jquery.panelslider.js"></script>
+
+<!--common scripts for all pages-->
+<script src="html-js/main.js"></script>
+<script src="html-js/test.js"></script>
+<script src="html-js/indexMap1/static.js"></script>
+<script src="html-js/indexMap1/indexMap.js"></script>
+<!-- <script src="html-js/indexMap1/bulletBox.js"></script> -->
+<script src="html-js/indexMap1/pathMap.js"></script>
+<script src="html-js/indexMap1/positionShow.js"></script>
+
+</body>
+</html>

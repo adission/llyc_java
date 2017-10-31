@@ -1,0 +1,51 @@
+{
+  "recordsFiltered":5,
+  "recordsTotal":5,
+  "data": [
+    {
+      "id": "1",
+      "name": "球机",
+      "xinghao": "球机",
+      "leixin": "重点",
+      "person": "张三",
+      "time":"1234567",
+      "phone":"15197888520"
+    },
+    {
+      "id": "2",
+      "name": "枪机",
+      "xinghao": "球机",
+      "leixin": "非重点",
+      "person": "李四",
+      "time":"1234567",
+      "phone":"15197888520"
+    },
+    {
+      "id": "3",
+      "name": "球机",
+      "xinghao": "球机",
+      "leixin": "重点",
+      "person": "万物",
+      "time":"1234567",
+      "phone":"15197888520"
+     },
+    {
+      "id": "4",
+      "name": "枪机",
+      "xinghao": "球机",
+      "leixin": "非重点",
+      "person": "赵六",
+      "time":"1234567",
+      "phone":"15197888520"
+    },
+    {
+      "id": "5",
+      "name": "球机",
+      "xinghao": "球机",
+      "leixin": "重点",
+      "person": "哈七",
+      "time":"1234567",
+      "phone":"15197888520"
+    }
+  ]
+}

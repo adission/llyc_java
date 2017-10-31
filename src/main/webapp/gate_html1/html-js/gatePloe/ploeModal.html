@@ -1,0 +1,82 @@
+<div class="modal-dialog modal-lg" role="document" style="width: 60%;">
+    <div class="modal-content" >
+        <div class="modal-header bg-primary">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">添加权限</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="pull-right btn-group">
+                <button type="button" class="btn btn-primary add-gate">添加权限</button>
+                <button type="button" class="btn btn-default copy-gate">复制闸机权限</button>
+            </div>
+            <div class="add-gate-list">
+                <form class="form-inline">
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-3 text-right">选择条件:</label>
+                        <select class="form-control" style="width: 352px" name="selectUser">
+                            <option value="1" selected>卡号</option>
+                            <option value="2">姓名</option>
+                            <option value="3">手机号码</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-3 text-right">输入搜索信息:</label>
+                        <input type="text" class="form-control" id="selectUserValue" placeholder="输入搜索信息" style="width: 352px;margin-right: 20px">
+                        <button type="button" class="btn btn-primary search-gate1">搜索</button>
+                    </div>
+                    <div class="form-group col-xs-12 gate-list1" id="div-table-container">
+                        <table class="display table general-table table-striped" style="width: 67%" id="userList">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" name="checkAll" id="checkAll1">
+                                </th>
+                                <th>卡号</th>
+                                <th>身份证号码</th>
+                                <th>姓名</th>
+                                <th>手机号</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="copy-gate-list" style="display: none">
+                <form class="form-inline">
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-3 text-right">选择条件:</label>
+                        <select class="form-control" style="width: 352px" name="selectGate">
+                            <option value="1" selected>闸机编号</option>
+                            <option value="2">闸机名称</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-3 text-right">输入搜索信息:</label>
+                        <input type="text" class="form-control" id="selectGateValue" placeholder="输入搜索信息" style="width: 352px;margin-right: 20px">
+                        <button type="button" class="btn btn-primary search-gate2">搜索</button>
+                    </div>
+                    <div class="form-group col-xs-12 gate-list2" id="div-table-container1">
+                        <table class="display table general-table table-striped" style="width: 67%" id="gateList">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="checkbox" name="checkAll" id="checkAll">
+                                </th>
+                                <th>闸机编号</th>
+                                <th>闸机名称</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer" style="margin-top: -30px;">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary" onclick="addPloe()">确定</button>
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+
+<script src="html-js/gatePloe/ploeModal.js"></script>

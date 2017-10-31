@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>记录列表</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/jquery-confirm.css">
+</head>
+<body>
+<!--头部导航-->
+<div class="header row"></div>
+<!--身体-->
+<div class="content row">
+    <!--左侧--导航-->
+    <div class="content-left col-md-2 col-sm-1"></div>
+
+    <!--右侧table-->
+    <div class="content-right col-md-10 col-sm-11 col-xs-12">
+        <div class="right-body">
+            <!--路径导航-->
+            <div class="body-navbar">
+                <ol class="breadcrumb">
+                    <li>记录</li>
+                    <li class="active">记录列表</li>
+                </ol>
+            </div>
+
+            <div class="search-content">
+                <form class="form-inline well  clearfix">
+                    <div class="form-group col-md-4  col-xs-6">
+                        <!--<label>姓名:</label>-->
+                        <input type="email" class="form-control" placeholder="姓名" name="username">
+                    </div>
+                    <div class="form-group col-md-4 col-xs-6">
+                        <!--<label>身份证号码:</label>-->
+                        <input type="text" class="form-control" placeholder="身份证号码" name="id_card">
+                    </div>
+                    <div class="form-group col-md-4 col-xs-6">
+                        <!--<label>手机号:</label>-->
+                        <input type="text" class="form-control" placeholder="手机号" name="mobile">
+                    </div>
+                    <div class="form-group col-md-4 col-xs-6">
+                        <!--<label>卡号:</label>-->
+                        <input type="text" class="form-control" placeholder="卡号" name="card_no">
+                    </div>
+                    <div class="form-group col-md-7 col-xs-12">
+                        <!--<label>时&nbsp;间&nbsp;区&nbsp;间:</label>-->
+                        <!--<span class="pull-left">时间区间</span>-->
+                        <!--<div class="  col-xs-5">-->
+                            <!--<input type="date" class="form-control" value="2017-05-08">-->
+                        <!--</div>-->
+                        <!--<span class="pull-left">-&#45;&#45;&#45;&#45;&#45;&#45;</span>-->
+                        <!--<div class="col-xs-5">-->
+                            <!--<input type="date" class="form-control" value="2017-05-08">-->
+                        <!--</div>-->
+
+                        <input type="date" class="form-control" value="2017-05-08" name="start_time">----
+                        <input type="date" class="form-control" value="2017-05-08" name="end_time">
+                    </div>
+                    <button type="button" class="btn btn-primary pull-right" id="searchBtn">
+                        <i class="fa fa-search"></i> 查询
+                    </button>
+                </form>
+            </div>
+            <div class="body-content">
+                <button class="btn btn-primary pull-right" id="exportData">
+                    <i class="glyphicon glyphicon-print"></i>导出execl</button>
+                <div class="clearfix"></div>
+            </div>
+            <div class="wt100   container" style="position:relative; height:100%">
+                <div class="span12" id="div-table-container">
+                    <table class="table table-striped table-bordered table-hover table-condensed" id="table-detail"
+                           cellspacing="0" width="100%">
+                        <thead>
+                        <tr style="height: 41px">
+                            <th style="width: 10px"></th>
+                            <th style="width: 150px">时间</th>
+                            <th>姓名</th>
+                            <th>闸机号</th>
+                            <th>行为</th>
+                            <th>人员类别</th>
+                            <th>班组</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--table-->
+    </div>
+</div>
+</div>
+
+<!--底部-->
+<div class="text-center">
+    <div class=""> 2017 &copy; 蓝领劳务管理系统 By <a href="index.html">管理系统</a>
+    </div>
+</div>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/vue.min.js"></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.spin.merge.js"></script>
+<script type="text/javascript" src="js/jquery-confirm.js"></script>
+<script src="js/main.js"></script>
+<script src="html-js/recordList/recordList.js"></script>
+</body>
+</html>

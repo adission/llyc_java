@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位页面</title>
+    <meta name="viewport" content="width=device-width,height=device-height, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1,target-densitydpi=device-dpi ">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/joint.css" />
+    <style>
+        .content-body {
+           padding: 10px;
+        }
+        /*显示*/
+        .parent {
+            position: relative;
+            width: 100%;
+            height: 1210px;
+            z-index: 100;
+            overflow: hidden;
+            -webkit-box-shadow:0 0 5px rgba(136, 132, 137, 0.51);
+            -moz-box-shadow:0 0 5px rgba(136, 132, 137, 0.51);
+            box-shadow:0 0 5px rgba(136, 132, 137, 0.51);
+            background: #ffffff;
+        }
+        svg {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 50;
+        }
+        .accordion {
+            height: 450px;
+            overflow: scroll;
+
+        }
+        .submenu {
+            background: #bcbabb;
+        }
+        .submenu li {
+            line-height: 45px;
+            text-align: center;
+        }
+        
+       #workerInfo .form-group {
+            margin-bottom: 0px;
+        }
+
+        #ss div label {
+            top: -15px;
+        }
+
+        #ss div div {
+            top: -15px;
+            left:-15px;
+        }
+        .processcontainer{
+            width:50%;
+            border:1px solid #6C9C2C;
+            height:25px;
+        }
+        #processbar{
+            background:#95CA0D;
+            float:left;
+            height:100%;
+            text-align:center;
+            line-height:150%;
+        }
+        
+         .show{
+          color: orange;
+        }
+        
+        .hr {
+		    margin-top: 20px;
+		    margin-bottom: 20px;
+		    border: 0;
+		    border-top: 1px solid #eee;
+		}
+
+    </style>
+</head>
+<body>
+    <!--头部导航-->
+    <div class="header"></div>
+
+    <!--身体-->
+    <div class="content-body">
+        <!--左侧--导航-->
+        <div class="body-left col-md-2 col-xs-12">
+            <div>
+                <!--地点,环境,时间-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">浙江金华火车站</div>
+                    <div class="panel-body" id="weather">晴转多云 35&#176;C ~26&#176;</div>
+                    <div class="panel-footer" id="today_time">2017-08-23 09:04:07</div>
+                </div>
+
+                <!--人员列表-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">金华客房站项目人员列表</div>
+                    <div class="panel-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="username" placeholder="用户名手机号">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" id="searchUser"
+                                ><i class="glyphicon glyphicon-search"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <ul class=" accordion"  id="accordion">
+                    </ul>
+                </div>
+
+                <!--标记备注-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">标记备注</div>
+                    <div class="panel-body" >
+                        <div class="col-xs-12" style="padding-right: 0;padding-left: 0">
+                            <p>--<i class="glyphicon glyphicon-user text-primary"></i><span>&nbsp;&nbsp;&nbsp;管理人员</span></p>
+                            <p>--<i class="glyphicon glyphicon-user text-info"></i><span>&nbsp;&nbsp;&nbsp;施工人员</span></p>
+                            <p>--<i class="glyphicon glyphicon-user text-danger"></i><span>&nbsp;&nbsp;&nbsp;安检人员</span></p>
+                            <p>--<i class="glyphicon glyphicon-user text-success"></i><span>&nbsp;&nbsp;&nbsp;巡逻人员</span></p>
+                            <p>--<i class="glyphicon glyphicon-user text-warning"></i><span>&nbsp;&nbsp;&nbsp;临时人员</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--右侧table-->
+        <div class="body-right col-md-10" style="padding: 0;margin-bottom: 50px">
+            <div class="right-body">
+                <!--路径导航-->
+                <div class="body-navbar">
+                    <ol class="breadcrumb">
+                        <li>人员定位</li>
+                    </ol>
+                </div>
+
+                <!-- 轨迹回放操作框 -->
+                <div class="search-content" style="display: none">
+                    <form class="form-inline well  clearfix">
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label>日期:</label>
+                            <input type="date" class="form-control" id="startdate">
+                        </div>
+                        <div class="form-group col-md-4  col-xs-6">
+                            <label>开始时间:</label>
+                            <input type="time" class="form-control" id="starttime" placeholder="">
+                        </div>
+                        <div class="form-group col-md-4 col-xs-6">
+                            <label>结束时间:</label>
+                            <input type="time" class="form-control" id="endtime" placeholder=""> 
+                        </div>
+                        <button onclick="resettime(1)">修改时间</button>
+                        <div class="btn-group col-xs-offset-4">
+                            <button type="button" class="btn btn-default" title="快进" onclick="speed()"><i class="glyphicon glyphicon-fast-forward text-primary"></i></button>
+                            <input type="hidden" id="scale"/>
+                            <button type="button" class="btn btn-default" title="快退" onclick="low()"><i class="glyphicon glyphicon-fast-backward text-primary"></i></button>
+                            <input type="hidden" id="offscale"/>
+                            <button type="button" class="btn btn-default" title="暂停" id="stop"><i class="glyphicon glyphicon-pause text-primary"></i></button>
+                            <button type="button" class="btn btn-default" title="开始" id="start"><i class="glyphicon glyphicon-play text-primary"></i></button>
+                        </div>
+                        <div class="processcontainer" id="processcontainer" onclick="jump(event)">
+						    <div id="processbar" style="width:0px;"></div><br>
+						</div>
+                        <button class="btn btn-primary pull-right" onclick="closeLink()">关闭 </button>
+                    </form>
+                </div>
+				<!-- 地图 -->
+                <div class="parent">
+                	<!-- 背景地图  -->
+                    <div class="dragAble" id="block1" onMouseOver="dragObj=block1; drag=1;" style="z-index: 10;
+                        left: 0px;  position: absolute; top: 0px; " onMouseOut="" drag="0">
+                        <img  style="zoom: 1.5" src="images/adde8400gw1eeazlmtqa8j20qd0mdadm.jpg"
+                              border="0" name="images1" id="imgB">
+                    </div>
+                   	<!-- 轨迹回放 -->
+                    <div id="papar" onmousewheel="return onWheelZoom(this)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="bs" class="show" style="font-size:25px" value="wireless" onclick="showAllBaseStation(this.id)">试一试</div>
+    
+    <!--底部-->
+    <div class="text-center">
+        <div class=""> 2017 &copy; 蓝领劳务管理系统 By <a href="index.html">管理系统</a>
+        </div>
+    </div>
+    
+      <!-- 模态框 -->
+    <div id="workerInfo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+        <div class="modal-dialog" style="width: 480px;height:466px">
+            <div class="modal-content" style="position: relative" id="abc">
+            
+                <div class="modal-header" height: 40px; line-height:40px;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-top: -6px;">X</button>  
+                </div>
+               
+                <div class="modal-body" style="font-size: 12px;left:-10px;" >
+                    <form class="form-horizontal" id="ss">
+                        <div class="form-group">
+                        
+                            <div class="col-md-4" style="left:15px;top:15px">
+                                <!-- <img src="images/l.jpg" style="position:absolute; width: 125px;height: 160px;top:10px;left:30px;"> -->
+                                <img src="images/l.jpg" style="width:100px;height:100px;border-radius:50%;">
+                            </div>
+                        
+                            <label class="col-md-2 control-label">姓名:</label>
+                            <div class="col-md-2">
+                                <label class="control-label" style="left: auto;" id="name">金三胖</label>
+                            </div>
+                            
+                            <div class="form-group">
+                            <label class="col-md-2 control-label">卡号:</label>
+	                            <div class="col-md-2">
+	                                <label class="control-label" style="left: auto" id="number">J6206962</label>
+	                            </div>
+                            </div>
+                            
+                            <div class="form-group">
+                            <label class="col-md-2 control-label">工种:</label>
+	                            <div class="col-md-2">
+	                                <label class="control-label" style="left: auto" id="post">电工</label>
+	                            </div>
+                            </div>
+                        
+                        </div>
+                        
+                        <div class="hr"></div>
+                        
+                         <div class="form-group">
+                            <label class="col-md-3 control-label">性别:</label>
+                            <div class="col-md-3">
+                                <label class="control-label" style="left: 10px" id="team">男</label>
+                            </div>
+
+                            <label class="col-md-1 control-label">出生日期</label>
+                            <div style="top: 20px;left:10px" class="col-md-1">
+                                <label class="control-label" style="left: 10px" id="team">1990年12月06日</label>
+                                <!-- <button class="btn default" data-dismiss="modal" aria-hidden="true" id="gj" style="text-align: right;" >出生日期</button> -->
+                            </div>
+                        </div>
+                        
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">性别:</label>
+                            <div class="col-md-5">
+                                <label class="control-label" style="left: auto" id="gender">男</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">民族:</label>
+                            <div class="col-md-5">
+                                <label class="control-label" style="left: auto" id="nation">汉</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">籍贯:</label>
+                            <div class="col-md-5">
+                                <label class="control-label" style="left: auto" id="nation">湖南</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">联系方式:</label>
+                            <div class="col-md-5">
+                                <label class="control-label" style="left: auto" id="mobile">15210010001</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">身份证号:</label>
+                            <div class="col-md-7">
+                                <label class="control-label"  style="left: auto" id="cid">420123198810115612</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">出生日期:</label>
+                            <div class="col-md-5">
+                                <label class="control-label" style="left: auto" id="birthday">1990年12月31日</label>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">所属部门:</label>
+                            <div class="col-md-3">
+                                <label class="control-label" style="left: 10px" id="team">工程部</label>
+                            </div>
+
+                        </div>
+
+             
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">定位标签id:</label>
+                            <div class="col-md-3">
+                                <label class="control-label" style="left: 10px" id="label_id">5301</label>
+                            </div>
+
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/publicJS/jquery-1.11.3.min.js"></script>
+    <script src="js/publicJS/bootstrap.min.js"></script>
+	<script src="js/publicJS/lodash.js"></script>
+	<script src="js/publicJS/backbone.js"></script>
+	<script src="js/publicJS/joint.js"></script>
+	<script src="js/main.js"></script>
+	
+	<script src="js/drag_map.js"></script>
+    <script src="js/drawLink.js"></script>
+    <script src="js/indexMap.js"></script>
+    <script src="js/baseStation.js"></script>
+</body>
+
+</html>

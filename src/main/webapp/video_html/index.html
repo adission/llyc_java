@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云台控制</title>
+    <!--全局css-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="font/iconfont.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!--datatables-->
+    <link rel="stylesheet" href="plugins/datatables/datatables.min.css">
+    <link rel="stylesheet" href="plugins/datatables/plugins/bootstrap/datatables.bootstrap.css">
+    <!--datatimepicker-->
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+    <!--页面css-->
+    <link rel="stylesheet" href="css/index.css">
+
+    <style>
+
+    </style>
+</head>
+<body>
+<!--头部导航-->
+<div class="header"></div>
+<!--身体-->
+<div class="content row" id="content">
+    <!--左侧导航-->
+    <div class="content-left"></div>
+    <!--右侧内容-->
+    <div class="content-right">
+        <div id="video-content" class="video-content clearfix">
+        </div>
+        <div class="video-footer well">
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default btn1" onclick="changeModel(1)"><i class="icon iconfont">&#xe62d;</i></button>
+                <button type="button" class="btn btn-default btn4" onclick="changeModel(4)"><i class="icon iconfont">&#xe6ba;</i></button>
+                <button type="button" class="btn btn-default btn9" onclick="changeModel(9)"><i class="icon iconfont">&#xe6b9;</i></button>
+                <!--<button type="button" class="btn btn-default btn13" onclick="changeModel(13)"><i class="icon iconfont">&#xe613;</i></button>-->
+                <button type="button" class="btn btn-default btn16" onclick="changeModel(16)"><i class="icon iconfont">&#xe605;</i></button>
+                <button type="button" class="btn btn-default btn-fullscreen"><span class="glyphicon glyphicon-fullscreen" style="padding: 3px;"></span></button>
+            </div>
+            <div class="btn-right pull-right" style="margin-right: 66px;">
+                <div class="btn-group dropup turn" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        开始轮巡
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a>分组方式一</a></li>
+                        <li><a>分组方式二</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group dropup static" role="group">
+                    <button type="button" class="btn btn-default btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        静态显示
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a>仓库</a></li>
+                        <li><a>街道</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--全局js-->
+<script src="js/publicJS/jquery-1.11.3.min.js"></script>
+<script src="js/publicJS/bootstrap.min.js"></script>
+<script src="js/publicJS/vue.min.js"></script>
+<script src="js/main.js"></script>
+<script src="font/iconfont.js"></script>
+<!--datatables-->
+<script src="plugins/datatables/datatables.min.js"></script>
+<script src="plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"></script>
+<!--datetimepicker-->
+<script src="js/publicJS/bootstrap-datetimepicker2.js"></script>
+<script src="js/publicJS/bootstrap-datetimepicker.zh-CN.js"></script>
+<!--页面js-->
+<script src="js/index.js"></script>
+
+<!--使video兼容所有浏览器-->
+<!--<script src="http://html5media.googlecode.com/svn/trunk/src/html5media.min.js"></script>-->
+</body>
+</html>

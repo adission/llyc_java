@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>分组管理</title>
+
+    <!--dynamic table-->
+    <link href="../public/js/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+    <link href="../public/js/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+    <link rel="../public/stylesheet" href="js/data-tables/DT_bootstrap.css" />
+
+
+
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        div.wrapper{padding:30px;}
+	    .body-content{  background: #ffffff; border-radius: 6px; }
+	    hr{margin:0 10px;}
+	    .page_jump{display:none;}
+	    .adv-table .dataTables_info, .dataTables_paginate {
+		    padding: 0;
+		}
+    	.offset-top-20{
+    		margin-top:20px;
+    	}
+    </style>
+</head>
+
+<body class="horizontal-menu-page">
+
+<div id="header"></div>
+
+
+<!--body wrapper start-->
+<div class="wrapper">
+    <div class="body-content clearfix">
+                       <div class="page-heading">
+                            <h3>分组管理</h3>
+                            <ul class="breadcrumb">
+                                <li>
+                                    <a href="#">摄像头管理</a>
+                                </li>
+                                <li class="active"> 分组管理 </li>
+                            </ul>
+                        </div>
+                        <hr />
+                 <div class="col-md-12 offset-top-20">       
+                 <div class="searchDiv">
+                    <form class="form-horizontal well  clearfix">
+                        <div class="form-group col-sm-5">
+                            <label class="control-label col-sm-4 text-right">是否重点：</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" id="isImportant">
+                                    <option value="0">全部</option>
+                                    <option value="1">重点</option>
+                                    <option value="2">非重点</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-5">
+                            <label class="control-label col-sm-4 text-right">分屏模式：</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" id="screenType">
+                                    <option value="0">全部</option>
+                                    <option value="1">1×1</option>
+                                    <option value="2">2×2</option>
+                                    <option value="3">3×3</option>
+                                    <option value="4">4×4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary pull-right" id="searchBtn">
+                            <i class="fa fa-search"></i> 查询
+                        </button>
+                    </form>
+                </div>
+                </div>
+
+                <div class="tool">
+                    <div class="col-md-6">
+                        <a href="camera_group_detail.html"><button class="btn btn-info"><i class="fa fa-plus"></i> 添加</button></a>
+                        <button class="btn btn-danger" id="delRow"><i class="fa fa-times"></i> 删除</button>
+                    </div>
+                </div>
+
+				<div class="col-md-12 offset-top-20">
+			        <div class="adv-table">
+                           <table class="display table table-bordered" id="hidden-table-info">
+                               <thead>
+                               <tr>
+                               		<th style="width:40px;"></th>
+		                            <th style="width:30px; padding:10px 0 10px 10px">
+		                                <input type="checkbox" id="checkAll" name="checkList"></th>
+                                   <th>分组名称</th>
+                                   <th class="hidden-phone">分屏模式</th>
+                                   <th class="hidden-phone">是否重点</th>
+                                   <th class="hidden-phone">是否默认</th>
+                                   <th class="hidden-phone">分组时间</th>
+                                   <th class="hidden-phone">分组人</th>
+                                   <th class="hidden-phone">操作</th>
+                               </tr>
+                               </thead>
+                           </table>
+                       </div>
+				</div>
+    </div>
+</div>
+<!--body wrapper end-->
+
+<div id="footer"></div>
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../public/js/jquery-1.10.2.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/modernizr.min.js"></script>
+<script src="../public/js/jquery.nicescroll.js"></script>
+
+<!--common scripts for all pages-->
+<script src="../public/js/scripts.js"></script>
+
+
+
+<!--dynamic table-->
+<script type="text/javascript" src="../public/js/data-tables/jquery.dataTables1.js"></script>
+<script type="text/javascript" src="../public/js/data-tables/dataTables.bootstrap.js"></script>
+<!--dynamic table initialization -->
+<!--<script src="../public/js/dynamic_table_init.js"></script>-->
+
+<script src="js/main.js"></script>
+<script src="js/camera_group.js"></script>
+
+</body>
+</html>

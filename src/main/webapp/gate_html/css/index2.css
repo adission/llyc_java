@@ -1,0 +1,25 @@
+
+body {
+    background: #e9ecf3;
+}
+/*头部样式*/
+
+
+
+
+
+
+
+/*footer  样式*/
+.page-footer {
+    color: #69789E;
+}
+.page-footer .page-footer-inner {
+    float: left;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+.page-footer-inner a {
+    color: #0a6aa1;
+    text-decoration: none;
+}

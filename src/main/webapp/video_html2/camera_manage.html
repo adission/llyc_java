@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>列表管理</title>
+
+    <!--dynamic table-->
+    <link href="../public/js/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+    <link href="../public/js/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+    <link rel="../public/stylesheet" href="js/data-tables/DT_bootstrap.css" />
+
+
+
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+    
+    <link href="css/bootstrapValidator.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    div.wrapper{padding:30px;}
+    .body-content{  background: #ffffff; border-radius: 6px; }
+    hr{margin:0 10px;}
+    .page_jump{display:none;}
+    .adv-table .dataTables_info, .dataTables_paginate {
+	    padding: 0;
+	}
+	#myModal .bv-form .help-block{
+		margin-left:0px;
+	}
+	.offset-top-20{
+		margin-top:20px
+	}
+    </style>
+</head>
+
+<body class="horizontal-menu-page">
+
+<div id="header"></div>
+
+
+<!--body wrapper start-->
+<div class="wrapper">
+    <div class="body-content clearfix">
+       	<div class="page-heading">
+            <h3>列表管理</h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">摄像头管理</a>
+                </li>
+                <li class="active"> 列表管理 </li>
+            </ul>
+        </div>
+        <hr />
+        
+        
+       <div class="col-md-12">
+       <div class="row">	
+        <div class="panel">
+        	<div class="panel-body">
+
+        			<div class="row">	                        
+		                 <div class="col-sm-6">
+		                          <button class="btn btn-info" onclick="openModal('')"><i class="fa fa-plus"></i> 添加</button>
+		                     <button id="delRow" class="btn btn-danger"><i class="fa fa-times"></i> 删除</button>
+		                 </div>
+		                 <div class="col-sm-6 clearfix">
+		                     <div id="searchBtn" class="btn btn-primary pull-right"><i class="fa fa-search"></i>查询</div>
+		                     <div class="col-md-6 pull-right"><input type="text" id="number" class="form-control" placeholder="编号"></div>
+		                 </div>
+	                 </div>
+
+	             <div class="offset-top-20">
+	              <div class="adv-table">
+	                  <table class="display table table-bordered" id="hidden-table-info">
+	                      <thead>
+	                <tr>
+	                    <th style="width:40px;"></th>
+	                    <th style="width:30px; padding:10px 0 10px 10px">
+	                        <input type="checkbox" id="checkAll" name="checkList"></th>
+	                    <th>编号</th>
+	                    <th>名称</th>
+	                    <th>型号</th>
+	                    <th>类型</th>
+	                    <th>操作</th>
+	                </tr>
+	                </thead>                            
+	                  </table>
+	              </div>
+	             </div>
+        	</div>
+        </div>
+        </div>
+        </div>
+                      
+         
+        <!--新增-->
+   		<div class="modal fade" tabindex="-1" role="dialog" id="myModal" data-id="" data-backdrop="static"></div>
+   		
+     </div>
+</div>
+<!--body wrapper end-->
+
+<div id="footer"></div>
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../public/js/jquery-1.10.2.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/modernizr.min.js"></script>
+<script src="../public/js/jquery.nicescroll.js"></script>
+
+<!--common scripts for all pages-->
+<script src="../public/js/scripts.js"></script>
+
+
+
+<!--dynamic table-->
+<!-- <script type="text/javascript" language="javascript" src="../public/js/advanced-datatable/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="../public/js/data-tables/DT_bootstrap.js"></script> -->
+<!--dynamic table initialization -->
+<!-- <script src="../public/js/dynamic_table_init.js"></script> -->
+
+
+<script src="js/bootstrapValidator.js"></script>
+<script type="text/javascript" src="../public/js/data-tables/jquery.dataTables1.js"></script>
+<script type="text/javascript" src="../public/js/data-tables/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="js/camera_manage/camera_manage.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

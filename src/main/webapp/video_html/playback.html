@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>录像回放</title>
+    <!--全局css-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="font/iconfont.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!--datatables-->
+    <link rel="stylesheet" href="plugins/datatables/datatables.min.css">
+    <link rel="stylesheet" href="plugins/datatables/plugins/bootstrap/datatables.bootstrap.css">
+    <!--datatimepicker-->
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+    <!--页面css-->
+    <link rel="stylesheet" href="css/playback.css">
+</head>
+<body>
+<!--头部导航-->
+<div class="header"></div>
+<!--身体-->
+<div class="content row" id="content">
+    <!--左侧--导航-->
+    <div class="content-left"></div>
+
+    <!--右侧table-->
+    <div class="content-right">
+        <div id="playback">
+
+            <p id="load_state" style="display: none"></p>
+            <video id="video" preloader poster="video/show.png" height="100%" width="100%">
+                <source src="video/trailer.mp4" type="video/mp4">
+            </video>
+            <div id="controlWrap">
+                <div id="progressWrap">
+                    <div id="playProgress">
+                    </div>
+                </div>
+                <!--<button id="play_btn" type="button" name="button"  class="btn"></button>-->
+                <div class="btn btn-default" id="play_btn">
+                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                </div>
+                <font id="now_time" size="3"></font>/
+                <font id="duration" size="3"></font>
+                <div class="btn btn-default" id="vol_inc_btn">
+                    <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
+                </div>
+                <div class="btn btn-default" id="vol_dec_btn">
+                    <span class="glyphicon glyphicon-volume-down" aria-hidden="true"></span>
+                </div>
+                <div class="btn btn-default" id="muted_btn">
+                    <span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span>
+                </div>
+
+                <div class="btn btn-default" id="speed_up">
+                    <span class="glyphicon glyphicon-fast-forward" aria-hidden="true"></span>
+                </div>
+                <div class="btn btn-default" id="back">
+                    <span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>
+                </div>
+                <div class="btn btn-default" id="fullscreen">
+                    <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                </div>
+
+                <!--<button id="speed_up" type="button"  class="btn">快进</button>-->
+                <!--<button id="back" type="button"  class="btn">快退</button>-->
+                <!--<button id="fullscreen" type="button"  class="btn">全屏</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--全局js-->
+<script src="js/publicJS/jquery-1.11.3.min.js"></script>
+<script src="js/publicJS/bootstrap.min.js"></script>
+<script src="js/publicJS/vue.min.js"></script>
+<script src="js/main.js"></script>
+<script src="font/iconfont.js"></script>
+<!--datatables-->
+<script src="plugins/datatables/datatables.min.js"></script>
+<script src="plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"></script>
+<!--datetimepicker-->
+<script src="js/publicJS/bootstrap-datetimepicker2.js"></script>
+<script src="js/publicJS/bootstrap-datetimepicker.zh-CN.js"></script>
+<!--页面js-->
+<script src="js/playback.js"></script>
+
+
+
+
+<script>
+    //加载头部左侧
+    $(function(){
+        showHeader();
+        showLeft();
+    });
+    $('#playback').height($(window).height() - $('.header').height() - 110); //动态加载盒子高度
+
+</script>
+</body>
+</html>

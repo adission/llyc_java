@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位页面</title>
+    <meta name="viewport" content="width=device-width,height=device-height, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1,target-densitydpi=device-dpi ">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .content-body {
+           padding: 10px;
+        }
+        /*显示*/
+        .parent {
+            position: relative;
+            width: 100%;
+            height: 1210px;
+            /*border: 1px solid #aaee79;*/
+            z-index: 100;
+            overflow: hidden;
+            -webkit-box-shadow:0 0 5px rgba(136, 132, 137, 0.51);
+            -moz-box-shadow:0 0 5px rgba(136, 132, 137, 0.51);
+            box-shadow:0 0 5px rgba(136, 132, 137, 0.51);
+        }
+        .dragAble {
+            /*border: 1px solid #000000;*/
+        }
+        #svg {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 50;
+        }
+        .accordion {
+            height: 450px;
+            overflow: scroll;
+
+        }
+        .submenu {
+            background: #bcbabb;
+        }
+        .submenu li {
+            line-height: 45px;
+            text-align: center;
+        }
+
+        #workerInfo .form-group {
+            margin-bottom: 0px;
+        }
+
+        #ss div label {
+            top: -15px;
+        }
+
+        #ss div div {
+            top: -15px;
+            left:-15px;
+        }
+
+    </style>
+</head>
+<body>
+    <!--头部导航-->
+    <div class="header"></div>
+
+    <!--身体-->
+    <div class="content-body">
+        <!--左侧--导航-->
+        <div class="body-left col-md-2 col-xs-12">
+            <div>
+                <!--地点,环境,时间-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">浙江金华火车站</div>
+                    <div class="panel-body">
+                        晴转多云 35&#176;C ~26&#176;
+                    </div>
+                    <div class="panel-footer">2017-08-23 09:04:07</div>
+                </div>
+
+                <!--项目信息-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">金华客房站项目人员列表</div>
+                    <div class="panel-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="username" placeholder="用户名手机号">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <ul class=" accordion"  id="accordion">
+                        <li><div class="link">
+                                <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                                <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                                <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                                <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                                <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                                <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                            <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                            <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                            <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                            <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                            <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                            <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--标记备注-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">标记备注</div>
+                    <div class="panel-body" >
+                        <div class="col-xs-12" style="padding-right: 0;padding-left: 0">
+                            <p>--<i class="glyphicon glyphicon-user text-primary"></i><span>&nbsp;&nbsp;&nbsp;管理人员</span></p>
+                            <p>--<i class="glyphicon glyphicon-user text-info"></i><span>&nbsp;&nbsp;&nbsp;施工人员</span></p>
+                            <p>--<i class="glyphicon glyphicon-user text-danger"></i><span>&nbsp;&nbsp;&nbsp;安检人员</span></p>
+                            <p>--<i class="glyphicon glyphicon-user text-success"></i><span>&nbsp;&nbsp;&nbsp;巡逻人员</span></p>
+                            <p>--<i class="glyphicon glyphicon-user text-warning"></i><span>&nbsp;&nbsp;&nbsp;临时人员</span></p>
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-cloud text-danger"></i><span>&nbsp;&nbsp;&nbsp;网络设备</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-adjust text-info"></i><span>&nbsp;&nbsp;&nbsp;重要标记</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-user text-primary"></i><span>&nbsp;&nbsp;&nbsp;人员标记</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-facetime-video text-success"></i><span>&nbsp;&nbsp;&nbsp;摄像设备</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-compressed text-warning"></i><span>&nbsp;&nbsp;&nbsp;机器设备</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-tree-deciduous text-danger"></i><span>&nbsp;&nbsp;&nbsp;环境标记</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-bed text-primary"></i><span>&nbsp;&nbsp;&nbsp;物料标记</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-cloud text-danger"></i><span>&nbsp;&nbsp;&nbsp;网络设备</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-adjust text-info"></i><span>&nbsp;&nbsp;&nbsp;重要标记</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-user text-primary"></i><span>&nbsp;&nbsp;&nbsp;人员标记</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-facetime-video text-success"></i><span>&nbsp;&nbsp;&nbsp;摄像设备</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-compressed text-warning"></i><span>&nbsp;&nbsp;&nbsp;机器设备</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-tree-deciduous text-danger"></i><span>&nbsp;&nbsp;&nbsp;环境标记</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-bed text-primary"></i><span>&nbsp;&nbsp;&nbsp;物料标记</span>-->
+                            <!--</p>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--右侧table-->
+        <div class="body-right col-md-10" style="padding: 0;margin-bottom: 50px">
+
+            <div class="right-body">
+                <!--路径导航-->
+                <div class="body-navbar">
+                    <ol class="breadcrumb">
+                        <li>人员定位</li>
+                    </ol>
+                </div>
+
+                <!--搜索框-->
+                <div class="search-content">
+                    <form class="form-inline well  clearfix">
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label>日期:</label>
+                            <input type="date" class="form-control" value="2017-05-08">
+                        </div>
+                        <div class="form-group col-md-4  col-xs-6">
+                            <label>开始时间:</label>
+                            <input type="datetime" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group col-md-4 col-xs-6">
+                            <label>结束时间:</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-default" title="快进"><i class="glyphicon glyphicon-fast-forward text-primary"></i></button>
+                            <button type="button" class="btn btn-default" title="快退"><i class="glyphicon glyphicon-fast-backward text-primary"></i></button>
+                            <button type="button" class="btn btn-default" title="暂停" id="stop"><i class="glyphicon glyphicon-pause text-primary"></i></button>
+                            <button type="button" class="btn btn-default" title="开始" id="start"><i class="glyphicon glyphicon-play text-primary"></i></button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="parent">
+                    <div class="dragAble" id="block1" onMouseOver="dragObj=block1; drag=1;" style="z-index: 10;
+                        left: 0px;  position: absolute; top: 0px; " onMouseOut="" drag="0">
+                        <img  style="zoom: 1.5" src="images/adde8400gw1eeazlmtqa8j20qd0mdadm.jpg"
+                              border="0" name="images1">
+                    </div>
+                    <svg  id="svg" width="100%" height="1210" onmousewheel="return onWheelZoom(this)" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <!--<circle id='top' cx="50" cy="50" r="50" fill="#ff0000"/>-->
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--底部-->
+    <div class="text-center">
+        <div class=""> 2017 &copy; 蓝领劳务管理系统 By <a href="index.html">管理系统</a>
+        </div>
+    </div>
+
+
+    <!-- 模态框 -->
+    <div id="workerInfo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+        <div class="modal-dialog" style="width: 350px;height:360px">
+            <div class="modal-content" style="position: relative;height: 100%" id="abc">
+                <div class="modal-header" style="background-color: #2bb8c4;height: 40px; line-height:40px;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-top: -6px;">X</button>
+                    <h4 class="modal-title" style=" line-height:11px;">施工人员信息</h4>
+                </div>
+                <div class="modal-body" style="font-size: 12px;left:-10px;" >
+                    <form class="form-horizontal" id="ss">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">姓名:</label>
+                            <div class="col-md-5">
+                                <label class="control-label" style="left: auto;" id="name">金三胖</label>
+                            </div>
+                            <div class="col-md-4" style="left:-40px;">
+                                <img src="images/sp.jpg" style="position:absolute; width: 145px;height: 190px;top:10px;left:10px;">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">性别:</label>
+                            <div class="col-md-5">
+                                <label class="control-label" style="left: auto" id="sex">男</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">民族:</label>
+                            <div class="col-md-5">
+                                <label class="control-label" style="left: auto" id="nation">汉</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">手机号:</label>
+                            <div class="col-md-5">
+                                <label class="control-label" style="left: auto" id="phone">15210010001</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">身份证号:</label>
+                            <div class="col-md-7">
+                                <label class="control-label"  style="left: auto" id="id_card">420123198810115612</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">籍贯:</label>
+                            <div class="col-md-5">
+                                <label class="control-label" style="left: auto" id="native_place">湖北省武汉市新洲区</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">职务:</label>
+                            <div class="col-md-5">
+                                <label class="control-label" style="left: auto" id="post">项目经理</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">所属单位:</label>
+                            <div class="col-md-5">
+                                <label class="control-label" style="left: auto" id="institute">中建一局</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">项目名:</label>
+                            <div class="col-md-5">
+                                <label class="control-label" style="left: auto" id="project_name">幼稚园</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">本项目职务:</label>
+                            <div class="col-md-3">
+                                <label class="control-label" style="left: 10px" id="project_post">施工队长</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">识别卡号:</label>
+                            <div class="col-md-3">
+                                <label class="control-label" style="left: 10px" id="identification_id1">5301</label>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">专业技术:</label>
+                            <div class="col-md-3">
+                                <label class="control-label" style="left: 10px" id="technology">管理</label>
+                            </div>
+
+                            <label class="col-md-1 control-label"></label>
+                            <div style="top: 20px;left:10px" class="col-md-1">
+                                <button class="btn default" data-dismiss="modal" aria-hidden="true" id="gj1" style="text-align: right;">轨迹回放</button>
+                            </div>
+                            <!--<label class="col-md-3 control-label">专业证书:</label>
+                            <div class="col-md-3">
+                                <label class="control-label" style="left: 10px" id="certificate">abcd</label>
+                            </div>-->
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">专业证书:</label>
+                            <div class="col-md-3">
+                                <label class="control-label" style="left: 10px" id="certificate">abcd</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">工作范围:</label>
+                            <div class="col-md-5">
+                                <label class="control-label" style="left: 10px" id="working_range">人员安排，施工管理</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">备注:</label>
+                            <div class="col-md-3">
+                                <label class="control-label" style="left: 10px" id="remarks">无</label>
+                            </div>
+
+                            <label class="col-md-1 control-label"></label>
+                            <div style="top: -13px;left:10px" class="col-md-1">
+                                <button class="btn default" data-dismiss="modal" aria-hidden="true" id="gj2" style="text-align: right;">定位跟踪</button>
+                            </div>
+
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <!--<script type="text/javascript" src="js/bootstrap-switch.min.js"></script>-->
+
+    <script src="js/publicJS/jquery-1.11.3.min.js"></script>
+    <script src="js/publicJS/bootstrap.min.js"></script>
+    <script src="js/drag_map2.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

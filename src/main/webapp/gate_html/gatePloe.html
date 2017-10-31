@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闸机详情</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/gatePloe.css">
+    <link rel="stylesheet" href="css/jquery-confirm.css">
+    <link rel="stylesheet" href="css/bootstrapValidator.css">
+    <style>
+    	.form-group .form-control-feedback {
+    		right: 19%;
+    	}
+    	.radio .bv-form .help-block {
+    		margin-left: 19%;
+    	}
+    	.ip.form-group .form-control-feedback {
+    		top: 9px;
+    		right: 1%;
+    	}
+    	.duan.form-group .form-control-feedback {
+    		right: 0;
+    	}
+    	.bv-form .duan .help-block {
+    		margin-left: 19%;
+    	}
+    </style>
+</head>
+<body>
+<!--头部导航-->
+<div class="header row"></div>
+<!--身体-->
+<div class="content row">
+    <!--左侧--导航-->
+    <div class="content-left col-md-2 col-sm-1"></div>
+
+    <!--右侧table-->
+    <div class="content-right col-md-10 col-sm-11 col-xs-12">
+    	<div class="alert alert-success" role="alert" style="display: none">添加闸机权限成功</div>
+   		<div class="alert alert-danger" role="alert" style="display: none"></div>
+        <div class="right-body">
+            <!--路径导航-->
+            <div class="body-navbar">
+                <ol class="breadcrumb">
+                    <li>闸机</li>
+                    <li>闸机列表</li>
+                    <li>闸机001</li>
+                    <li class="active">闸机详情</li>
+                </ol>
+            </div>
+            <!-- 搜索框 -->
+            <div class="search-content">
+                <form class="form-inline well  clearfix">
+                    <div class="form-group col-sm-3">
+                        <!--<label>卡号:</label>-->
+                        <input type="email" class="form-control" placeholder="卡号" id="cno">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <!--<label>人员姓名:</label>-->
+                        <input type="text" class="form-control" placeholder="人员姓名" id="username">
+                    </div>
+                    <button type="button" class="btn btn-primary pull-right" id="searchBtn">
+                        <i class="fa fa-search"></i> 查询
+                    </button>
+                </form>
+            </div>
+
+			<!-- 闸机详情 -->
+            <div class="panel panel-default">
+                <div class="panel-heading ">
+                    <p class="panel-title">闸机详情</p>
+                </div>
+                <form class="form-inline" id="form">
+	               <!-- 闸机详情 -->
+	                <div class="panel-body" id="gateD" v-clock>
+	                    <div class="show-detail">
+	                        <div class="user-detail">
+	                            <dl class="dl-horizontal col-md-4 col-sm-6 col-xs-12">
+	                                <dt>设备型号:</dt>
+	                                <dd>{{ gateDetail.type }}</dd>
+	                            </dl>
+	                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+	                                <dt>是否记录考勤:</dt>
+	                                <dd>{{ gateDetail.is_kaoqin?"否":"是" }}</dd>
+	                            </dl>
+	                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+	                                <dt>方向:</dt>
+	                                <dd>{{ gateDetail.cross_falg?"进":"出" }}</dd>
+	                            </dl>
+	                        </div>
+	                        <div class="user-detail">
+	                            <dl class="dl-horizontal col-md-4 col-sm-6 col-xs-12">
+	                                <dt>名称:</dt>
+	                                <dd>{{ gateDetail.gate_name }}</dd>
+	                            </dl>
+	                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+	                                <dt>闸机编号:</dt>
+	                                <dd>{{ gateDetail.gate_no }}</dd>
+	                            </dl>
+	                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+	                                <dt>控制器编号:</dt>
+	                                <dd>{{ gateDetail.sn }}</dd>
+	                            </dl>
+	                        </div>
+	                        <div class="user-detail clearfix">
+	                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+	                                <dt>闸机在控制器内编号:</dt>
+	                                <dd>{{ gateDetail.connect_id }}</dd>
+	                            </dl>
+	                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+	                                <dt>安装位置:</dt>
+	                                <dd>{{ gateDetail.location }}</dd>
+	                            </dl>
+	                             <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+	                                <dt>闸机分区:</dt>
+	                                <dd>{{ gateDetail.group_id }}</dd>
+	                            </dl>
+	                        </div>
+	                        <div class="user-detail clearfix">
+	                        <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+	                                <dt>闸机状态:</dt>
+	                                <dd>{{ gateDetail.is_use=="0"?"常开":gateDetail.is_use=="1"?"正常":"常闭" }}</dd>
+	                            </dl>
+	                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+	                                <dt>闸机Ip:</dt>
+	                                <dd>{{ gateDetail.connect_ip }}</dd>
+	                            </dl>
+	                            <dl class="dl-horizontal col-md-4 col-sm-6 col-xs-12">
+	                                <dt>闸机端口:</dt>
+	                                <dd>{{ gateDetail.connect_port }}</dd>
+	                            </dl>
+	                        </div>
+	                        <div class="user-detail clearfix">
+	                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+	                                <dt>是否为主机:</dt>
+	                                <dd>{{ gateDetail.is_master?"是":"否" }}</dd>
+	                            </dl>
+	                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+	                                <dt>密码:</dt>
+	                                <dd>{{ gateDetail.password }}</dd>
+	                            </dl>
+	                            <dl class="dl-horizontal col-md-4 col-sm-6 col-xs-12">
+	                                <dt>备注:</dt>
+	                                <dd>{{ gateDetail.common }}</dd>
+	                            </dl>
+	                        </div>
+	                    </div>
+	                </div>
+                </form>
+            </div>
+            
+			<!-- 添加权限 -->
+			<div class="modal fade" tabindex="-1" role="dialog" id="myModal" data-backdrop="static"></div>
+
+            <div class="body-content">
+                <div style=" position:relative; z-index:9;height:100%; margin-bottom: 10px">
+                    <button class="btn btn-primary inline-block" onclick="openModal()"><i class="glyphicon glyphicon-plus"></i>添加权限</button>
+                    <button class="btn btn-danger inline-block" id="delRow"><i
+                            class="glyphicon glyphicon-remove"></i>删除
+                    </button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="modal fade" tabindex="-1" role="dialog" id="myModal"></div>
+
+            <div class="wt100   container" style="position:relative; height:100%">
+                <div class="span12" id="div-table-container">
+                    <table class="table table-striped table-bordered table-hover table-condensed" id="table-detail"
+                           cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th style=" width:28px; padding:0"></th>
+                            <th style="width:30px; padding:10px 0 10px 10px">
+                                <input type="checkbox" id="checkAll" name="checkList"></th>
+                            <th>卡号</th>
+                            <th>人员姓名</th>
+                            <th>人员类别</th>
+                            <th>工种</th>
+                            <th>班组</th>
+                            <th>删除</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+            <!--table-->
+        </div>
+    </div>
+</div>
+
+<!--底部-->
+<div class="text-center">
+    <div class=""> 2017 &copy; 蓝领劳务管理系统 By <a href="index.html">管理系统</a>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/vue.min.js"></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.spin.merge.js"></script>
+<script type="text/javascript" src="js/jquery-confirm.js"></script>
+<script type="text/javascript" src="js/bootstrapValidator.js"></script>
+<script src="js/main.js"></script>
+<script src="html-js/gatePloe/gatePloe.js"></script>
+
+</body>
+</html>

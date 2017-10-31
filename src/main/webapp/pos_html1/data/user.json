@@ -1,0 +1,34 @@
+{
+  "code": 200,
+  "message": "ok",
+  "userlist": [
+    {
+      "id": "000",
+      "type": "1",
+      "name": "000",
+      "longitude" : "114.302643",
+      "latitude" : "30.606844"
+    },
+    {
+      "id": "111",
+      "type": "1",
+      "name": "111",
+      "longitude" : "114.302106",
+      "latitude" : "30.604849"
+    },
+    {
+      "id": "222",
+      "type": "0",
+      "name": "222",
+      "longitude" : "114.304500",
+      "latitude" : "30.605561"
+    },
+    {
+      "id": "333",
+      "type": "0",
+      "name": "333",
+      "longitude" : "114.304015",
+      "latitude" : "30.607092"
+    }
+  ]
+}

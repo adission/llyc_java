@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>主页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    
+    <link rel="shortcut icon" href="#" type="image/png">
+    <link href="../public/js/bootstrap-datepicker/css/datepicker-custom.css" rel="stylesheet">
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css"/>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    	.wrapper {
+    		width: 85%;
+    		margin: 80px auto;
+    	}
+    	.load {
+    		height: 400px;
+    	}
+    	.imgLoad {
+    		width: 90%;
+    		height: 90%;
+    		margin: 10px auto;
+    		background: #fff;
+    		border-radius: 50px;
+    	}
+    	.imgLoad .img {
+    		position: absolute;
+            top: 55%;
+            left: 50%;
+            margin-top: -30%;
+            margin-left: -25%;
+            width: 50%;
+            height: 60%;
+    	}
+    	
+    	.img img {
+    		width: 100%;
+    		height: 100%;
+    		
+    	}
+    	.text-center {
+    		font-size: 22px;
+    	}
+    </style>
+</head>
+<body class="horizontal-menu-page">
+
+<section>
+    <div class="header-body">
+    	<nav class="navbar navbar-default" role="navigation">
+		    <div class="container-fluid">
+		        <!-- Brand and toggle get grouped for better mobile display -->
+		        <div class="navbar-header">
+		            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		                <span class="sr-only">Toggle navigation</span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		            </button>
+		            <a class="navbar-brand" href="userList.html">
+		                <img src="../public/images/logo.png" alt="">
+		                <span style="color: #ffffff">贵阳地铁二号线第二期工程</span>
+		            </a>
+		        </div>
+		
+		        <!-- Collect the nav links, forms, and other content for toggling -->
+		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		            <ul class="nav navbar-nav navbar-right">
+		                <li class="dropdown">
+		                    <a  class="dropdown-toggle header-img" data-toggle="dropdown"> <img alt="" id="userImg" > <span id="user_name"></span> <b class="caret"></b></a>
+		                    <ul class="dropdown-menu">
+		                        <li><a onclick="loginOut()">退出登录</a></li>
+		                    </ul>
+		                </li>
+		            </ul>
+		        </div>
+		    </div>
+		</nav>
+    </div>
+    
+    <!-- main content start-->
+    <div class="wrapper">
+		<div class="row">
+            <div class="col-md-4 col-xs-6">
+            	<div class="load" onclick="gogo('userList.html')">
+            		<div class="imgLoad" >
+            			<div class="img">
+            				<img src="images/atten.jpg" />
+            			</div>
+            		</div>
+					<div class="text-center" onclick="gogo('userList.html')">多维考勤</div>
+				</div>
+            </div>
+            <div class="col-md-4 col-xs-6">
+            	<div class="load" onclick="gogo('../video_html2/live_control.html')">
+            		<div class="imgLoad">
+            			<div class="img">
+            				<img src="images/video.jpg" />
+            			</div>
+            		</div>
+					<div class="text-center" onclick="gogo('../video_html2/live_control.html')">视频监控</div>
+				</div>
+            </div>
+            <div class="col-md-4 col-xs-6">
+            	<div class="load" onclick="gogo('../pos_html1/indexMap.html')">
+            		<div class="imgLoad">
+	            		<div class="img">
+	            			<img src="images/112.jpg" />
+            			</div>
+            		</div>
+					<div class="text-center" onclick="gogo('../pos_html1/indexMap.html')">人员定位</div>
+				</div>
+            </div>
+        </div>
+    </div>
+    <!-- main content end-->
+    <!--footer section start-->
+    <footer>
+        Copyright © 2017 Lanlyc
+    </footer>
+    <!--footer section end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../public/js/jquery-1.10.2.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/modernizr.min.js"></script>
+<script src="../public/js/jquery.nicescroll.js"></script>
+
+<script type="text/javascript" src="../public/js/jquery-confirm/jquery.spin.merge.js"></script>
+
+<script src="html-js/main.js"></script>
+<script src="html-js/indexSelect/indexSelect.js"></script>
+
+</body>
+</html>

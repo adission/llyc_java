@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>记录列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    
+    <link rel="shortcut icon" href="#" type="image/png">
+    <link href="../public/js/bootstrap-datepicker/css/datepicker-custom.css" rel="stylesheet">
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css"/>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    	
+    </style>
+</head>
+<body class="horizontal-menu-page">
+
+<section>
+    <div class="header"></div>
+    <div class="alert alert-success" role="alert" style="display: none"></div>
+	<div class="alert alert-danger" role="alert" style="display: none"></div>
+    <!-- main content start-->
+    <div class="wrapper">
+		<div class="body-content">
+	        <!-- page heading start-->
+	        <div class="page-heading">
+	            <h3><span id="venue_lbl_head">记录列表</span></h3>
+	            <ul class="breadcrumb">
+	            	<li>闸机管理</li>
+	                <li class="active">记录列表</li>
+	            </ul>
+	        </div>
+	        <!-- page heading end-->
+			<hr>
+        	<!--body wrapper start-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <div class="panel-body">
+                            <div class="adv-table">
+                                <div class="row" style="margin-bottom: 20px">
+                                    <div class="col-lg-2">
+                                        <div class="btn-group">
+                                            <button class="btn btn-primary" id="exportData">
+                                                <i class="fa fa-print"></i> 导出Excel
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                    	<div class="pull-right" style="margin-right: 30px">
+	                                        <div class="col-lg-2">
+	                                        	<input class="form-control" type="text" placeholder="用户名" name="username">
+	                                        </div>
+	                                        <div class="col-lg-2">
+	                                        	<input class="form-control" type="text" placeholder="电话号码" name="mobile">
+	                                        </div>
+	                                        <div class="col-lg-2">
+	                                        	<input class="form-control" type="text" placeholder="身份证号码" name="id_card">
+	                                        </div>
+	                                        <div class="col-lg-2">
+	                                        	<input class="form-control" type="text" placeholder="卡号" name="card_no">
+	                                        </div>
+	                                        <div class="col-lg-3">
+	                                        	<!-- <div class="input-group input-large custom-date-range" data-date="2017-10-17"  data-date-format="yyyy-mm-dd"> -->
+	                                        	<div class="input-group input-large custom-date-range">
+		                                            <input type="text" class="form-control dpd1" name="from" placeholder="开始日期">
+		                                            <span class="input-group-addon">To</span>
+		                                            <input type="text" class="form-control dpd2" name="to" placeholder="结束日期">
+		                                        </div>
+	                                        </div>
+	                                        <div class="col-lg-1">
+	                                        	<button class="btn btn-primary" id="searchBtn"><i class="fa fa-search"></i>搜索</button>
+	                                        </div>
+	                                    </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="span12" id="div-table-container">
+	                                <table class="display table general-table table-striped" id="recordList">
+	                                    <thead>
+	                                    <tr>
+	                                        <th style="width: 10px; padding:0"></th>
+				                            <th style="width: 150px;">时间</th>
+				                            <th>姓名</th>
+				                            <th>闸机号</th>
+				                            <th>行为</th>
+				                            <th>人员类别</th>
+				                            <th>班组</th>
+	                                    </tr>
+	                                    </thead>
+	                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!--body wrapper end-->
+
+        
+
+    </div>
+    <!-- main content end-->
+    <!--footer section start-->
+    <footer>
+        Copyright © 2017 Lanlyc
+    </footer>
+    <!--footer section end-->
+</section>
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../public/js/jquery-1.10.2.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/modernizr.min.js"></script>
+<script src="../public/js/jquery.nicescroll.js"></script>
+<script src="../public/js/vue.min.js"></script>
+<script type="text/javascript" src="../public/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+<script type="text/javascript" src="../public/js/jquery-confirm/jquery.spin.merge.js"></script>
+<script type="text/javascript" src="../public/js/jquery-confirm/jquery-confirm.js"></script>
+<!--dynamic table-->
+<script src="../public/js/data-tables/jquery.dataTables1.js"></script>
+<script type="text/javascript" src="../public/js/data-tables/dataTables.bootstrap.js"></script>
+
+<script src="html-js/main.js"></script>
+<script src="html-js/recordList/recordList.js"></script>
+
+</body>
+</html>

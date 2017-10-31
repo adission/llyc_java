@@ -1,0 +1,39 @@
+{
+  "draw": 1,
+  "total": 6,
+  "data": [
+    {
+      "personType": "平台人员",
+      "name": "木工",
+      "wid": 1
+    },{
+      "personType": "管理员",
+      "name": "焊工",
+      "wid": 2
+    },{
+      "personType": "施工人员",
+      "name": "泥工",
+      "wid": 3
+    },{
+      "personType": "平台人员",
+      "name": "瓦工",
+      "wid": 4
+    },{
+      "personType": "平台人员",
+      "name": "庖工" ,
+      "wid": 12
+    },{
+      "personType": "管理员",
+      "name": "漆工" ,
+      "wid": 12
+    },{
+      "personType": "施工人员",
+      "name": "电焊工" ,
+      "wid": 22
+    },{
+      "personType": "平台人员",
+      "name": "离子焊工" ,
+      "wid": 22
+    }
+  ]
+}

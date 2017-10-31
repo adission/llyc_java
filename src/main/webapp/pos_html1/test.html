@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>监控直播</title>
+
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+
+    <link href="../public/css/style.css" rel="stylesheet">
+
+
+
+    <link rel="stylesheet" type="text/css" href="../public/js/bootstrap-datetimepicker/css/datetimepicker-custom.css" />
+    <link rel="stylesheet" href="../video_html2/css/video_playback.css">
+    
+    <style>
+    	#videoParent{
+    		position: relative;
+    		width: 300px;
+    		height: 300px;
+   		}
+    	#divPlugin {
+    		position: absolute;
+    		top: 20px;
+    		left: 0;
+    	}
+    	.icon {
+    		position: absolute;
+    		width: 90px;
+    		height: 20px;
+    		top: 0px;
+    		left: 0;
+    	}
+    </style>
+</head>
+
+<body class="horizontal-menu-page">
+
+<div id="header"></div>
+
+
+<!--body wrapper start-->
+<div class="wrapper">
+<div class="content">
+    <div class="col-md-2 content-left">
+        <div class="panel panel-default row">
+            <header class="panel-heading">
+                	摄像头列表
+            </header>
+            <div class="panel-body">
+                <ul class="camera_list">
+                    <li v-for="i in cameraList" v-on:click="selectCamera(i.id)"><i class="fa fa-video-camera"></i>
+                    	{{i.vidicon_number}} {{i.vidicon_name}}<span style="color: #ff0000;margin-left: 5px;" v-if="i.whether_important">*&nbsp;</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10">
+    	<div class="content-right row">
+	        <div class="panel">
+	            <div class="panel-body form-horizontal">
+	                <div class="form-group">
+	                    <label class="control-label col-md-1">开始时间</label>
+	                    <div class="col-md-3">
+	                        <input id="startTime" type="text" class="form_datetime form-control">
+	                    </div>
+	                    <label class="control-label col-md-1">结束时间</label>
+	                    <div class="col-md-3">
+	                        <input id="endTime" type="text" class="form_datetime form-control">
+	                    </div>
+	                    <div class="col-md-2"><div class="btn btn-primary" >确定</div></div>
+	                </div>
+	            </div>
+	        </div>
+	         <div class="btn btn-info"  id="show">显示</div>
+	         <div class="btn btn-info"  >隐藏</div>
+	        <div class="panel">
+	            <div class="panel" id="videoParent">
+	            	<div class="icon" style="display: none;" id="close"><i class="fa fa-times" ></i></div>
+	            	<!-- 插件 -->
+					 <div id="divPlugin" class="plugin" ></div>
+	            </div>
+	        </div>
+	    </div>
+    </div>
+</div>
+</div>
+<!--body wrapper end-->
+
+<div id="footer"></div>
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../public/js/jquery-1.10.2.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/modernizr.min.js"></script>
+<script src="../public/js/jquery.nicescroll.js"></script>
+
+<!--common scripts for all pages-->
+<script src="../public/js/scripts.js"></script>
+
+<script type="text/javascript" src="../public/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+
+<script src="../video_html2/js/webVideoCtrl.js"></script>
+<script src="html-js/test.js"></script>
+
+</body>
+</html>

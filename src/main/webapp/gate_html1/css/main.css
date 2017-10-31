@@ -1,0 +1,111 @@
+/*table样式*/
+.general-table {
+    border: 1px solid #909090;
+}
+/*跳转样式*/
+.page_jump.input-group {
+    display: none;
+}
+.table > thead > tr > th, .table > tbody > tr > th, 
+.table > tfoot > tr > th, .table > thead > tr > td,
+ .table > tbody > tr > td, .table > tfoot > tr > td {
+ 	line-height: 2;
+ }
+ 
+ /*总体panel*/
+div.wrapper {
+    padding: 30px;
+}
+/* 展开详情 */
+.dataTable .row-details.row-details-close {
+    background: url(../images/datatable-row-openclose.png) no-repeat 0 0;
+}
+.dataTable .row-details.row-details-open {
+     background: url(../images/datatable-row-openclose.png) no-repeat 0 -23px !important;
+}
+.dataTable .row-details {
+    margin-top: 3px;
+    display: inline-block;
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+}
+.modal div.form-group {
+	line-height: 55px;
+}
+.modal div.form-group .form-control {
+	margin-top: 10px;
+}
+
+.body-content {
+	background: #ffffff;
+	border-radius: 6px;
+}
+.navbar {
+    min-height: 60px;
+}
+.horizontal-menu-page a.navbar-brand {
+    min-height: 60px;
+    padding: 10px 15px;
+}
+.horizontal-menu-page .navbar-default .navbar-nav > li > a {
+    font-size: 14px;
+    line-height: 38px;
+    padding: 10px 25px;
+}
+.nav.navbar-nav.mainnav {
+    margin-left: 60px;
+}
+
+hr {
+	margin: 0 10px;
+}
+/* 表单验证信息  */
+.modal .bv-form .help-block {
+	line-height: 25px;
+	margin-top: 52px;
+}
+.modal .has-feedback .form-control-feedback {
+	top: 10px;
+	right: 10%;
+}
+/* 添加闸机modal样式 */
+.connect {
+    border: 2px solid rgba(162, 156, 155, 0.97);
+    /*height: 420px;*/
+    margin-top: 20px;
+    padding: 15px 45px 30px;
+}
+.connect-title {
+    font-weight: 700;
+    display: block;
+    width: 80px;
+    position: relative;
+    top: -26px;
+    left: 108px;
+    padding-left: 15px;
+    background: white;
+    box-sizing: border-box;
+}
+.form-inline .radio {
+    display: block;
+    line-height: 50px;
+}
+.radio label span {
+    display: inline-block;
+    padding: 0 10px;
+    width: 100px;
+    text-align: left;
+}
+.formDetail.form-inline div.form-group {
+	line-height: 35px;
+	font-size: 14px;
+}
+.wrapper .panel {
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+
+
+

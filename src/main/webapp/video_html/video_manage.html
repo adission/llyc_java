@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>摄像头设置</title>
+    <!--全局css-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="font/iconfont.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!--表单验证-->
+    <link rel="stylesheet" href="css/bootstrapValidator.css">
+    <link rel="stylesheet" href="css/jquery-confirm.css">
+    <!--datatables-->
+    <link rel="stylesheet" href="plugins/datatables/datatables.min.css">
+    <link rel="stylesheet" href="plugins/datatables/plugins/bootstrap/datatables.bootstrap.css">
+    <!--datatimepicker-->
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+    <!--页面css-->
+</head>
+<body>
+<!--头部导航-->
+<div class="header"></div>
+<!--身体-->
+<div class="content row" id="content">
+    <!--左侧--导航-->
+    <div class="content-left"></div>
+
+    <!--右侧table-->
+    <div class="content-right">
+        <div class="right-body">
+            <div class="body-navbar">
+                <ol class="breadcrumb">
+                    <li>摄像头管理</li>
+                    <li class="active">列表管理</li>
+                </ol>
+            </div>
+
+            <div class="search-content">
+                <form class="form-inline well  clearfix">
+                    <div class="form-group col-sm-4">
+                        <!--<label>编号:</label>-->
+                        <input type="email" class="form-control" placeholder="编号">
+                    </div>
+                    <button type="button" class="btn btn-primary pull-right" id="search-self">
+                        <i class="fa fa-search"></i> 查询
+                    </button>
+                </form>
+            </div>
+
+            <div class="body-content">
+
+                <div style=" position:relative; z-index:9;height:100%; margin-bottom: 10px">
+                    <!--添加和删除 -->
+                    <button class="btn btn-primary inline-block" onclick="openModal('')">
+                    	<i class="glyphicon glyphicon-plus"></i>添加
+                    </button>
+                    <button class="btn btn-danger inline-block" id="delRow"><i class="glyphicon glyphicon-remove"></i>删除
+                    </button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <div class="wt100   container" style="position:relative; height:100%;background: #fff;">
+                <div class="span12" id="div-table-container">
+                    <table class="table table-striped table-bordered table-hover table-condensed" id="videoList"
+                           cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th style="width: 10px"></th>
+                            <th style="width:30px; padding:10px 0 10px 10px">
+                                <input type="checkbox" id="checkAll" name="checkList"></th>
+                            <th>编号</th>
+                            <th>名称</th>
+                            <th>型号</th>
+                            <th>类型</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--新增-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="Add">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加摄像头</h4>
+                </div>
+                <div class="modal-body clearfix">
+                    <div class="add-detail">
+                        <form class="form-inline">
+                            <div class="form-group col-xs-12">
+                                <label class="control-label col-xs-5 text-right">名称 <span style="color: #ff0000">*&nbsp;</span></label>
+                                <input type="text" class="form-control" placeholder="名称">
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label class="control-label col-xs-5 text-right">型号<span style="color: #ff0000">*&nbsp;</span></label>
+                                <input type="text" class="form-control" placeholder="型号">
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label class="control-label col-xs-5 text-right">类型<span style="color: #ff0000">*&nbsp;</span></label>
+                                <select class="form-control" style="width: 172px">
+                                    <option value="1" selected>重点</option>
+                                    <option value="2">非重点</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--编辑-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="Edit">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">编辑摄像头</h4>
+                </div>
+                <div class="modal-body clearfix">
+                    <div class="add-detail">
+                        <form class="form-inline">
+                            <div class="form-group col-xs-12">
+                                <label class="control-label col-xs-5 text-right">名称 <span style="color: #ff0000">*&nbsp;</span></label>
+                                <input type="text" class="form-control" placeholder="名称">
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label class="control-label col-xs-5 text-right">型号<span style="color: #ff0000">*&nbsp;</span></label>
+                                <input type="text" class="form-control" placeholder="型号">
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label class="control-label col-xs-5 text-right">类型<span style="color: #ff0000">*&nbsp;</span></label>
+                                <select class="form-control" style="width: 172px">
+                                    <option value="1" selected>重点</option>
+                                    <option value="2">非重点</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+	<!--新增-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal" data-id="" data-backdrop="static"></div>
+
+</div>
+
+<!--全局js-->
+<script src="js/publicJS/jquery-1.11.3.min.js"></script>
+<script src="js/publicJS/bootstrap.min.js"></script>
+<script src="js/publicJS/vue.min.js"></script>
+<script src="js/main.js"></script>
+<script src="font/iconfont.js"></script>
+<!--表单验证-->
+<script src="js/publicJS/jquery-confirm.js"></script>
+<script src="js/publicJS/bootstrapValidator.js"></script>
+<!--datatables-->
+<script src="plugins/datatables/datatables.min.js"></script>
+<script src="plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"></script>
+<!--datetimepicker-->
+<script src="js/publicJS/bootstrap-datetimepicker2.js"></script>
+<script src="js/publicJS/bootstrap-datetimepicker.zh-CN.js"></script>
+<!--页面js-->
+<script src="js/video_manage.js"></script>
+
+<script>
+    //加载头部左侧
+    $(function(){
+
+        $( ".datepicker1" ).datetimepicker({
+            format:"yyyy-mm-dd hh:ii:ss",
+            language:"zh-CN",
+            todayHighlight:true,
+            todayBtn:true
+        });
+
+        showHeader();
+        showLeft();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+/* 修改头部导航的公共样式 */
+
+.navbar {
+    min-height: 60px;
+}
+.horizontal-menu-page a.navbar-brand {
+    min-height: 60px;
+    padding: 10px 15px;
+}
+.horizontal-menu-page .navbar-default .navbar-nav > li > a {
+    font-size: 14px;
+    line-height: 38px;
+    padding: 10px 25px;
+}
+.nav.navbar-nav.mainnav {
+    margin-left: 60px;
+}
+/*table样式*/
+.general-table {
+    border: 1px solid #909090;
+}
+/*总体panel*/
+div.wrapper {
+    padding: 30px;
+}
+
+/*跳转样式*/
+.page_jump.input-group {
+    display: none;
+}
+
+.btnClass {
+    width: 280px;
+    float: left;
+}
+
+.text-blur {
+	color: #353F4F;
+}

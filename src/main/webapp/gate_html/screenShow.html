@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>屏幕显示</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/jquery-confirm.css">
+    <style>
+    	.personInfo table{
+    		height: 250px; 
+    	}
+    	.personInfo table table td{
+    		vertical-align: middle;
+    	}
+    </style>
+</head>
+<body>
+<!--头部导航-->
+<div class="header row"></div>
+<!--身体-->
+<div class="content row">
+    <!--左侧--导航-->
+    <div class="content-left col-md-2 col-sm-1"></div>
+
+    <!--右侧table-->
+    <div class="content-right col-md-10 col-sm-11 col-xs-12">
+    	<div class="alert alert-success" role="alert" style="display: none"></div>
+   		<div class="alert alert-danger" role="alert" style="display: none"></div>
+        <div class="right-body">
+            <!--路径导航-->
+            <div class="body-navbar">
+                <ol class="breadcrumb">
+                    <li>屏幕显示</li>
+                    <li class="active">显示数据</li>
+                </ol>
+            </div>
+            <div class="search-content">
+                <form class="form-inline well  clearfix">
+                    <div class="form-group col-sm-3"  style="line-height: 25px">
+                        <label>选择分区:</label>
+                        <select class="form-control" name='area'>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" id="sureSearch">确定</button>
+
+                    <button type="button" class="btn btn-primary pull-right" id="bigData">
+                        <i class="glyphicon glyphicon-facetime-video"></i> 大屏显示
+                    </button>
+                    <button type="button" class="btn btn-primary pull-right" style="margin-right: 20px" id="cleardata">
+                        <i class="glyphicon glyphicon-remove-circle"></i> 数据清零
+                    </button>
+                </form>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix show-user">
+                    <p class="panel-title col-sm-4">统计信息详情(东门分区)</p>
+                </div>
+                <div class="panel-body">
+                    <div class="col-xs-12" id="tableInfo">
+                        <table class="table table-bordered text-center" id="typeInfo">
+                            <tbody>
+                            </tbody>
+                        </table>
+                       
+                        <table class="table table-bordered text-center" id="workerInfo">
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-4 personInfo" style="display: none">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <td rowspan="4" style="width: 150px"><img src="" alt="" style="width: 100%" id="img"></td>
+                                            <td>姓名: <span id="personname"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>班组: <span id="team"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>工种: <span id="worker_type"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>惩罚次数: <span id="punish_record"></span></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="danger text-center" style="height: 50px"><h1>结果: 请通过</h1></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!--底部-->
+<div class="text-center">
+    <div class=""> 2017 &copy; 蓝领劳务管理系统 By <a href="index.html">管理系统</a>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/vue.min.js"></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.spin.merge.js"></script>
+<script type="text/javascript" src="js/jquery-confirm.js"></script>
+<script src="js/main.js"></script>
+<script src="html-js/screenShow/screenShow2.js"></script>
+
+</body>
+</html>

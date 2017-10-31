@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>摄像头分组</title>
+    <!--全局css-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="font/iconfont.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!--datatables-->
+    <link rel="stylesheet" href="plugins/datatables/datatables.min.css">
+    <link rel="stylesheet" href="plugins/datatables/plugins/bootstrap/datatables.bootstrap.css">
+    <!--datatimepicker-->
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+    <!--页面css-->
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+
+    <style>
+        td.details-control  span{
+            cursor: pointer;
+             background: #ccc;
+             height: 20px;
+             width: 20px;
+             line-height: 20px;
+             text-align: center;
+             border-radius: 50%;
+             color: #fff;
+             font-size: 10px;
+         }
+    </style>
+</head>
+<body>
+<!--头部导航-->
+<div class="header"></div>
+<!--身体-->
+<div class="content row" id="content">
+    <!--左侧--导航-->
+    <div class="content-left"></div>
+
+    <!--右侧table-->
+    <div class="content-right">
+
+        <div class="right-body">
+            <div class="body-navbar">
+                <ol class="breadcrumb">
+                    <li>摄像头管理</li>
+                    <li class="active">分组管理</li>
+                </ol>
+            </div>
+
+
+        <form class="form-horizontal well clearfix">
+
+
+            <style>
+                #sortable{
+                    border: 1px solid #bbb;
+                    height: 299px;
+                    overflow: auto;
+                    width: 250px; }
+                #sortable li ,#draggable{ margin: 5px; padding: 5px; width: 150px; }
+                .offset-top-20{margin-top:20px;}
+                .offset-left-20{margin-left:20px;}
+            </style>
+
+
+            <div class="col-md-3">
+                <div class="btn-group turn" role="group">
+                    <button type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        摄像头类型
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a>重点</a></li>
+                        <li><a>非重点</a></li>
+                    </ul>
+                </div>
+                <ul id="sortable" class="offset-top-20">
+                    <li class="ui-state-default">Item 1</li>
+                    <li class="ui-state-default">Item 2</li>
+                    <li class="ui-state-default">Item 3</li>
+                    <li class="ui-state-default">Item 4</li>
+                    <li class="ui-state-default">Item 5</li>
+                    <li class="ui-state-default">Item 6</li>
+                    <li class="ui-state-default">Item 7</li>
+                    <li class="ui-state-default">Item 8</li>
+                    <li class="ui-state-default">Item 9</li>
+                </ul>
+            </div>
+
+            <div class="col-md-8">
+                <div class="btn-group turn" role="group">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        分屏模式
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a>1×1</a></li>
+                        <li><a>2×2</a></li>
+                        <li><a>3×3</a></li>
+                        <li><a>4×4</a></li>
+                    </ul>
+                    <div class="btn btn-info offset-left-20" id="sureGroup" onclick="addGroup()">确认分组</div>
+                </div>
+
+                <!--<table border="2" class="offset-top-20">-->
+                    <!--<tr height="40">-->
+                        <!--<td width = "150">仓库</td>-->
+                        <!--<td width = "150">街道</td>-->
+                        <!--<td width = "150">食堂</td>-->
+                        <!--<td width = "150">物资</td>-->
+                    <!--</tr>-->
+                    <!--<tr height="40">-->
+                        <!--<td width = "150" id="target11"></td>-->
+                        <!--<td width = "150" id="target12"></td>-->
+                        <!--<td width = "150" id="target13"></td>-->
+                        <!--<td width = "150" id="target14"></td>-->
+                    <!--</tr>-->
+                    <!--<tr height="40">-->
+                        <!--<td width = "150" id="target21"></td>-->
+                        <!--<td width = "150" id="target22"></td>-->
+                        <!--<td width = "150" id="target23"></td>-->
+                        <!--<td width = "150" id="target24"></td>-->
+                    <!--</tr>-->
+                    <!--<tr height="40">-->
+                        <!--<td width = "150" id="target31"></td>-->
+                        <!--<td width = "150" id="target32"></td>-->
+                        <!--<td width = "150" id="target33"></td>-->
+                        <!--<td width = "150" id="target34"></td>-->
+                    <!--</tr>-->
+                    <!--<tr height="40">-->
+                        <!--<td width = "150" id="target41"></td>-->
+                        <!--<td width = "150" id="target42"></td>-->
+                        <!--<td width = "150" id="target43"></td>-->
+                        <!--<td width = "150" id="target44"></td>-->
+                    <!--</tr>-->
+                <!--</table>-->
+
+                <style>
+                    #group .table{width:inherit; }
+                    /*.group input{width: 100px;font-weight: 200;}*/
+                    /*.group tr{height: 40px}*/
+                    #group td{height: 40px;width: 100px}
+                </style>
+                <div id="group">
+                </div>
+            </div>
+
+        </form>
+        
+           <div class="search-content">
+                <form class="form-horizontal well  clearfix">
+                    <div class="form-group col-sm-5">
+                       <label class="control-label col-sm-4 text-right">是否重点：</label>
+                       <div class="col-sm-6">
+	                       <select class="form-control">
+	                       		<option value="0">全部</option>
+	                       		<option value="1">重点</option>
+	                       		<option value="2">非重点</option>
+	                       </select>  
+                       </div>                     
+                    </div>
+                    <div class="form-group col-sm-5">
+                       <label class="control-label col-sm-4 text-right">分屏模式：</label>
+                       <div class="col-sm-6">
+	                       <select class="form-control">
+	                       		<option value="0">全部</option>
+	                       		<option value="1">1×1</option>
+	                       		<option value="2">2×2</option>
+	                       		<option value="3">3×3</option>
+	                       		<option value="4">4×4</option>
+	                       </select> 
+                       </div>                      
+                    </div>
+                    <button type="button" class="btn btn-primary pull-right" id="search-self">
+                        <i class="fa fa-search"></i> 查询
+                    </button>
+                </form>
+            </div>
+
+        <div class="wt100   container" style="position:relative; height:100%;background: #fff;">
+            <div class="span12" id="div-table-container">
+                <table class="table table-striped table-bordered table-hover table-condensed" id="groupList"
+                       cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th style="width: 10px"></th>
+                        <th style="width:30px; padding:10px 0 10px 10px">
+                            <input type="checkbox" id="checkAll" name="checkList"></th>
+                        <th>编号</th>
+                        <th>分组名称</th>
+                        <th>分屏模式</th>
+                        <th>是否重点</th>
+                        <th>分组时间</th>
+                        <th>分组人</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!--全局js-->
+<script src="js/publicJS/jquery-1.11.3.min.js"></script>
+<script src="js/publicJS/bootstrap.min.js"></script>
+<script src="js/publicJS/vue.min.js"></script>
+<script src="js/main.js"></script>
+<script src="font/iconfont.js"></script>
+<!--datatables-->
+<script src="plugins/datatables/datatables.min.js"></script>
+<script src="plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"></script>
+<!--datetimepicker-->
+<script src="js/publicJS/bootstrap-datetimepicker2.js"></script>
+<script src="js/publicJS/bootstrap-datetimepicker.zh-CN.js"></script>
+<!--页面js-->
+<script src="js/publicJS/jquery-ui.js"></script>
+<script src="js/video_grouping.js"></script>
+
+
+<script>
+
+
+    //加载头部左侧
+
+    $(function(){
+        showHeader();
+        showLeft();
+    });
+
+    $('.turn ul li').click(function(){
+        var sum = $('#sortable').children().length;
+        var sth = '<table class="table table-bordered offset-top-20" style="    border: 1px solid #111;">';
+        switch($(this).index()){
+            case 0:
+                for(var i=0;i<=1;i++){
+                    sth +='<tr>';
+                    for(var j=1; j<=sum;j++){
+                        if(i==0){
+                            sth += '<td><input type="text" class="form-control" placeholder="屏名称"></td>';
+                        }else{
+                            sth += '<td id="target' +i+j+' "></td>';
+                        }
+                    }
+                    sth +='</tr>';
+                }
+                $('#group').html(sth+"</table>");
+                break;
+            case 1:
+                for(var i=0;i<=4;i++){
+                    sth +='<tr>';
+                    for(var j=1; j<=(Math.floor(sum/4) +1);j++){
+                        if(i==0){
+                            sth += '<td><input type="text" class="form-control" placeholder="屏名称"></td>';
+                        }else{
+                            sth += '<td id="target' +i+j+' "></td>';
+                        }
+                    }
+                    sth +='</tr>';
+                }
+                $('#group').html(sth+"</table>");
+                break;
+            case 2:
+                for(var i=0;i<=9;i++){
+                    sth +='<tr>';
+                    for(var j=1; j<=(Math.floor(sum/9) +1);j++){
+                        if(i==0){
+                            sth += '<td><input type="text" class="form-control" placeholder="屏名称"></td>';
+                        }else{
+                            sth += '<td id="target' +i+j+' "></td>';
+                        }
+                    }
+                    sth +='</tr>';
+                }
+                $('#group').html(sth+"</table>");
+                break;
+            case 3:
+                for(var i=0;i<=16;i++){
+                    sth +='<tr>';
+                    for(var j=1; j<=(Math.floor(sum/16) +1);j++){
+                        if(i==0){
+                            sth += '<td><input type="text" class="form-control" placeholder="屏名称"></td>';
+                        }else{
+                            sth += '<td id="target' +i+j+' "></td>';
+                        }
+                    }
+                    sth +='</tr>';
+                }
+                $('#group').html(sth+"</table>");
+                break;
+        }
+        //释放后
+        $('td[id^="target"]').droppable({
+            drop:function(event,ui){
+
+                if($(this).children().length == 0){
+                    var $item = ui.draggable
+                    var $source = ui.draggable.clone();
+                    $('<img/>', {
+                        src: 'images/btn_delete.png',
+                        style:'display:none',
+                        click: function() {
+                            $source.remove();//移除
+                            $item.fadeIn();//还原左侧列表
+                        }
+                    }).appendTo($source);
+
+
+                    $source.mouseenter(function () {
+                        $(this).find("img").show();
+                    });
+
+                    $source.mouseleave(function () {
+                        $(this).find("img").hide();
+                    });
+
+                    $(this).append($source);
+
+                    //删除左侧元素
+                    $item.fadeOut();
+
+                }
+            }
+
+        });
+    });
+
+
+
+</script>
+
+
+
+<script type="text/javascript" language="javascript">
+    //在页面加载完之后加载jquery
+    $().ready(function(e) {
+        //拖拽复制体
+        $('#sortable li').draggable({
+            helper:"clone",
+            cursor: "move",
+        });
+
+        //释放后
+        $('td[id^="target"]').droppable({
+            drop:function(event,ui){
+
+                if($(this).children().length == 0){
+                    var $item = ui.draggable
+                    var $source = ui.draggable.clone();
+                    $('<img/>', {
+                        src: 'images/btn_delete.png',
+                        style:'display:none',
+                        click: function() {
+                            $source.remove();//移除
+                            $item.fadeIn();//还原左侧列表
+                        }
+                    }).appendTo($source);
+
+
+                    $source.mouseenter(function () {
+                        $(this).find("img").show();
+                    });
+
+                    $source.mouseleave(function () {
+                        $(this).find("img").hide();
+                    });
+
+                    $(this).append($source);
+
+                    //删除左侧元素
+                    $item.fadeOut();
+
+                }
+            }
+
+        });
+
+
+
+    });
+</script>
+
+
+</body>
+</html>

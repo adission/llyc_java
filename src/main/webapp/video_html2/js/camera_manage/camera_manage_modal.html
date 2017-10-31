@@ -1,0 +1,104 @@
+<!--新增  -->
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header bg-primary">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+            	<h4 class="modal-title">添加摄像头</h4>
+        </div>
+        
+        <form class="form-horizontal">
+	        <div class="modal-body clearfix">
+	            <div class="add-detail">
+                   <div class="form-group col-xs-12">
+                       <label class="control-label col-xs-4 text-right">摄像头名称
+                       	<span style="color: #ff0000">*&nbsp;</span>:</label>
+                       	<div class="col-md-6">
+                       		<input type="text" class="form-control" placeholder="摄像头名称" name="vidicon_name">
+                       	</div>                     
+                   </div>
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-4 text-right">摄像头IP
+                        <span style="color: #ff0000">*&nbsp;</span>:</label>
+                        <div class="col-md-6">
+                        	<input type="text" class="form-control" placeholder="摄像头IP" name="vidicon_ip">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-4 text-right">摄像头端口
+                        <span style="color: #ff0000">*&nbsp;</span>:</label>
+                        <div class="col-md-6">
+                        	<input type="text" class="form-control" placeholder="摄像头端口" name="vidicon_port">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-4 text-right">摄像头用户名
+                            <span style="color: #ff0000">*&nbsp;</span>:</label>
+                        <div class="col-md-6">
+                        	<input type="text" class="form-control" placeholder="摄像头用户名" name="vidicon_username">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-4 text-right">摄像头密码
+                            <span style="color: #ff0000">*&nbsp;</span>:</label>
+                        <div class="col-md-6"> 
+                        	<input type="text" class="form-control" placeholder="摄像头密码" name="vidicon_password">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-4 text-right">摄像头描述
+                            <span style="color: #fff">*&nbsp;</span>:</label>
+                        <div class="col-md-6">
+                        	<input type="text" class="form-control" placeholder="摄像头描述" name="vidicon_desc">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-4 text-right">摄像头类型
+                            <span style="color: #ff0000">*&nbsp;</span>:</label>
+                        <label class="control-label col-xs-2" style="text-align:left;"><input name="vidicon_type" type="radio" value="1" />球机 </label>
+                        <label class="control-label col-xs-2" style="text-align:left;"><input name="vidicon_type" type="radio" value="2" />枪机 </label>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-4 text-right">设为重点
+                            <span style="color: #ff0000">*&nbsp;</span>:</label>
+                        <label class="control-label col-xs-2" style="text-align:left;"><input name="whether_important" type="radio" value="0" />非重点 </label>
+                        <label class="control-label col-xs-2" style="text-align:left;"><input name="whether_important" type="radio" value="1" />重点 </label>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-4 text-right">NVR的IP
+                            <span style="color: #ff0000">*&nbsp;</span>:</label>
+                        <div class="col-md-6">
+                        	<input type="text" class="form-control" placeholder="NVR的IP" name="nvr_ip">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-4 text-right">NVR的端口
+                            <span style="color: #ff0000">*&nbsp;</span>:</label>
+                        <div class="col-md-6">
+                        	<input type="text" class="form-control" placeholder="NVR的端口" name="nvr_port">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-4 text-right">NVR的用户名
+                            <span style="color: #ff0000">*&nbsp;</span>:</label>
+                        <div class="col-md-6">
+                        	<input type="text" class="form-control" placeholder="NVR的用户名" name="nvr_name">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-4 text-right">NVR的密码
+                            <span style="color: #ff0000">*&nbsp;</span>:</label>
+                        <div class="col-md-6">
+                        	<input type="text" class="form-control" placeholder="NVR的密码" name="nvr_password">
+                        </div>
+                    </div>
+	           	</div>
+	        </div>
+	        <div class="modal-footer">
+	            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	            <button type="submit" class="btn btn-primary">确定</button>
+	        </div>
+        </form>
+    </div>
+</div>
+<script src="js/camera_manage/camera_manage_modal.js"></script>

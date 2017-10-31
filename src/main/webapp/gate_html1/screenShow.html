@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>屏幕显示</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    
+    <link rel="shortcut icon" href="#" type="image/png">
+    <link href="../public/js/bootstrap-datepicker/css/datepicker-custom.css" rel="stylesheet">
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css"/>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    	
+    </style>
+</head>
+<body class="horizontal-menu-page">
+
+<section>
+    <div class="header"></div>
+    <div class="alert alert-success" role="alert" style="display: none"></div>
+	<div class="alert alert-danger" role="alert" style="display: none"></div>
+    <!-- main content start-->
+    <div class="wrapper">
+		<div class="body-content">
+	        <!-- page heading start-->
+	        <div class="page-heading">
+	            <h3><span id="venue_lbl_head">屏幕显示</span></h3>
+	            <ul class="breadcrumb">
+	            	<li>闸机管理</li>
+	                <li class="active">屏幕显示</li>
+	            </ul>
+	        </div>
+	        <!-- page heading end-->
+			<hr>
+        	<!--body wrapper start-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <div class="panel-body">
+                        	<div id="div-table-container">
+                        		<div class="adv-table">
+                            
+	                                <div class="row" style="margin-bottom: 20px">
+	                                    <div class="col-lg-6">
+	                                        <form class="form-inline">
+							                    <div class="form-group col-sm-6"  style="line-height: 25px">
+							                        <label class="control-label  col-xs-3 text-right" style="line-height: 34px;">选择分区:</label>
+							                        <select class="form-control" name='area'>
+							                        </select>
+							                    </div>
+							                    <button class="btn btn-primary" id="sureSearch">确定</button>
+						                    </form>
+	                                    </div>
+	                                    <div class="pull-right" style="margin-right: 30px" >
+	                                        <button class="btn btn-primary" style="margin-left: 10px" id="cleardata">
+	                                            <i class="fa fa-times-circle-o"></i> 数据清零
+	                                        </button>
+	                                        <button class="btn btn-primary" id="bigData">
+	                                            <i class="fa fa-video-camera"></i> 大屏显示
+	                                        </button>
+	                                    </div>
+	                                </div>
+	                                
+	                                <!-- 统计数据 -->
+	                                <div class="panel panel-default">
+						                <div class="panel-heading clearfix show-user">
+						                    <p class="panel-title col-sm-4">统计信息详情(<span id="blockName"></span>)</p>
+						                </div>
+						                <div class="panel-body" style="border: 1px solid #eeeeee;">
+						                    <div class="col-xs-12" id="tableInfo">
+						                        <table class="table table-bordered text-center" id="typeInfo">
+						                            <tbody>
+						                            </tbody>
+						                        </table>
+						                       
+						                        <table class="table table-bordered text-center" id="workerInfo">
+						                            <tbody>
+						                            </tbody>
+						                        </table>
+						                    </div>
+						                    <div class="col-xs-4 personInfo" style="display: none">
+						                        <table class="table table-bordered">
+						                            <tbody>
+						                            <tr>
+						                                <td>
+						                                    <table class="table table-bordered">
+						                                        <tbody>
+						                                        <tr>
+						                                            <td rowspan="4" style="width: 150px"><img src="" alt="" style="width: 100%" id="img"></td>
+						                                            <td>姓名: <span id="personname"></span></td>
+						                                        </tr>
+						                                        <tr>
+						                                            <td>班组: <span id="team"></span></td>
+						                                        </tr>
+						                                        <tr>
+						                                            <td>工种: <span id="worker_type"></span></td>
+						                                        </tr>
+						                                        <tr>
+						                                            <td>惩罚次数: <span id="punish_record"></span></td>
+						                                        </tr>
+						                                        </tbody>
+						                                    </table>
+						                                </td>
+						                            </tr>
+						                            <tr>
+						                                <td class="danger text-center" style="height: 50px"><h1>结果: 请通过</h1></td>
+						                            </tr>
+						                            </tbody>
+						                        </table>
+						                    </div>
+						                </div>
+						            </div>
+						            <!-- 统计结束 -->
+	                            </div>
+                        	</div>
+                            
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!--body wrapper end-->
+
+        
+
+    </div>
+    <!-- main content end-->
+    <!--footer section start-->
+    <footer>
+        Copyright © 2017 Lanlyc
+    </footer>
+    <!--footer section end-->
+</section>
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../public/js/jquery-1.10.2.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/modernizr.min.js"></script>
+<script src="../public/js/jquery.nicescroll.js"></script>
+<!-- <script src="../public/js/scripts.js"></script> -->
+<script src="../public/js/vue.min.js"></script>
+<script type="text/javascript" src="../public/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+<script type="text/javascript" src="../public/js/jquery-confirm/jquery.spin.merge.js"></script>
+<script type="text/javascript" src="../public/js/jquery-confirm/jquery-confirm.js"></script>
+<!--dynamic table-->
+<script src="../public/js/data-tables/jquery.dataTables1.js"></script>
+<script type="text/javascript" src="../public/js/data-tables/dataTables.bootstrap.js"></script>
+
+<script src="html-js/main.js"></script>
+<script src="html-js/screenShow/screenShow2.js"></script>
+
+</body>
+</html>

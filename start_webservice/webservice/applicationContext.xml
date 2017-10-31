@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+
+	<!-- 定义使用dbcp连接池的数据源 -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"        
+        destroy-method="close">
+		<!-- 指定连接数据库的JDBC驱动 -->
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<!-- 连接数据库所用的URL -->
+		<property name="url">
+			<value>jdbc:mysql://localhost:3306/zf?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=round</value>
+		</property>
+		<!-- 连接数据库的用户名 -->
+		<property name="username">
+			<value>root</value>
+		</property>
+		<!-- 连接数据库的密码 -->
+		<property name="password">
+			<value>123456</value>
+		</property>
+		<!--initialSize: 初始化连接--> 
+		<property name="initialSize" value="5"/> 
+		<!--maxIdle: 最大空闲连接--> 
+		<property name="maxIdle" value="10"/> 
+		<!--minIdle: 最小空闲连接--> 
+		<property name="minIdle" value="5"/> 
+		<!--maxActive: 最大连接数量--> 
+		<property name="maxActive" value="15"/> 
+		<!--removeAbandoned: 是否自动回收超时连接--> 
+		<property name="removeAbandoned" value="true"/> 
+		<!--removeAbandonedTimeout: 超时时间(以秒数为单位)--> 
+		<property name="removeAbandonedTimeout" value="180"/> 
+		<!--maxWait: 超时等待时间以毫秒为单位 6000毫秒/1000等于60秒--> 
+		<property name="maxWait" value="3000"/> 
+		<property name="validationQuery"> 
+		<value>SELECT 1</value> 
+		</property> 
+		<property name="testOnBorrow"> 
+		<value>true</value> 
+		</property>  
+	</bean>
+<!-- 	
+	<bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource" destroy-method="close">
+        <property name="driver">
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name="driverUrl">
+            <value>jdbc:mysql://192.168.1.201:3306/zf?autoReconnect=true</value>
+        </property>
+        <property name="user">
+            <value>root</value>
+        </property>
+        <property name="password">
+            <value>123456</value>
+        </property>
+        <property name="prototypeCount">
+            <value>2</value>
+        </property>
+        <property name="maximumConnectionCount">
+            <value>20</value>
+        </property>
+        <property name="minimumConnectionCount">
+            <value>2</value>
+        </property>
+        <property name="maximumActiveTime">
+            <value>10000</value>
+        </property>
+        <property name="trace">
+            <value>false</value>
+        </property>
+        <property name="verbose">
+            <value>true</value>
+        </property>
+    </bean>
+	
+	 -->
+		
+
+		
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+	</bean>
+
+		<!-- 定义事务管理器 开启Spring事务处理 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+		<property name="dataSource" ref="dataSource"  />
+	</bean>
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED"  isolation="DEFAULT"/>
+			<tx:method name="insert*" propagation="REQUIRED"  isolation="DEFAULT"/>
+			<tx:method name="process*" propagation="REQUIRED"  isolation="DEFAULT"/>
+			<tx:method name="add*" propagation="REQUIRED"  isolation="DEFAULT"/>
+			<tx:method name="update*" propagation="REQUIRED"  isolation="DEFAULT"/>
+			<tx:method name="delete*" propagation="REQUIRED"  isolation="DEFAULT"/>	
+			<tx:method name="*" read-only="true"  isolation="DEFAULT"/>
+		</tx:attributes>
+	</tx:advice>
+ 	<aop:config>
+         <aop:pointcut id="allManagerMethod"
+            expression="execution(* com.zf.zigbee.*.*(..))" />
+        <aop:advisor advice-ref="txAdvice"
+            pointcut-ref="allManagerMethod" />
+    </aop:config>
+</beans>

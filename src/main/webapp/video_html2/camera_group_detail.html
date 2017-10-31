@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>分组详情</title>
+
+    <!--nestable css-->
+    <link rel="stylesheet" type="text/css" href="../public/js/nestable/jquery.nestable.css" />
+
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    	.tips{
+    	    font-size: 12px;
+		    margin-left: 20px;
+		    margin-top: 6px;
+		    display: inline-block;
+		    color: #ff6c60;
+		    font-weight: 100;
+    	}
+    </style>
+</head>
+
+<body class="horizontal-menu-page">
+
+<div id="header"></div>
+
+
+<!--body wrapper start-->
+<div class="wrapper">
+    <div class="container content" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-body">
+                        <!-- page heading start-->
+                        <div class="page-heading">
+                            <h3>
+                                新增分组
+                            </h3>
+                            <ul class="breadcrumb">
+                                <li>
+                                    <a href="#">摄像头管理</a>
+                                </li>
+                                <li>
+                                    <a href="#">分组管理</a>
+                                </li>
+                                <li class="active"> 新增分组 </li>
+                            </ul>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="pull-left" >
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            摄像头类型
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li v-on:click="getCameraList(1)"><a>重点</a></li>
+                                            <li v-on:click="getCameraList(2)"><a>全部</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            分屏模式
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li v-on:click="selectFp(1)"><a>1×1</a></li>
+                                            <li v-on:click="selectFp(2)"><a>2×2</a></li>
+                                            <li v-on:click="selectFp(3)"><a>3×3</a></li>
+                                            <li v-on:click="selectFp(4)"><a>4×4</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="pull-right">
+                                    <button type="button" class="btn btn-warning" data-action="collapse-all" v-on:click="addGroup()">确认分组</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="row">-->
+                            <!--<div class="col-lg-12">-->
+                                <!--<div class="border-head">-->
+                                    <!--<h3>Serialised Output (per list)</h3>-->
+                                <!--</div>-->
+
+                                <!--<div class="row" >-->
+                                    <!--<div class="col-lg-2">-->
+                                        <!--<textarea id="nestable_list_1_output" class=" col-lg-12 form-control"></textarea>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-lg-2">-->
+                                        <!--<textarea id="nestable_list_2_output" class=" col-lg-12 form-control"></textarea>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-lg-2">-->
+                                        <!--<textarea id="nestable_list_3_output" class=" col-lg-12 form-control"></textarea>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-lg-2">-->
+                                        <!--<textarea id="nestable_list_4_output" class=" col-lg-12 form-control"></textarea>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-lg-2">-->
+                                        <!--<textarea id="nestable_list_5_output" class=" col-lg-12 form-control"></textarea>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <section class="panel panel-default" style="border: 1px solid #ccc;">
+                                    <header class="panel-heading">
+                                       		 摄像头列表
+                                    </header>
+                                    <div class="panel-body" style="height: 500px; overflow: auto;">
+                                        <div class="dd" id="nestable_list_1">
+                                            <ol class="dd-list">
+                                                <li v-for="i in cameraList" class="dd-item" data-id="{{i.id}}" cid="{{i.id}}">
+                                                    <div class="dd-handle">{{i.vidicon_number}} {{i.vidicon_name}}</div>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </section>
+
+                            </div>
+                            <div class="col-lg-10">
+                                <section class="panel panel-default" style="border: 1px solid #ccc;">
+                                    <header class="panel-heading clearfix form-horizontal" style="padding: 10px 15px;">
+                                        <label class="control-label pull-left">分组名称</label>
+                                        <div class="col-md-4">
+                                            <input id="group_name" type="text" class="form-control input-sm" placeholder="请输入分组名称">
+                                        </div>
+                                        <span class="tips" v-if="max_num !=''">tips:该分屏模式下一屏最多能选择{{max_num}}个摄像头</span>
+                                    </header>
+                                    <div class="panel-body fPright" style="height: 500px; overflow: auto;">
+                                        <!--<div class="col-md-3">-->
+                                            <!--<section class="panel">-->
+                                                <!--<header class="panel-heading">-->
+                                                    <!--分屏名称1-->
+                                                <!--</header>-->
+                                                <!--<div class="panel-body">-->
+                                                    <!--<div class="dd" id="nestable_list_2">-->
+                                                        <!--<div class="dd-empty"></div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</section>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-md-3">-->
+                                            <!--<section class="panel">-->
+                                                <!--<header class="panel-heading">-->
+                                                    <!--分屏名称2-->
+                                                <!--</header>-->
+                                                <!--<div class="panel-body">-->
+                                                    <!--<div class="dd" id="nestable_list_3">-->
+                                                        <!--<div class="dd-empty"></div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</section>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-md-3">-->
+                                            <!--<section class="panel">-->
+                                                <!--<header class="panel-heading">-->
+                                                    <!--分屏名称3-->
+                                                <!--</header>-->
+                                                <!--<div class="panel-body">-->
+                                                    <!--<div class="dd" id="nestable_list_4">-->
+                                                        <!--<div class="dd-empty"></div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</section>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-md-3">-->
+                                            <!--<section class="panel">-->
+                                                <!--<header class="panel-heading">-->
+                                                    <!--分屏名称4-->
+                                                <!--</header>-->
+                                                <!--<div class="panel-body">-->
+                                                    <!--<div class="dd" id="nestable_list_5">-->
+                                                        <!--<div class="dd-empty"></div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</section>-->
+                                        <!--</div>-->
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--body wrapper end-->
+
+<div id="footer"></div>
+
+
+
+<script src="../public/js/jquery-1.10.2.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/modernizr.min.js"></script>
+<script src="../public/js/jquery.nicescroll.js"></script>
+
+<script src="../public/js/nestable/jquery.nestable.js"></script>
+<!--<script src="../public/js/nestable-init.js"></script>-->
+
+<!--common scripts for all pages-->
+<script src="../public/js/scripts.js"></script>
+
+<script src="js/vue.min.js"></script>
+<script src="js/camera_group_detail.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

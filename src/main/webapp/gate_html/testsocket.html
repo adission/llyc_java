@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>websocket client</title>
+</head>
+
+<script type="text/javascript">
+var ws;
+var ws2;
+function hello(){
+    ws = new WebSocket("ws://localhost:8010/lanlyc/server");
+    ws.onopen = function(evn){
+    	ws.send("open_cb66847006f747938514cbddc6408da1");
+        console.log(evn);
+    };
+    ws.onmessage = function(evn){
+        console.log(evn.data);
+        var dv = document.getElementById("dv");
+         dv.innerHTML+=evn.data;
+    };
+    ws.onclose = function(){
+        console.log("关闭");
+    };
+    
+};
+function subsend(msg){
+    
+    ws.send("switcharea_"+msg);
+    document.getElementById("msg").value = "switcharea_"+msg;
+    
+}
+
+function hello2(){
+    ws2 = new WebSocket("ws://localhost:8010/lanlyc/PushDataStatistics");
+    ws2.onopen = function(evn){
+    	ws.send("open_cb66847006f747938514cbddc6408da1");
+        console.log(evn);
+    };
+    ws2.onmessage = function(evn){
+        console.log(evn.data);
+        var dv = document.getElementById("dv");
+         dv.innerHTML+=evn.data;
+    };
+    ws2.onclose = function(){
+        console.log("关闭");
+    };
+    
+};
+function subsend2(msg){
+    
+    ws2.send("switcharea_"+msg);
+    document.getElementById("msg").value = "switcharea_"+msg;
+    
+}
+function checkLeave(){ 
+	console.log("关闭页面");
+　　　　ws2.close();
+	  ws.close();	
+　　　} 
+
+</script>
+<body onbeforeunload="checkLeave()">
+    <h2>Hello World!</h2>
+  
+    <input type="button" value="连接初始化" onclick="hello()" />
+    <input type="text" id ="msg" /><input type="button" onclick="subsend('cb66847006f747938514cbddc6408da1')"  value="切换分区" />
+      <input type="button" value="连接初始化" onclick="hello2()" />
+    <input type="text" id ="msg" /><input type="button" onclick="subsend2('cb66847006f747938514cbddc6408da1')"  value="切换分区" />
+ 
+ 
+  <div id="dv" />
+</body>
+</html>

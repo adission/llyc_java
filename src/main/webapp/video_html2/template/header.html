@@ -1,0 +1,54 @@
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img src="../public/images/logo.png" alt="">
+                <span style="color:#fff;">视频监控管理系统</span>
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active" id="live"><a href="live.html">监控直播</a></li>
+                <li id="video"><a href="video_playback.html">录像回放</a></li>
+                <li id="camera" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">摄像头管理<b class="caret"></b></a>
+                     <ul class="dropdown-menu clearfix" style="border-radius:0px;position:absolute;height:80px;">
+                        <li style="z-index:99999;position:absolute;width:100%;"><a href="camera_manage.html" >列表管理</a></li>
+                        <li style="z-index:99999;position:absolute;top:40px;width:100%;"><a href="camera_group.html" >分组管理</a></li>
+                        <iframe frameborder=0 scrolling=no style="background-color:transparent; position: absolute; z-index: 99; width: 100%; height: 100%; top: 0;left:0;"></iframe> 
+                    </ul>
+<!--                     <ul class="dropdown-menu clearfix">
+                        <li><a href="camera_manage.html">列表管理</a></li>
+                        <li><a href="camera_group.html">分组管理</a></li>                        
+                    </ul> -->
+                </li>
+                <li id="system"><a href="system_manage.html">系统设置</a></li>
+                <li><a href="#" class="info-number">告警管理<span class="badge">8</span></a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-user"></i><span class=" username" style="padding:0 10px;">周杰伦</span> <b class="caret"></b></a>
+                    <ul class="dropdown-menu" style="border-radius:0px;position:absolute;height:80px;">
+                        <li style="z-index:99999;position:absolute;width:100%;"><a href="#">返回主菜单</a></li>
+                        <li style="z-index:99999;position:absolute;top:40px;width:100%;"><a href="#">退出</a></li>
+                        <iframe frameborder=0 scrolling=no style="background-color:transparent; position: absolute; z-index: 99; width: 100%; height: 100%; top: 0;left:0;"></iframe> 
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<script>
+	var name=getCookie('user_name')
+	$(".username").text(name);
+</script>

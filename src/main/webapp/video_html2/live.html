@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>监控直播</title>
+
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+
+    <link href="css/live.css" rel="stylesheet">
+</head>
+
+<body class="horizontal-menu-page">
+
+<div id="header"></div>
+
+
+<!--body wrapper start-->
+<div class="wrapper">
+    <div class="content clearfix">
+        <div class="content-left">
+            <div class="cloud">
+                <div class="direction">
+                    <i class="fa fa-caret-up"></i>
+                    <i class="fa fa-caret-up"></i>
+                    <i class="fa fa-caret-up"></i>
+                    <i class="fa fa-caret-up"></i>
+                    <i class="fa fa-caret-up"></i>
+                    <i class="fa fa-caret-up"></i>
+                    <i class="fa fa-caret-up"></i>
+                    <i class="fa fa-caret-up"></i>
+                    <img src="images/direction.png" alt="" width="100px;" height="100px;">
+                </div>
+                <div class="icons">
+                	<span><i id="btn_auto" class="fa fa-refresh"></i></span>
+                	<span onmousedown="PTZZoomIn()" onmouseup="PTZZoomStop()"><i class="fa fa-plus"></i></span>
+                    <span onmousedown="PTZFocusIn()" onmouseup="PTZFoucusStop()"><i class="fa fa-search-plus"></i></span>
+                    <span onmousedown="PTZIrisIn()" onmouseup="PTZIrisStop()"><i class="fa fa-sun-o"></i></span>
+                    <span id="capture_btn"><i class="fa fa-camera"></i></span>
+                    <!-- <span onclick="clickCapturePic();"><i class="fa fa-camera"></i></span> -->
+                    <span onmousedown="PTZZoomout()" onmouseup="PTZZoomStop()"><i class="fa fa-minus"></i></span>
+                    <span onmousedown="PTZFoucusOut()" onmouseup="PTZFoucusStop()"><i class="fa fa-search-minus"></i></span>
+                    <span onmousedown="PTZIrisOut()" onmouseup="PTZIrisStop()"><i class="fa fa-spinner"></i></span>
+                                           
+                </div>
+                <div class="control smallfont text-right">
+
+                    <div class="group">
+                       	 预置点 <input id="preset_index" type="number" min="1" max="1000" style="width: 44px;"> 
+                        <span class="Btn" onclick="clickSetPreset();">设置</span>
+                        <span class="Btn" onclick="clickGoPreset();">调用</span>
+                        
+                    </div>
+
+                    <div class="group">
+                                                                       巡航速度(1-16)<input id="ptzspeed" type="number" min="1" max="1000" style=" width: 104px;" value="5"> 
+                        <!-- <span id="cruise_btn3" class="Btn">设置</span> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="content-center">
+			<!-- 插件 -->
+            <div id="divPlugin" class="plugin"></div>
+
+            <div class="video-footer">
+                <div class="v_f_left pull-left">
+                    <span onclick="changeWndNum(1)"><i class="fa fa-stop"></i></span>
+                    <span onclick="changeWndNum(2)"><i class="fa fa-th-large"></i></span>
+                    <span onclick="changeWndNum(3)"><i class="fa fa-th"></i></span>
+                    <span onclick="changeWndNum(4)"><i class="fa fa-align-justify"></i></span>
+                    <span class="btn-fullscreen" onclick="clickFullScreen()"><i class="fa fa-arrows-alt"></i></span>
+                </div>
+                <div class="v_f_right pull-right">
+ 					<span class="static" title="静态显示"><i class="fa fa-caret-square-o-right"></i></span>
+ 					
+ 					<span onclick="pre()" title="上一页"><i class="fa fa-arrow-left"></i></span>
+                    <span onclick="next()" title="下一页"><i class="fa fa-arrow-right"></i></span>
+ 					
+ 					<!-- <div class="allowed">
+ 					 	<span onclick="changeScreen()" title="上一页"><i class="fa fa-arrow-left"></i></span>
+                    	<span onclick="changeScreen()" title="下一页"><i class="fa fa-arrow-right"></i></span>
+                    </div>
+                    <div class="not-allowed">
+	                    <span style="color:#bbb;cursor: not-allowed; "><i class="fa fa-arrow-left"></i></span>
+	                    <span style="color:#bbb;cursor: not-allowed; "><i class="fa fa-arrow-right"></i></span>
+                    </div> -->
+                    <span onclick="Turn()" title="开始轮巡"><i class="fa fa-refresh"></i></span>
+                </div>
+            </div>
+        </div>
+    	<div class="content-right-tip" onclick="close()"><span>&lt;&lt;</span></div>
+    	<div class="content-right">
+    		<div class="panel panel-default" style="height:100%;">
+	            <header class="panel-heading">
+	                	摄像头列表
+	            </header>
+	            <div class="panel-body">
+	                <ul class="camera_list">
+	                   
+	                </ul>
+	            </div>
+	        </div>
+    	</div>
+    </div>
+</div>
+<!--body wrapper end-->
+
+<div id="footer"></div>
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../public/js/jquery-1.10.2.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/modernizr.min.js"></script>
+<!--  <script src="../public/js/jquery.nicescroll.js"></script> -->
+
+<!--common scripts for all pages-->
+<script src="../public/js/scripts.js"></script>
+
+
+<script src="js/webVideoCtrl.js"></script>
+
+
+<script src="js/main.js"></script>
+<script src="js/vue.min.js"></script>
+<script src="js/live.js"></script>
+
+
+
+</body>
+</html>

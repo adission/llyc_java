@@ -1,0 +1,102 @@
+.content-left{
+    min-height: 650px;
+    background:#fff;
+}
+
+.content-left .panel{
+    height:100%
+}
+
+.content-left .panel .panel-body{
+    height:90%;
+    overflow:auto;
+}
+
+.content-right{
+    min-height: 650px;
+    padding-left:15px;
+}
+
+.content-right  .well{
+    height:10%;
+    padding:15px;
+    margin-bottom: 15px;
+}
+.content-right .panel:nth-child(2){
+    height:78%
+}
+.content-right .panel:nth-child(3){
+    height:7%
+}
+
+.camera_list{
+    padding: 0;
+}
+
+.camera_list li {
+    padding: 10px 0 12px 20px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    cursor: pointer;
+    list-style: none;
+    background: #fff;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+}
+
+.camera_list li i{
+    margin-right: 10px;
+}
+
+.camera_list li:hover{
+    background: #65CEA7;
+    color:#fff;
+}
+
+.camera_list li.active{
+    background: #65CEA7;
+    color:#fff;
+}
+
+/*杩涘害鏉℃牱寮�*/
+#progressWrap{
+    background-color: #ccc;
+    height: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+#progressWrap:hover{
+    height: 5px;
+}
+#playProgress{
+    background-color: #000;
+    width: 0px;
+    height: 100%;
+}
+
+.bootstrap-timepicker.dropdown-menu.open{
+	 background: #fff;
+ 	 border: 1px solid #ddd;
+}
+
+.bootstrap-timepicker table td.separator{
+	color:#999;
+}
+
+.tool span{
+	cursor:pointer;
+}
+
+.tool-center{
+	margin-top:-10px;
+}
+
+.tool-center span:nth-child(3){
+	border-radius: 50%;
+	  width: 35px;
+	  height: 35px;
+	  display: inline-block;
+	  line-height: 35px;
+	  text-align: center;
+	  background: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(228, 226, 226, 0.75)), to(rgba(109, 109, 109, 0.75)));
+	  color: #fff;
+}

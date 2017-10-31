@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>视频回放</title>
+
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../public/js/bootstrap-datepicker/css/datepicker-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../public/js/bootstrap-timepicker/css/timepicker.css" />
+    <link rel="stylesheet" type="text/css" href="../public/js/bootstrap-datetimepicker/css/datetimepicker-custom.css" />
+    
+    <link rel="stylesheet" href="css/video_playback.css" />
+   
+</head>
+
+<body class="horizontal-menu-page">
+
+<div id="header"></div>
+
+<!--body wrapper start-->
+<div class="wrapper">
+
+	<div class="content">
+	    <div class="col-md-2 content-left">
+	        <div class="panel panel-default row">
+				<header class="panel-heading">摄像头列表</header>
+	            
+	            <div class="panel-body">
+	            	<!-- 
+					NVR列表：
+	            	<select id="ip" class="sel" onchange="getChannelInfo();"></select>
+	            	<select id="channels" class="sel"></select>
+	            	 -->
+	            	
+	            	<ul class="camera_list" id="channels"></ul>
+		                
+		            <!-- 
+		            	<ul class="camera_list">
+		                    <li v-for="i in cameraList" v-on:click="selectCamera(i.id)"><i class="fa fa-video-camera"></i>
+		                    	{{i.vidicon_number}} {{i.vidicon_name}}<span style="color: #ff0000;margin-left: 5px;" v-if="i.whether_important">*&nbsp;</span>
+		                    </li>
+		                </ul>
+					 -->
+					<!-- 
+					<div class="digitaltdiv" style="border:1px solid red;">
+						<table id="digitalchannellist" class="digitalchannellist" cellpadding="0" cellspacing="0" border="0"></table>
+					</div>
+					 -->
+					 
+				</div>
+	            
+	        </div>
+	    </div>
+	    
+	    <div class="col-md-10">
+	    	<div class="content-right row">
+		        <div class="well form-horizontal">		           
+						<div class="form-group">
+							<label class="control-label col-md-1">日期</label>
+							<div class="col-md-3">
+								<input id="date" type="text" class="form_datetime form-control" value="">
+							</div>							
+							<div class="col-md-2">
+								<input type="button" class="btn btn-primary" value="搜索" onclick="changeDate();" />
+							</div>
+							<label class="control-label col-md-1">时间</label>
+							<div class="col-md-3">
+								<input id="time" type="text" class="form_datetime form-control" value="">
+							</div>
+							<div class="col-md-1"></div>
+							<div class="col-md-2">
+								<input type="button" class="btn btn-primary" value="跳到" onclick="changeTime();" />
+							</div>
+						</div>		            
+		        </div>
+		        <div class="panel">
+		        	 
+					<div class="panel">
+						<div id="divPlugin" class="plugin"></div>
+					</div>
+			        <!-- <div id="progressWrap"><div id="playProgress"></div></div>  -->
+		        </div>
+		        
+		        <div class="panel">
+		            <div class="panel-body">
+		            	<div class="tool">
+							<div class="tool-group col-md-5">
+			                   <!-- <span onclick="changeWndNum(1)"><i class="fa fa-stop"></i></span> &nbsp;&nbsp;
+			                    <span onclick="changeWndNum(2)"><i class="fa fa-th-large"></i></span>&nbsp;&nbsp;
+			                    <span onclick="changeWndNum(3)"><i class="fa fa-th"></i></span>&nbsp;&nbsp;
+			                    <span onclick="changeWndNum(4)"><i class="fa fa-align-justify"></i></span>&nbsp;&nbsp;
+			                    <span class="btn-fullscreen" onclick="clickFullScreen()"><i class="fa fa-arrows-alt"></i></span>
+			                    --> 
+			                    
+		                	</div>
+                     		
+		            		<div class="tool-group col-md-4">
+								
+		            			<div class="btn-group center-block tool-center">
+		            				<span onclick="clickStopPlayback();" title="停止"><i class="fa fa-stop"></i></span> &nbsp;&nbsp;
+				                    <span onclick="clickPlaySlow();" title="慢放"><i class="fa fa-backward"></i></span>&nbsp;&nbsp;
+				                	<span class="start" onclick="playOrPause(this);"  title="开始"><i class="fa fa-play"></i></span>&nbsp;&nbsp;			
+<!-- 				                <span onclick="clickStartPlayback();"  title="开始"><i class="fa fa-play"></i></span>&nbsp;&nbsp; 	-->
+<!--				                <span onclick="clickPause();"  title="暂停"><i class="fa fa-pause"></i></span>&nbsp;&nbsp;			-->
+				                    <span onclick="clickPlayFast();" title="快放"><i class="fa fa-forward"></i></span>&nbsp;&nbsp;
+				                    <span onclick="clickResume();" title="恢复"><i class="fa fa-refresh"></i></span>
+			                    
+<!-- 								<div class="btn btn-info" onclick="clickStopPlayback();" title="停止"><i class="fa fa-stop"></i></div>
+									<div class="btn btn-info" onclick="clickPlaySlow();" title="慢放"> <i class="fa fa-backward"></i> </div>
+									<div class="btn btn-info" onclick="clickStartPlayback();"  title="开始"><i class="fa fa-play"></i></div>
+									<div class="btn btn-info" onclick="clickPause();"  title="暂停"><i class="fa fa-pause"></i></div>
+									<div class="btn btn-info" onclick="clickPlayFast();" title="快放"> <i class="fa fa-forward"></i> </div>
+									<div class="btn btn-info" onclick="clickResume();" title="恢复"><i class="fa fa-refresh"></i></div> -->
+									
+									<!-- 
+									<input type="button" class="btn" value="抓图" onclick="clickCapturePic();" />
+									<input type="button" class="btn" value="倒放" onclick="clickReversePlayback();" />
+									<input type="button" class="btn" value="单帧" onclick="clickFrame();" />
+									<input id="transstream" type="checkbox" class="vtop" />&nbsp;启用转码码流
+									<input type="button" class="btn2" value="开始剪辑" onclick="clickStartRecord();" />
+									<input type="button" class="btn2" value="停止剪辑" onclick="clickStopRecord();" />
+									 -->
+									
+									<!-- 
+				            			<div class="btn btn-info" v-on:click="sure("backward")"><i class="fa fa-fast-backward"></i></div>
+				            			<div class="btn btn-info" v-on:click="sure("play")"><i class="fa fa-play"></i></div>
+				            			<div class="btn btn-info" v-on:click="sure("pause")"><i class="fa fa-pause"></i></div>
+				            			<div class="btn btn-info" v-on:click="sure("forward")"><i class="fa fa-fast-forward"></i></div>
+		            			 	 -->
+		            			</div>
+		            			
+		            		</div>
+		            		
+		            		<div class="tool-group col-md-3">
+		            			<div class="col-md-12">
+		            			
+		            				<div onclick="changeVoice();" title="声音">
+			            				<input type="range" style="width:120px;float:right;" />
+			            				<i class="fa fa-volume-up" style="margin:4px 10px;float:right;"></i>	
+									</div>
+									
+<!-- 				            	<div class="btn btn-info" onclick="clickCloseSound();">关闭声音<i class="fa fa-volume-off"></i></div>
+				            		<div class="btn btn-info" onclick="clickOpenSound();">打开声音<i class="fa fa-volume-up"></i></div>
+				            		
+									<button type="button" class="btn" onclick="clickSetVolume();">设置音量（范围：0~100）</button>
+									<input type="text" id="volume" value="50" maxlength="3" size="5" />&nbsp;
+				            		
+			            			<br/><br/>
+			            			<input type="button" class="btn" value="OSD时间" onclick="clickGetOSDTime();" />&nbsp;
+									<input id="osdtime" type="text" class="txt" readonly /> -->
+								
+									<!-- 
+									<div class="btn btn-info" v-on:click="sure("volumeDown")"><i class="fa fa-volume-down"></i></div>
+		            				<div class="btn btn-info" v-on:click="sure("volumeUp")"><i class="fa fa-volume-up"></i></div>
+		            				<div class="btn btn-info" v-on:click="sure("fullScreen")"><i class="fa fa-arrows-alt"></i></div>
+									 -->
+									 
+		            		</div>
+		            		
+		            		<div class="tool-group col-md-12" style="display:none">
+			                    <table id="searchlist" class="searchlist" cellpadding="0" cellspacing="0" border="0"></table>
+		                	</div>
+		                	
+		            		<!-- 
+		            		<div class="tool-group col-md-4">
+		            			<div class="btn-group pull-right">
+				            			<div class="btn btn-info" v-on:click="sure("volumeDown")"><i class="fa fa-volume-down"></i></div>
+				            			<div class="btn btn-info" v-on:click="sure("volumeUp")"><i class="fa fa-volume-up"></i></div>
+				            			<div class="btn btn-info" v-on:click="sure("fullScreen")"><i class="fa fa-arrows-alt"></i></div>
+			            		</div>		
+		            		</div>
+		            		-->
+		            	</div>
+		           
+		            </div>
+		        </div>
+		    </div>
+	    </div>
+	
+	</div>
+
+</div>
+<!--body wrapper end-->
+
+<div id="footer"></div>
+
+	<!-- Placed js at the end of the document so the pages load faster -->
+	<script src="../public/js/jquery-1.10.2.min.js"></script>
+	<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+	<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="../public/js/bootstrap.min.js"></script>
+	<script src="../public/js/modernizr.min.js"></script>
+	<script src="../public/js/jquery.nicescroll.js"></script>
+	
+	<!--common scripts for all pages-->
+	<script src="../public/js/scripts.js"></script>
+	<script type="text/javascript" src="../public/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="../public/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript" src="../public/js/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script src="js/main.js"></script>
+	<!-- <script src="js/video_playback.js"></script> -->
+	
+	<script src="js/webVideoCtrl.js"></script>
+	<script src="js/demo2.js"></script>
+	
+</body>
+</html>

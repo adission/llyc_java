@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>系统设置</title>
+    <!--全局css-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="font/iconfont.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!--datatables-->
+    <link rel="stylesheet" href="plugins/datatables/datatables.min.css">
+    <link rel="stylesheet" href="plugins/datatables/plugins/bootstrap/datatables.bootstrap.css">
+    <!--datatimepicker-->
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+    <!--页面css-->
+
+</head>
+<body>
+<!--头部导航-->
+<div class="header"></div>
+<!--身体-->
+<div class="content row" id="content">
+    <!--左侧--导航-->
+    <div class="content-left"></div>
+
+    <!--右侧table-->
+    <div class="content-right">
+        <div class="body-navbar">
+            <ol class="breadcrumb">
+                <li>系统设置</li>
+            </ol>
+        </div>
+
+        <div class="col-md-6" style="font-size: 12px;">
+            <div class="row">
+
+                <div class="panel panel-info">
+                        <div class="panel-heading panel-success">
+                            设备IP解析
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">模式</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control">
+                                            <option>IPserver</option>
+                                            <option>IPserver 2</option>
+                                            <option>IPserver 3</option>
+                                            <option>IPserver 4</option>
+                                            <option>IPserver 5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">服务器地址</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <label class="col-md-2 control-label">端口号</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">设备标识</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-info pull-right">获取设备IP</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="panel panel-danger">
+                        <div class="panel-heading panel-success">
+                            登录
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">IP地址</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" value="192.168.3.125">
+                                    </div>
+                                    <label class="col-md-2 control-label">端口号</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" value="82">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">用户名</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" value="admin">
+                                    </div>
+                                    <label class="col-md-2 control-label">密码</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">设备端口号</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="(可选参数)">
+                                    </div>
+                                    <label class="col-md-2 control-label">窗口分割数</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control">
+                                            <option>1×1</option>
+                                            <option>2×2</option>
+                                            <option>3×3</option>
+                                            <option>4×4</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading panel-success">
+                        本地配置
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">播放性能</label>
+                                <div class="col-md-4">
+                                    <select class="form-control">
+                                        <option>最短延时</option>
+                                    <option>最短延时2</option>
+                                    <option>最短延时3</option>
+                                    <option>最短延时4</option>
+                                    </select>
+                                </div>
+                                <label class="col-md-2 control-label">图像尺寸</label>
+                                <div class="col-md-4">
+                                    <select class="form-control">
+                                    <option>充满</option>
+                                    <option>一半</option>
+                                    <option>3/4</option>
+                                    <option>5/6</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">规则信息</label>
+                                <div class="col-md-4">
+                                    <select class="form-control">
+                                        <option>启用</option>
+                                        <option>关闭</option>
+                                    </select>
+                                </div>
+                                <label class="col-md-2 control-label">抓图文件格式</label>
+                                <div class="col-md-4">
+                                    <select class="form-control">
+                                        <option>JPGE</option>
+                                        <option>PNG</option>
+                                        <option>GIF</option>
+                                        <option>PNG</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">录像文件打包大小</label>
+                                <div class="col-md-4">
+                                    <select class="form-control">
+                                        <option>256</option>
+                                        <option>1024M</option>
+                                    </select>
+                                </div>
+                                <label class="col-md-2 control-label">协议类型</label>
+                                <div class="col-md-4">
+                                    <select class="form-control">
+                                        <option>TCP</option>
+                                        <option>HTTP</option>
+                                        <option>HTTPS</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">录像文件保存路径</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="submit" class="btn btn-info pull-right">浏览</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">回放下载保存路径</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="submit" class="btn btn-info pull-right">浏览</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">预览抓图保存路径</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="submit" class="btn btn-info pull-right">浏览</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">回放抓图保存路径</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="submit" class="btn btn-info pull-right">浏览</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="panel panel-danger">
+                    <div class="panel-heading panel-success">
+                        预览
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">码流类型</label>
+                                <div class="col-md-4">
+                                    <select class="form-control">
+                                        <option>主码流</option>
+                                        <option>主码流2</option>
+                                        <option>主码流3</option>
+                                        <option>主码流4</option>
+                                    </select>
+                                </div>
+                                <label class="col-md-2 control-label">音量</label>
+                                <div class="col-md-4">
+                                    <input type="number" class="form-control" min="0" max="100" placeholder="(0至100)">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">模式</label>
+                                <div class="col-md-4">
+                                    <select class="form-control">
+                                        <option>50HZ</option>
+                                        <option>100HZ</option>
+                                        <option>200HZ</option>
+                                        <option>1000HZ</option>
+                                    </select>
+                                </div>
+                                <label class="col-md-2 control-label">帧率</label>
+                                <div class="col-md-4">
+                                    <select class="form-control">
+                                        <option>30fps</option>
+                                        <option>60fps</option>
+                                        <option>90fps</option>
+                                        <option>120fps</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">亮度</label>
+                                <div class="col-md-4">
+                                    <select class="form-control">
+                                        <option>8(默认)</option>
+                                        <option>16</option>
+                                        <option>20</option>
+                                        <option>24</option>
+                                    </select>
+                                </div>
+                                <label class="col-md-2 control-label">对比度</label>
+                                <div class="col-md-4">
+                                    <select class="form-control">
+                                        <option>12(默认)</option>
+                                        <option>15</option>
+                                        <option>20</option>
+                                        <option>25</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">对讲通道</label>
+                                <div class="col-md-4">
+                                    <select class="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="btn btn-danger">获取通道</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading panel-success">
+                    设备IP解析
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">模式</label>
+                            <div class="col-md-4">
+                                <select class="form-control">
+                                    <option>IPserver</option>
+                                    <option>IPserver 2</option>
+                                    <option>IPserver 3</option>
+                                    <option>IPserver 4</option>
+                                    <option>IPserver 5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">服务器地址</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control">
+                            </div>
+                            <label class="col-md-2 control-label">端口号</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">设备标识</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-info pull-right">获取设备IP</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+<!--全局js-->
+<script src="js/publicJS/jquery-1.11.3.min.js"></script>
+<script src="js/publicJS/bootstrap.min.js"></script>
+<script src="js/publicJS/vue.min.js"></script>
+<script src="js/main.js"></script>
+<script src="font/iconfont.js"></script>
+<!--datatables-->
+<script src="plugins/datatables/datatables.min.js"></script>
+<script src="plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"></script>
+<!--datetimepicker-->
+<script src="js/publicJS/bootstrap-datetimepicker2.js"></script>
+<script src="js/publicJS/bootstrap-datetimepicker.zh-CN.js"></script>
+<!--页面js-->
+<script>
+    //加载头部左侧
+    $(function(){
+        showHeader();
+        showLeft();
+    });
+
+
+</script>
+</body>
+</html>

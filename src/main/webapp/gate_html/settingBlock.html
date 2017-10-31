@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闸机分区管理</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/jquery-confirm.css">
+    <link rel="stylesheet" href="css/bootstrapValidator.css">
+</head>
+<body>
+<!--头部导航-->
+<div class="header row"></div>
+<!--身体-->
+<div class="content row">
+    <!--左侧--导航-->
+    <div class="content-left col-md-2 col-sm-1"></div>
+
+    <!--右侧table-->
+    <div class="content-right col-md-10 col-sm-11 col-xs-12">
+   		<div class="alert alert-success" role="alert" style="display: none">添加闸机分区成功</div>
+   		<div class="alert alert-danger" role="alert" style="display: none"></div>
+        <div class="right-body">
+            <!--路径导航-->
+            <div class="body-navbar">
+                <ol class="breadcrumb">
+                    <li>设置</li>
+                    <li class="active">闸机分区设置</li>
+                </ol>
+            </div>
+
+            <div class="search-content">
+                <form class="form-inline well  clearfix">
+                    <div class="form-group col-xs-5">
+                        <!--<label>名称:</label>-->
+                        <input type="email" class="form-control" placeholder="名称" id="groupname">
+                    </div>
+                    <button type="button" class="btn btn-primary pull-right"  id="searchBtn">
+                        <i class="glyphicon glyphicon-search"></i> 查询
+                    </button>
+                </form>
+            </div>
+            <!--新增---修改-->
+            <div class="modal fade" tabindex="-1" role="dialog" id="myModal" data-id='' data-backdrop="static"></div>
+    
+            <div class="body-content" >
+                <div style=" position:relative; z-index:9;height:100%; margin-bottom: 10px">
+                    <!--添加和删除 -->
+                    <button class="btn btn-primary inline-block" onclick="openModal('')"><i class="glyphicon glyphicon-plus"></i>添加</button>
+                    <button class="btn btn-danger inline-block" id="delRow"><i class="glyphicon glyphicon-remove"></i>删除</button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <div class="wt100   container" style="position:relative; height:100%">
+                <div class="span12" id="div-table-container">
+                    <table class="table table-striped table-bordered table-hover table-condensed" id="table-detail"
+                           cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <!--<th style=" width:28px; padding:0"></th>-->
+                            <th style="width:30px; padding:10px 0 10px 10px">
+                                <input type="checkbox" id="checkAll" name="checkList"></th>
+                            <th>欢迎语</th>
+                            <th>名称</th>
+                            <th>删除</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--table-->
+    </div>
+</div>
+</div>
+
+<!--底部-->
+<div class="text-center">
+    <div class=""> 2017 &copy; 蓝领劳务管理系统 By <a href="index.html">管理系统</a>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/dataTables.bootstrap.js"></script>
+<script src="js/bootstrapValidator.js"></script>
+<script type="text/javascript" src="js/jquery.spin.merge.js"></script>
+<script type="text/javascript" src="js/jquery-confirm.js"></script>
+<script src="js/main.js"></script>
+<script src="html-js/settingBlock/settingBlock.js"></script>
+
+</body>
+</html>

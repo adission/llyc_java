@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>闸机列表管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    
+    <link rel="shortcut icon" href="#" type="image/png">
+    <link href="../public/js/bootstrap-datepicker/css/datepicker-custom.css" rel="stylesheet">
+    <link href="../public/js/bootstrapValidator/bootstrapValidator.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/js/zyupload-1.0.0/zyupload-1.0.0.css">
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css"/>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+   	<style>
+    	.form-group .form-control-feedback {
+			right: 11%;
+		}
+		.radio .bv-form .help-block {
+			margin-left: 19%;
+		}
+		.ip.form-group .form-control-feedback, .duan.form-group .form-control-feedback {
+			top: 10px;
+			right: 0%;
+		} 
+		.connect .radio .form-control {
+			float: none;
+		}
+		.connect .radio .form-group .form-control {
+			margin-top: 0;
+		}
+		.ip.form-group .help-block{
+			margin-top: -5px;
+			margin-left: 32%;
+		}
+    </style>
+</head>
+<body class="horizontal-menu-page">
+
+<section>
+    <div class="header"></div>
+    <div class="alert alert-success" role="alert" style="display: none"></div>
+	<div class="alert alert-danger" role="alert" style="display: none"></div>
+	<!--新增和编辑模态框-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal" data-id="" data-backdrop="static"></div>
+    <!-- main content start-->
+    <div class="wrapper">
+		<div class="body-content">
+	        <!-- page heading start-->
+	        <div class="page-heading">
+	            <h3><span id="venue_lbl_head">闸机列表管理</span></h3>
+	            <ul class="breadcrumb">
+	                <li>闸机管理</li>
+	                <li class="active">闸机列表管理</li>
+	            </ul>
+	        </div>
+	        <!-- page heading end-->
+			<hr>
+        	<!--body wrapper start-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <div class="panel-body">
+                            <div class="adv-table">
+                            	<!-- 按钮组  -->
+                                <div class="row" style="margin-bottom: 20px">
+                                    <div class="col-lg-6">
+                                        <button class="btn btn-primary" onclick="openModal('')">
+                                            <i class="fa fa-plus"></i> 添加
+                                        </button>
+                                        <button class="btn btn-danger" id="delRow">
+                                            <i class="fa fa-times"></i> 删除
+                                        </button>
+                                        
+                                        <button class="btn btn-info" style="margin-left: 20px" id="start">
+                                            <i class="fa fa-power-off"></i> 复位
+                                        </button>
+                                        <button class="btn btn-success" id="alOpen">
+                                            <i class="fa fa-check-circle-o"></i> 常开
+                                        </button>
+                                        <button class="btn btn-danger"  id="alClose">
+                                            <i class="fa fa-ban"></i> 常闭
+                                        </button>
+                                        <button class="btn btn-primary"  id="resetOpen">
+                                            <i class="fa fa-repeat"></i> 重启
+                                        </button>
+                                        
+                                        
+                                    </div>
+                                    <div class="pull-right" style="margin-right: 30px" >
+                                        <button class="btn btn-primary" id="exportData">
+                                            <i class="fa fa-print"></i> 导出Excel
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- 搜索框 -->
+                                <div class="row" style="margin-bottom: 20px">
+                                	<div class="pull-right" style="margin-right: 30px">
+                                        <div class="col-lg-5">
+                                        	<input class="form-control" type="text" placeholder="闸机名称" id="gatename">
+                                        </div>
+                                        <div class="col-lg-5">
+                                        	<input class="form-control" type="text" placeholder="闸机编号" id="gateno">
+                                        </div>
+                                        <div class="col-lg-2">
+                                        	<button class="btn btn-primary" id="searchBtn"><i class="fa fa-search"></i>搜索</button>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="span12" id="div-table-container">
+	                                <table class="display table general-table table-striped" id="gateList">
+	                                    <thead>
+	                                    <tr>
+				                            <th style=" width:10px; padding:0"></th>
+				                            <th style="width:30px; padding:10px 0 10px 10px">
+				                                <input type="checkbox" id="checkAll" name="checkAll"></th>
+				                            <th>闸机型号</th>
+				                            <th>名称</th>
+				                            <th>方向</th>
+				                            <th>控制器编号</th>
+				                            <th>闸机编号</th>
+				                            <th>安装位置</th>
+				                            <th>闸机分区</th>
+				                            <th>闸机状态</th>
+				                            <th>考勤机</th>
+				                            <th>操作</th>
+				                        </tr>
+	                                    </thead>
+	                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!--body wrapper end-->
+
+        
+
+    </div>
+    <!-- main content end-->
+    <!--footer section start-->
+    <footer>
+        Copyright © 2017 Lanlyc
+    </footer>
+    <!--footer section end-->
+</section>
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../public/js/jquery-1.11.3.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/modernizr.min.js"></script>
+<script src="../public/js/jquery.nicescroll.js"></script>
+<!-- <script src="../public/js/scripts.js"></script> -->
+<script src="../public/js/vue.min.js"></script>
+<script type="text/javascript" src="../public/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+<script type="text/javascript" src="../public/js/jquery-confirm/jquery.spin.merge.js"></script>
+<script type="text/javascript" src="../public/js/jquery-confirm/jquery-confirm.js"></script>
+<script type="text/javascript" src="../public/js/bootstrapValidator/bootstrapValidator.js"></script>
+<script type="text/javascript" src="../public/js/zyupload-1.0.0/zyupload.tailor-1.0.0.js"></script>
+
+<!--dynamic table-->
+<script src="../public/js/data-tables/jquery.dataTables1.js"></script>
+<script type="text/javascript" src="../public/js/data-tables/dataTables.bootstrap.js"></script>
+
+<script src="html-js/main.js"></script>
+<script src="html-js/gateList/gateList.js"></script>
+
+</body>
+</html>

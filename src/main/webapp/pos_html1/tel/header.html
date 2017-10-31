@@ -1,0 +1,102 @@
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="indexMap.html">
+                <img src="../public/images/logo.png" alt="">
+                <span style="color: #ffffff">智慧工地人员定位系统</span>
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav mainnav">
+                <li class="active"><a href="indexMap.html">实时监控</a></li>
+                <li ><a class="info-number" href="warningCall.html">告警管理<span class="badge" id="warnCount"></span></a></li>
+                <!--<li ><a href="basestationManage.html">基站管理</a></li>-->
+                <li ><a href="videoManage.html">摄像头管理</a></li>
+                <li ><a href="labelManage.html">绑定定位卡</a></li>
+                <li >
+                	<a href="#" data-toggle="modal" id="labelSetting">标签设置</a>
+                    <div aria-hidden="true" aria-labelledby="myModalLabel"  data-backdrop="static" id="labelModal" class="modal fade" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="margin-top: 80px">
+                                <div class="modal-header">
+                                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                    <h4 class="modal-title">标签颜色</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form-horizontal  " action="#">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">工作人员：</label>
+                                            <div class="col-md-4 col-xs-11">
+                                                <div data-color-format="rgb" data-color="rgb(255, 0, 0)" class="input-append colorpicker-default color">
+                                                    <input type="text" readonly="" value="rgb(255, 0, 0)" class="form-control" id="workname" onchange="changecolor(workcolor)">
+                                              <span class=" input-group-btn add-on">
+                                                  <button class="btn btn-default" type="button" style="padding: 8px">
+                                                      <i style="background-color: rgb(255, 0, 0);" id="workcolor"></i>
+                                                  </button>
+                                              </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">访客：</label>
+                                            <div class="col-md-4 col-xs-11">
+                                                <div data-color-format="rgb" data-color="rgb(0, 255, 255)" class="input-append colorpicker-default color">
+                                                    <input type="text" readonly="" value="rgb(0, 255, 255)" class="form-control" id="outname" onchange="changecolor(outcolor)">
+                                              		<span class=" input-group-btn add-on">
+                                                  <button class="btn btn-default" type="button" style="padding: 8px">
+                                                      <i style="background-color: rgb(0, 255, 255);" id="outcolor"></i>
+                                                  </button>
+                                              </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="button" class="btn btn-success" onclick="sureColor()">确定</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+               
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img alt="" src="../public/images/photos/user-avatar.png"> 用户名 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">返回主菜单</a></li>
+                        <li><a href="#">退出登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="warningInfo well" style=" width: 350px;position: fixed;top: 380px;right:-350px;z-index: 30;">
+            <h3>报警基本信息<span aria-hidden="true" style="float: right;" onclick="closewarningInfo()">×</span></h3>
+            <p>报警对象：<span id="name"></span></p>
+            <p>报警类型： <span id="alertType"></span></p>
+            <p>报警时间： <span id="time"></span></p>
+            <p>报警地点： <span id="place"></span></p>
+            <p style="margin-left: 40%"><span onclick="upwarn()"><img src="images/closed2.png"></span> <span onclick="downwarn()"><img src="images/closed.png"></span></p>
+        </div>
+    </div>
+
+</nav>
+<link rel="stylesheet" type="text/css" href="../public/js/jquery-confirm/jquery-confirm.css" />
+<link rel="stylesheet" type="text/css" href="../public/js/bootstrap-colorpicker/css/colorpicker.css" />
+<script src="../public/js/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+<script src="../public/js/jquery-confirm/jquery-confirm.js"></script>
+<script src="html-js/colormanage/colorModal.js"></script>
+<script src="html-js/indexMap/warningShow.js"></script>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>定位标识管理</title>
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="../public/js/bootstrap-colorpicker/css/colorpicker.css" />
+	<link rel="stylesheet" type="text/css" href="html-js/labelManage/select2.min.css" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+
+    </style>
+</head>
+<body class="horizontal-menu-page">
+<section>
+    <!--公共头部-->
+    <div class="header"></div>
+    <!--表格数据-->
+    <div class="wrapper">
+
+        <!--处理弹出框-->
+        <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" data-backdrop="static" tabindex="-1"
+             id="myModal" class="modal fade">
+            <div class="modal-dialog" style="margin: 150px auto">
+                <div class="modal-content">
+                    <div class="modal-header " style="background: #5bc0de">
+                        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                        <h4 class="modal-title">修改定位卡</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="get" class="form-horizontal bucket-form" style="width: 90%;margin: auto">
+                            <div class="form-group">
+                                <label class="col-sm-3 col-sm-3 control-label">卡号:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="card-num">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">绑定人员:</label>
+                                <div class="col-lg-9">
+                                    <select id="user-sel">
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-info" id="addCardModal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--处理弹出框-->
+        <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" data-backdrop="static" tabindex="-1"
+             id="myModal3" class="modal fade">
+            <div class="modal-dialog" style="margin: 150px auto">
+                <div class="modal-content">
+                    <div class="modal-header " style="background: #5bc0de">
+                        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                        <h4 class="modal-title">批量制卡</h4>
+                    </div>
+                    <form class="form-horizontal " style="margin-top: 20px">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">卡号：</label>
+                            <div class="col-md-7">
+                                <div class="input-group input-large">
+                                    <input type="number" class="form-control dpd1" name="from" min="1" id="min-numb">
+                                    <span class="input-group-addon">To</span>
+                                    <input type="number" class="form-control dpd2" name="to"  min="1" id="max-numb" onblur="maxInput()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">制卡数量：</label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control" disabled value="0张" id="min-max-numb"/>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-info" id="makeCard">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+
+                    <div class="panel-body">
+                        <div class="adv-table" id="div-table-container">
+
+                            <div class="domab">
+                                <div id="dynamic-table_filter" class="dataTables_filter">
+                                    <label>模糊查询：
+                                        <input type="search" class="form-control input-sm" placeholder=""
+                                               aria-controls="dynamic-table" id="dsearch" onblur="selector()">
+                                    </label>
+                                </div>
+                                <div class="btnClass">
+                                    <button class="btn btn-default " type="button" id="addCard">
+                                        <i class="fa fa-plus"></i> 新增</button>
+                                    <button class="btn btn-default " type="button" id="delCards">
+                                        <i class="fa fa-trash-o"></i> 删除</button>
+                                    <a href="#myModal3" data-toggle="modal" class="btn btn-default " type="button" id="addCards">批量制卡</a>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+
+                            <table class="display table general-table table-striped" id="dynamic-table">
+                                <thead>
+                                <tr>
+                                    <th style="width:30px; padding:10px 0 10px 10px">
+                                        <input type="checkbox" id="checkAll" name="checkList"></th>
+                                    <th class="text-center">序号</th>
+                                    <th>卡号</th>
+                                    <th>绑定人</th>
+                                    <th>工种</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../public/js/jquery-1.10.2.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../public/js/data-tables/jquery.dataTables1.js"></script>
+<script type="text/javascript" src="../public/js/data-tables/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="../public/js/jquery-confirm/jquery.spin.merge.js"></script>
+<script type="text/javascript" src="../public/js/jquery-confirm/jquery-confirm.js"></script>
+
+<!--common scripts for all pages-->
+<script src="html-js/main.js"></script>
+<script src="html-js/labelManage/labelManage.js"></script>
+<script src="html-js/labelManage/select2.min.js"></script>
+<script type="text/javascript" src="../gate_html/js/jquery.spin.merge.js"></script>
+<script>
+
+</script>
+
+</body>
+</html>

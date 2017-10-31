@@ -1,0 +1,398 @@
+/*　左侧导航样式　*/
+#left-panel {
+    display: none;
+    width: 260px;
+    height: 2000px;
+    /*padding: 20px;*/
+    /*background-color: #333;*/
+    /* color: #fff; */
+    /*box-shadow: inset 0 0 5px 5px #222;*/
+    overflow: scroll;
+    padding-bottom: 50px;
+}
+/*左侧导航按钮样式*/
+.openLabel {
+    width: 34px;
+    position: fixed;
+    top: 380px;
+    left: -10px;
+    z-index: 30;
+}
+#body-content {
+	position: relative;
+}
+/*头部固定在顶部*/
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+.panel-heading .nav.nav-tabs {
+    margin: -8px -15px -9px;
+    /* border-bottom: 1px solid; */
+}
+#left-panel .panel-headinf.custiom-tab ul.nav li:first-child {
+	border-right: 1px solid;
+}
+.nav.nav-stacked > li {
+    padding: 8px;
+    border-bottom: 1px solid #909090;
+}
+.activeMap {
+    background: #d7d7d7;
+}
+address {
+    color: #000000;
+}
+#personManage>.panel,#personManage .panel-group .panel, .panel-body.user-body, #locationMap {
+    background: #eeeeee;
+
+}
+.panel {
+    box-shadow: none!important;
+}
+.panel-group {
+    color: #000000;
+}
+.panel-heading.dark {
+    background: none;
+    color: #000000;
+}
+.panel-group .list-group-item {
+    border: none;
+    background: #eeeeee;
+}
+.panel-heading.dark a:hover, .panel-heading.dark a:focus {
+    color: inherit;
+    text-decoration: none;
+}
+.panel-body.user-body {
+    padding: 0;
+}
+.panel-heading.mapName {
+    border-bottom: none;font-size: 18px;
+}
+.userType {
+    padding: 0 15px;
+}
+
+.panel-group .panel-heading.dark {
+    padding: 15px 0;
+}
+.accordion-toggle i {
+    margin-right: 5px;
+    color: #909090;
+}
+.labelgroup {
+    margin-left: 15px;
+    font-size: 18px;
+}
+.labelgroup i {
+    margin-right: 5px;
+}
+.labelgroup i:hover {
+    cursor: pointer;
+}
+.panel-heading.custom-tab>ul.nav > li:first-child > a {
+	padding: 15px 34px 15px 35px !important;
+}
+.panel-heading.custom-tab>ul.nav > li > a {
+    margin-right: 0;
+    padding: 15px 34px !important;
+}
+#map .ol-viewport {
+	top: 30px;
+}
+#map {
+	margin-bottom: -600px;
+}
+/*缩放控件样式*/
+.ol-zoom .ol-zoom-out {
+  margin-top: 204px;
+}
+.ol-zoomslider {
+  background-color: transparent;
+  top: 2.4em;
+  left: .7em;
+}
+
+.ol-zoomslider-thumb.ol-unselectable {
+	height: .3em;
+	left: -1px;
+}
+
+.ol-touch .ol-zoom .ol-zoom-out {
+  margin-top: 212px;
+}
+.ol-touch .ol-zoomslider {
+  top: 2.75em;
+}
+
+ .ol-zoom-in.ol-has-tooltip:hover [role=tooltip],
+.ol-zoom-in.ol-has-tooltip:focus [role=tooltip] {
+  top: 3px;
+}
+
+.ol-zoom-out.ol-has-tooltip:hover [role=tooltip],
+.ol-zoom-out.ol-has-tooltip:focus [role=tooltip] {
+  top: 232px;
+}
+button.ol-full-screen-false:after, button.ol-full-screen-true:after {
+	content: "";
+}
+
+/* 图上控件样式*/
+#layerControl1,#layerControl2 {
+    position:absolute;
+    z-index:99;
+    top: 90px;
+    background: #ffffff;
+    box-shadow: 2px 2px 2px 2px  rgba(0,0,0,.15);
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+}
+#layerControl1 {
+    left: 60px;
+}
+#layerControl2 {
+    right: 40px;
+}
+
+.contrilForm {
+	line-height: 50px;
+}
+#searchParam {
+    width: 300px;
+    border: none;
+    outline:none;
+    margin-left: 20px
+}
+#searchBtn {
+    border: none;
+    padding: 9px 15px;
+    font-size: 24px;
+    line-height: 40px;
+    background: transparent;
+    outline: none;
+}
+
+#layerControl2 .nav > li > a:hover, #layerControl2 .nav > li > a:focus {
+	background: transparent;
+	
+}
+#layerControl2 .nav {
+	height: 58px
+}
+#layerControl2 .nav > li {
+	height: 40px;
+    margin-top: 10px;
+}
+#layerControl2 .nav > li:not(:last-child){
+	border-right: 1px solid #eeeeee;
+	padding: 0px 10px;
+}
+#layerControl2 .nav > li > a {
+ 	padding-top: 9px;
+    padding-bottom: 0;
+}
+#layerControl2 .dropdown-menu{
+	top: 118%;
+	background: #ffffff;
+	min-width: 79px;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+	background-clip: padding-box;
+}
+.horizontal-menu-page .dropdown-menu > li > a {
+	color: #000000;
+}
+.horizontal-menu-page .dropdown .dropdown-menu > li > a:hover {
+	background: #ffffff;
+}
+.horizontal-menu-page .dropdown-menu > li > a.openEye {
+	color: #65CEA7;
+}
+.dropdown-menu .fa {
+	margin-right: 8px;
+	margin-left: -5px;
+	font-size: 15px;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+	background: none;
+}
+
+
+
+/*轨迹回放样式*/
+#pathControl1,#pathControl2 {
+    position:absolute;
+    z-index:999;
+    top: 40px;
+    background: rgba(179, 175, 180, 0.56);
+}
+#pathControl1 {
+    left: 60px;
+}
+#pathControl2 {
+    right: 60px;
+}
+.pathIcon>span {
+    padding: 6px 5px 2px;
+    border: 2px solid #ffffff;
+}
+.pathIcon>span>i {
+    color: rgba(72, 78, 70, 0.76);
+    font-size: 20px;
+    display: inherit;
+}
+#pathControl2 .nav > li > a {
+    padding: 10px;
+}
+#pathControl2 .nav > li > a:hover, #pathControl2 .nav > li > a:active {
+    background: #aeea96;
+}
+#pathControl2 .nav>li >ul.dropdown-menu {
+    min-width: 79px;
+    height: 200px;
+    overflow-y: scroll;
+    background: #ffffff;
+    box-shadow: 2px 2px 2px 2px  rgba(0,0,0,.15);
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+}
+
+/*轨迹回放方式*/
+.pathMap {
+    width: 65%;
+    height: 75%;
+    visibility: hidden;
+    position: fixed;
+    z-index: 20000000;
+    top: 20px;
+    left: 20%;
+    background: #ffffff;
+    visibility: hidden;
+}
+
+/*项目信息样式*/
+.projectInfo {
+    width: 350px;
+    position: fixed;
+    top: 380px;
+    right:-350px;
+    z-index: 30;
+}
+
+/*人员弹框中上部分字体的间隔样式*/
+#popup .form-group{
+ 	margin-bottom:0px;
+ }
+
+/*人员弹框中中间一条线的样式*/
+#popup .hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+
+
+#layerControl1 .dropdown-menu {
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+	background-clip: padding-box;
+	width: 376px;
+	background: #ffffff;
+	border-radius: 0;
+}
+#layerControl1 .dropdown-menu>li:hover,  #layerControl1 .dropdown-menu>li:active {
+	background: #eeeeee;
+}
+
+.btnIcon {
+	left:  60px;
+	top: -25px;
+}
+.btnIcon button {
+	border: none;
+	padding: 6px;
+	background: transparent;
+}
+.btnIcon button:disabled {
+	background: transparent;
+}
+.btnIcon button i {
+	font-size: 18px;
+}
+
+.dropdown-menu.bootstrap-timepicker, .dropdown-menu.datepicker {
+	z-index: 1000000;
+}
+
+.maps.dropdown-menu {
+	/* display: block; */
+	/* box-sizing: border-box; */
+	width: 145px;
+	background: rgba(179, 175, 180, 0.56);
+	border-radius: 0;
+}
+.maps.dropdown-menu li:not(:last-child) {
+	border-bottom: 1px solid #eee;
+}
+#currentMap {
+	width: 160px;
+	line-height: 30px;
+	padding: 10px 20px;
+}
+#currentMap>i {
+	position: absolute;
+	right: 17px;
+	top: 17px;
+}
+
+/*定义动画*/
+@-webkit-keyframes spin { /*兼容性写法。spin是关键帧的动画名称*/
+    from { -webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
+@keyframes spin {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(360deg);}
+}
+@-moz-keyframes spin {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(360deg);}
+}
+ @-o-keyframes spin {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(360deg);}
+}
+
+i.fa.fa-spinner {
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+
+#locationMap .directory-info-row .thumb {
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	width: 108px;
+	margin-left: 7px;
+	height: 90px;
+	margin-right: 2px;
+}
+#locationMap .directory-info-row {
+	margin-top: 0;
+}
+#locationMap .panel-heading ul.nav.nav_tabs li.active:first-child>a {
+	background: #ff0000 !important;
+}
+
+#locationMap ul.nav.nav_tabs li:first-child {
+	border-right: 1px solid #eeeeee;
+}
+
+

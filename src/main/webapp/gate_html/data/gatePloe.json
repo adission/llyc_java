@@ -1,0 +1,49 @@
+{
+  "draw": 1,
+  "total": 7,
+  "data": [
+    {
+      "cid": 1656558,
+      "name": "admin",
+      "personType": "平台人员",
+      "type": "木工",
+      "group": "大甲班组"
+    },{
+      "cid": 1656558,
+      "name": "Tom",
+      "personType": "管理员",
+      "type": "泥工",
+      "group": "小已班组"
+    },{
+      "cid": 1656558,
+      "name": "Jack",
+      "personType": "管理员",
+      "type": "泥工",
+      "group": "大甲班组"
+    },{
+      "cid": 1656558,
+      "name": "Rose",
+      "personType": "平台人员",
+      "type": "焊工",
+      "group": "小已班组"
+    },{
+      "cid": 1656558,
+      "name": "Lily",
+      "personType": "施工人员",
+      "type": "木工",
+      "group": "小已班组"
+    },{
+      "cid": 1656558,
+      "name": "Lucy",
+      "personType": "施工人员",
+      "type": "泥工",
+      "group": "小已班组"
+    },{
+      "cid": 1656558,
+      "name": "Lilei",
+      "personType": "施工人员",
+      "type": "焊工",
+      "group": "大甲班组"
+    }
+  ]
+}

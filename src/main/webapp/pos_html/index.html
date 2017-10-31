@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位页面</title>
+    <meta name="viewport" content="width=device-width,height=device-height, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1,target-densitydpi=device-dpi ">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/joint.css" />
+    <style>
+        .content-body {
+           padding: 10px;
+        }
+        /*显示*/
+        .parent {
+            position: relative;
+            width: 100%;
+            height: 1210px;
+            /*border: 1px solid #aaee79;*/
+            z-index: 100;
+            overflow: hidden;
+            -webkit-box-shadow:0 0 5px rgba(136, 132, 137, 0.51);
+            -moz-box-shadow:0 0 5px rgba(136, 132, 137, 0.51);
+            box-shadow:0 0 5px rgba(136, 132, 137, 0.51);
+            background: #ffffff;
+        }
+        .dragAble {
+            /*border: 1px solid #000000;*/
+        }
+        svg {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 50;
+        }
+        .accordion {
+            height: 450px;
+            overflow: scroll;
+
+        }
+        .submenu {
+            background: #bcbabb;
+        }
+        .submenu li {
+            line-height: 45px;
+            text-align: center;
+        }
+        #userDetail {
+            position: absolute;
+            width: 380px;
+            z-index: 500;
+        }
+        #userDetail .panel-heading {
+           background-color: rgba(206, 43, 33, 0.49);
+        }
+        .userModal {
+            display: none;
+            height: 1210px;
+            width: 100%;
+            position: absolute;
+            z-index: 100;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--头部导航-->
+    <div class="header"></div>
+
+    <!--身体-->
+    <div class="content-body">
+        <!--左侧--导航-->
+        <div class="body-left col-md-2 col-xs-12">
+            <div>
+                <!--地点,环境,时间-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">浙江金华火车站</div>
+                    <div class="panel-body">晴转多云 35&#176;C ~26&#176;</div>
+                    <div class="panel-footer">2017-08-23 09:04:07</div>
+                </div>
+
+                <!--人员列表-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">金华客房站项目人员列表</div>
+                    <div class="panel-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="username" placeholder="用户名手机号">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <ul class=" accordion"  id="accordion">
+                        <li><div class="link">
+                                <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                                <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                                <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                                <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                                <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                                <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                            <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                            <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                            <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                            <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                            <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                        <li><div class="link">
+                            <span class="text-warning" style="margin-right: 20px">张三</span><span> 17189047834</span></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--标记备注-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">标记备注</div>
+                    <div class="panel-body" >
+                        <div class="col-xs-12" style="padding-right: 0;padding-left: 0">
+                            <p>--<i class="glyphicon glyphicon-user text-primary"></i><span>&nbsp;&nbsp;&nbsp;管理人员</span></p>
+                            <p>--<i class="glyphicon glyphicon-user text-info"></i><span>&nbsp;&nbsp;&nbsp;施工人员</span></p>
+                            <p>--<i class="glyphicon glyphicon-user text-danger"></i><span>&nbsp;&nbsp;&nbsp;安检人员</span></p>
+                            <p>--<i class="glyphicon glyphicon-user text-success"></i><span>&nbsp;&nbsp;&nbsp;巡逻人员</span></p>
+                            <p>--<i class="glyphicon glyphicon-user text-warning"></i><span>&nbsp;&nbsp;&nbsp;临时人员</span></p>
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-cloud text-danger"></i><span>&nbsp;&nbsp;&nbsp;网络设备</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-adjust text-info"></i><span>&nbsp;&nbsp;&nbsp;重要标记</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-user text-primary"></i><span>&nbsp;&nbsp;&nbsp;人员标记</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-facetime-video text-success"></i><span>&nbsp;&nbsp;&nbsp;摄像设备</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-compressed text-warning"></i><span>&nbsp;&nbsp;&nbsp;机器设备</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-tree-deciduous text-danger"></i><span>&nbsp;&nbsp;&nbsp;环境标记</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-bed text-primary"></i><span>&nbsp;&nbsp;&nbsp;物料标记</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-cloud text-danger"></i><span>&nbsp;&nbsp;&nbsp;网络设备</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-adjust text-info"></i><span>&nbsp;&nbsp;&nbsp;重要标记</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-user text-primary"></i><span>&nbsp;&nbsp;&nbsp;人员标记</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-facetime-video text-success"></i><span>&nbsp;&nbsp;&nbsp;摄像设备</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-compressed text-warning"></i><span>&nbsp;&nbsp;&nbsp;机器设备</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-tree-deciduous text-danger"></i><span>&nbsp;&nbsp;&nbsp;环境标记</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--&#45;&#45;<i class="glyphicon glyphicon-bed text-primary"></i><span>&nbsp;&nbsp;&nbsp;物料标记</span>-->
+                            <!--</p>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--右侧table-->
+        <div class="body-right col-md-10" style="padding: 0;margin-bottom: 50px">
+            <div class="right-body">
+                <!--路径导航-->
+                <div class="body-navbar">
+                    <ol class="breadcrumb">
+                        <li>人员定位</li>
+                    </ol>
+                </div>
+
+                <!-- 轨迹回放操作框 -->
+                <div class="search-content">
+                    <form class="form-inline well  clearfix">
+                        <div class="form-group col-md-4 col-xs-12">
+                            <label>日期:</label>
+                            <input type="date" class="form-control" value="2017-05-08">
+                        </div>
+                        <div class="form-group col-md-4  col-xs-6">
+                            <label>开始时间:</label>
+                            <input type="datetime" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group col-md-4 col-xs-6">
+                            <label>结束时间:</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-default" title="快进" onclick="speed()"><i class="glyphicon glyphicon-fast-forward text-primary"></i></button>
+                            <input type="hidden" id="scale"/>
+                            <button type="button" class="btn btn-default" title="快退" onclick="low()"><i class="glyphicon glyphicon-fast-backward text-primary"></i></button>
+                            <input type="hidden" id="offscale"/>
+                            <button type="button" class="btn btn-default" title="暂停" id="stop"><i class="glyphicon glyphicon-pause text-primary"></i></button>
+                            <button type="button" class="btn btn-default" title="开始" id="start"><i class="glyphicon glyphicon-play text-primary"></i></button>
+                        </div>
+                    </form>
+                </div>
+				<!-- 地图 -->
+                <div class="parent">
+                	<!-- 北京地图  -->
+                    <div class="dragAble" id="block1" onMouseOver="dragObj=block1; drag=1;" style="z-index: 10;
+                        left: 0px;  position: absolute; top: 0px; " onMouseOut="" drag="0">
+                        <img  style="zoom: 1.5" src="images/adde8400gw1eeazlmtqa8j20qd0mdadm.jpg"
+                              border="0" name="images1" id="imgB">
+                    </div>
+                   	<!-- 轨迹回放 -->
+                    <div id="papar" onmousewheel="return onWheelZoom(this)"></div>
+                    
+                    
+                    <div class="userModal" >
+                        <div style="position: relative;width: 100%;height: 100%">
+                            <div class="panel panel-default" id="userDetail">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading">人员信息详情</div>
+                                <div class="panel-body">
+                                    <div class=" col-xs-8">
+                                        <p >姓名: 张三</p>
+                                        <p>性别: 男</p>
+                                        <p>年龄: 27</p>
+                                        <p>手机号码: 18315624896</p>
+                                        <p>人员类别: 监工人员</p>
+                                        <p>身份证: 421586196802035698</p>
+                                        <p>工种: 木工</p>
+                                        <p>班组: 大木工班组</p>
+                                        <p>惩罚次数: 10</p>
+                                    </div>
+                                    <div class="col-xs-2 text-center">
+                                        <img src="images/avatar9.jpg" style="width: 100px;margin-bottom: 70px">
+                                        <button class="btn btn-primary" style="margin-bottom: 15px">轨迹回放</button>
+                                        <button class="btn btn-primary">定位追踪</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--底部-->
+    <div class="text-center">
+        <div class=""> 2017 &copy; 蓝领劳务管理系统 By <a href="index.html">管理系统</a>
+        </div>
+    </div>
+
+
+    <script src="js/publicJS/jquery-1.11.3.min.js"></script>
+    <script src="js/publicJS/bootstrap.min.js"></script>
+	<script src="js/publicJS/lodash.js"></script>
+	<script src="js/publicJS/backbone.js"></script>
+	<script src="js/publicJS/joint.js"></script>
+	<script src="js/main.js"></script>
+	
+	<script src="js/drag_map.js"></script>
+    <script src="js/drawLink.js"></script>
+    <script src="js/index.js"></script>
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<div class="modal-dialog"  >
+    <div class="modal-content" style="margin-top: 100px" id="selectTime">
+        <div class="modal-header">
+            <!-- <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button> -->
+            <h4 class="modal-title">轨迹回放</h4>
+        </div>
+        <form action="" class="form-horizontal ">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="control-label col-md-3">日期：</label>
+                    <div class="col-md-7 col-xs-11">
+                        <input class="form-control form-control-inline input-medium default-date-picker" size="16"
+                               type="text" value="" id="pathDate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">开始时间：</label>
+                    <div class="col-md-7">
+                        <div class="input-group bootstrap-timepicker">
+                            <input type="text" class="form-control timepicker-24" id="startTime">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-clock-o"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">结束时间：</label>
+                    <div class="col-md-7">
+                        <div class="input-group bootstrap-timepicker">
+                            <input type="text" class="form-control timepicker-24" id="endTime">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-clock-o"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="cancelTime()">取消</button>
+                <button type="button" class="btn btn-success" onclick="sureTime()">确定</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="html-js/indexMap/pathPlay.js"></script>

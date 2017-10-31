@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>监控直播</title>
+
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+
+    <link href="../public/css/style.css" rel="stylesheet">
+
+
+
+    <link rel="stylesheet" type="text/css" href="../public/js/bootstrap-datetimepicker/css/datetimepicker-custom.css" />
+    <link rel="stylesheet" href="css/video_playback.css">
+</head>
+
+<body class="horizontal-menu-page">
+
+<div id="header"></div>
+
+
+<!--body wrapper start-->
+<div class="wrapper">
+<div class="content">
+    <div class="col-md-2 content-left">
+        <div class="panel panel-default row">
+            <header class="panel-heading">
+                	摄像头列表
+            </header>
+            <div class="panel-body">
+                <ul class="camera_list">
+                    <li v-for="i in cameraList" v-on:click="selectCamera(i.id)"><i class="fa fa-video-camera"></i>
+                    	{{i.vidicon_number}} {{i.vidicon_name}}<span style="color: #ff0000;margin-left: 5px;" v-if="i.whether_important">*&nbsp;</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10">
+    	<div class="content-right row">
+	        <div class="panel">
+	            <div class="panel-body form-horizontal">
+	                <div class="form-group">
+	                    <label class="control-label col-md-1">开始时间</label>
+	                    <div class="col-md-3">
+	                        <input id="startTime" type="text" class="form_datetime form-control">
+	                    </div>
+	                    <label class="control-label col-md-1">结束时间</label>
+	                    <div class="col-md-3">
+	                        <input id="endTime" type="text" class="form_datetime form-control">
+	                    </div>
+	                    <div class="col-md-2"><div class="btn btn-primary" v-on:click="sure(0)">确定</div></div>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="panel">
+	            <div class="panel" style="height:400px;">
+	            	<!-- 插件 -->
+					 <div id="divPlugin" class="plugin"></div>
+	            </div>
+<!-- 	            <div id="progressWrap">
+	                <div id="playProgress">
+	                </div>
+	            </div> -->
+	        </div>
+	        <div class="panel">
+	            <div class="panel-body">
+	            	<div class="tool">	            		
+	            		<div class="tool-group col-md-4 col-md-offset-4">
+	            			<div class="btn-group center-block">
+		            			<div class="btn btn-info" v-on:click="sure("backward")"><i class="fa fa-fast-backward"></i></div>
+		            			<div class="btn btn-info" v-on:click="sure("play")"><i class="fa fa-play"></i></div>
+		            			<div class="btn btn-info" v-on:click="sure("pause")"><i class="fa fa-pause"></i></div>
+		            			<div class="btn btn-info" v-on:click="sure("forward")"><i class="fa fa-fast-forward"></i></div>
+	            			</div>
+	            		</div>
+	            		<div class="tool-group col-md-4">
+	            			<div class="btn-group pull-right">
+		            			<div class="btn btn-info" v-on:click="sure("volumeDown")"><i class="fa fa-volume-down"></i></div>
+		            			<div class="btn btn-info" v-on:click="sure("volumeUp")"><i class="fa fa-volume-up"></i></div>
+		            			<div class="btn btn-info" v-on:click="sure("fullScreen")"><i class="fa fa-arrows-alt"></i></div>
+		            		</div>		
+	            		</div>
+	            	</div>
+	           
+	            </div>
+	        </div>
+	    </div>
+	    
+	    
+	    <div class="btn btn-info" data-toggle="modal" href="#myModal">打开模态框</div>
+	    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">Modal title</h4>
+		      </div>
+		      <div class="modal-body">
+		        <!-- 插件 -->
+	            <div id="divPlugin" class="plugin"></div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+	    
+    </div>
+</div>
+</div>
+<!--body wrapper end-->
+
+<div id="footer"></div>
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../public/js/jquery-1.10.2.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/modernizr.min.js"></script>
+<script src="../public/js/jquery.nicescroll.js"></script>
+
+<!--common scripts for all pages-->
+<script src="../public/js/scripts.js"></script>
+
+<script type="text/javascript" src="../public/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+
+
+<script src="js/vue.min.js"></script>
+<script src="js/main.js"></script>
+<!-- <script src="js/video_playback.js"></script> -->
+
+<script src="js/webVideoCtrl.js"></script>
+<script src="js/demo.js"></script>
+<script>
+
+$(function(){
+	var IP="192.168.3.2";
+	var Port = "80";
+	var Username = "admin";
+	var Password = "llyc123456";
+	clickLogin(IP,Port,Username,Password);
+}); 
+
+
+ 
+
+<!--通过摄像头的IP，端口，用户名，密码登录-->
+function clickLogin(IP,Port,Username,Password) {
+	console.log(IP);
+	console.log(Port);
+	console.log(Username);
+	console.log(Password);
+	var szIP = IP,
+		szPort = Port,
+		szUsername = Username,
+		szPassword = Password;
+
+	if ("" == szIP || "" == szPort) {
+		return;
+	}
+
+	var iRet = WebVideoCtrl.I_Login(szIP, 1, szPort, szUsername, szPassword, {
+		success: function (xmlDoc) {
+			console.log(" 登录成功！");
+			clickStartRealPlay(szIP);
+		},
+		error: function () {
+			console.log(" 登录失败！");
+		}
+	});
+
+	if (-1 == iRet) {
+		console.log(" 已登录过！");
+	}
+}
+
+//通过摄像头的IP，码流，通道......开始预览
+function clickStartRealPlay(IP) {
+	var oWndInfo = WebVideoCtrl.I_GetWindowStatus(g_iWndIndex),
+		szIP = IP,//IP
+		iStreamType = 1, //主码流
+		bZeroChannel = false,
+		szInfo = "",
+	    iChannelID =1;//通道1
+
+	if ("" == szIP) {
+		return;
+	}
+
+	if (oWndInfo != null) {// 已经在播放了，先停止
+		WebVideoCtrl.I_Stop();
+	}
+
+	var iRet = WebVideoCtrl.I_StartRealPlay(szIP, {
+		iWndIndex:0,
+		iStreamType: iStreamType,
+		iChannelID: iChannelID,
+		bZeroChannel: bZeroChannel
+	});
+	
+	
+	console.log(iRet);
+
+	if (0 == iRet) {
+		console.log("开始预览成功！");
+		szInfo = "开始预览成功！";
+	} else {
+		szInfo = "开始预览失败！";
+	}
+
+	showOPInfo(szIP + " " + szInfo);
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header bg-primary">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">添加访客</h4>
+        </div>
+        <form class="form-inline">
+	        <div class="modal-body clearfix">
+	            <div class="add-detail">
+	               <input type="hidden" name="gonghao">
+                   <div class="form-group col-xs-12">
+                       <label class="control-label col-xs-4 text-right">姓名 
+                       		<span style="color: #ff0000">*&nbsp;</span>:</label>
+                       <input type="text" class="form-control" placeholder="姓名" name="username" id="username2">
+                   </div>
+                   <div class="form-group  col-xs-12">
+                       <label class="control-label col-xs-4 text-right">联系方式<span style="color: #ff0000">*&nbsp;</span>:</label>
+                       <input type="text" class="form-control" placeholder="联系方式" name="mobile">
+                   </div>
+                   <div class="form-group col-xs-12">
+                       <label class="control-label col-xs-4 text-right">车辆类型
+                       		<span>&nbsp;</span>:</label>
+                       <!-- <input type="text" class="form-control" placeholder="车辆类型" name="car_type"> -->
+                       <select class="form-control" style="width: 50%" name="car_type">
+                           
+                       </select>
+                   </div>
+                   <div class="form-group col-xs-12">
+                       <label class="control-label col-xs-4 text-right">车牌号 
+                       		<span>&nbsp;</span>:</label>
+                       <input type="text" class="form-control" placeholder="车牌号" name=car_number>
+                   </div>
+                   <!-- <div class="form-group col-xs-12">
+                       <label class="control-label col-xs-4 text-right">登记日期&nbsp;&nbsp;&nbsp;:</label>
+                       <input type="date" class="form-control"  name="registration_date"  id="registration_date"/>
+                       <label id="registration_date">联系方式</label>
+                   </div> -->
+                   <div class="form-group col-xs-12">
+                       <label class="control-label col-xs-4 text-right">进入时间&nbsp;&nbsp;&nbsp;:</label>
+                       <input type="datetime-local" class="form-control"  name="entry_date" id="entry_date"/>
+                   </div>
+                   <div class="form-group col-xs-12">
+                       <label class="control-label col-xs-4 text-right">离开时间&nbsp;&nbsp;&nbsp;:</label>
+                       <input type="datetime-local" class="form-control"  name="leave_date" id="leave_date"/>
+                   </div>
+                   <div class="form-group col-xs-12">
+                       <label class="control-label col-xs-4 text-right">证件类型&nbsp;&nbsp;&nbsp;:</label>
+                       <select class="form-control" style="width: 50%" name="pap_type" id="pap_type">
+                          <!--  <option value="0">---请选择---</option>
+                           <option value="1">身份证</option>
+                           <option value="2">护照</option>
+                           <option value="3">军官证</option>
+                           <option value="4">台胞证</option>
+                           <option value="5">港澳居民来往内地通行证</option> -->
+                       </select>
+                   </div>
+                  <!--  <input type="hidden" class="form-control" id="passport" name="passport"> -->
+                   <div class="form-group  col-xs-12  ">
+                       <label class="control-label col-xs-4 text-right">证件号码<span style="color: #ff0000">*&nbsp;</span>:</label>
+                       <input type="text" class="form-control" placeholder="证件号码" name="cid" id="pap_number">
+                   </div>
+                   <div class="form-group  col-xs-12  ">
+                       <label class="control-label col-xs-4 text-right">来访事由<span style="color: #ff0000">*&nbsp;</span>:</label>
+                       <textarea rows="3" cols="46" class="form-control" placeholder="来访事由" id="visit_reason" name="visit_reason"></textarea>
+                   </div>
+                   
+                   <div class="form-group col-xs-12">
+                       <label class="control-label col-xs-4 text-right">头像&nbsp;</span>:</label>
+                       <div id="zyupload" class="zyupload form-control"></div>
+                  </div>
+                
+	           	</div>
+	        </div>
+	        <div class="modal-footer">
+	            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	            <button type="submit" class="btn btn-primary">确定</button>
+	            <!-- <button type="button" class="btn btn-primary" onclick="sureUser();">确定</button>  -->
+	        </div>
+        </form>
+    </div>
+</div>
+<script src="html-js/visitList/visitModal.js"></script>

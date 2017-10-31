@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>闸机权限管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    
+    <link rel="shortcut icon" href="#" type="image/png">
+    <link href="../public/js/bootstrap-datepicker/css/datepicker-custom.css" rel="stylesheet">
+    <link href="../public/js/bootstrapValidator/bootstrapValidator.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/js/zyupload-1.0.0/zyupload-1.0.0.css">
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css"/>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    </style>
+</head>
+<body class="horizontal-menu-page">
+
+<section>
+    <div class="header"></div>
+    <div class="alert alert-success" role="alert" style="display: none"></div>
+	<div class="alert alert-danger" role="alert" style="display: none"></div>
+	<!--新增和编辑模态框-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal" data-id="" data-backdrop="static"></div>
+    <!-- main content start-->
+    <div class="wrapper">
+		<div class="body-content">
+	        <!-- page heading start-->
+	        <div class="page-heading">
+	            <h3><span id="venue_lbl_head">闸机权限管理</span></h3>
+	            <ul class="breadcrumb">
+	                <li>闸机管理</li>
+	                <li>闸机列表管理</li>
+	                <li class="active">闸机权限管理</li>
+	            </ul>
+	        </div>
+	        <!-- page heading end-->
+			<hr>
+        	<!--body wrapper start-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <div class="panel-body">
+                        	<!-- 闸机详情 -->
+                        	<div class="panel panel-primary">
+				                <div class="panel-heading clearfix show-user">
+				                    <p class="panel-title col-sm-4"> 
+				                    	闸机详情    <i class="fa fa-angle-double-down" style="margin-left: 18px;"></i>
+			                    	</p>
+				                </div>
+			                	<!-- 闸机详情 -->
+				                <div class="panel-body" id="gateD" v-clock  style="border: 1px solid #eeeeee; display: none">
+				                    <div class="show-detail">
+				                        <div class="user-detail">
+				                            <dl class="dl-horizontal col-md-4 col-sm-6 col-xs-12">
+				                                <dt>设备型号:</dt>
+				                                <dd>{{ gateDetail.type }}</dd>
+				                            </dl>
+				                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+				                                <dt>是否记录考勤:</dt>
+				                                <dd>{{ gateDetail.is_kaoqin?"否":"是" }}</dd>
+				                            </dl>
+				                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+				                                <dt>方向:</dt>
+				                                <dd>{{ gateDetail.cross_falg?"进":"出" }}</dd>
+				                            </dl>
+				                        </div>
+				                        <div class="user-detail">
+				                            <dl class="dl-horizontal col-md-4 col-sm-6 col-xs-12">
+				                                <dt>名称:</dt>
+				                                <dd>{{ gateDetail.gate_name }}</dd>
+				                            </dl>
+				                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+				                                <dt>闸机编号:</dt>
+				                                <dd>{{ gateDetail.gate_no }}</dd>
+				                            </dl>
+				                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+				                                <dt>控制器编号:</dt>
+				                                <dd>{{ gateDetail.sn }}</dd>
+				                            </dl>
+				                        </div>
+				                        <div class="user-detail clearfix">
+				                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+				                                <dt>闸机在控制器内编号:</dt>
+				                                <dd>{{ gateDetail.connect_id }}</dd>
+				                            </dl>
+				                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+				                                <dt>安装位置:</dt>
+				                                <dd>{{ gateDetail.location }}</dd>
+				                            </dl>
+				                             <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+				                                <dt>闸机分区:</dt>
+				                                <dd>{{ gateDetail.group_id }}</dd>
+				                            </dl>
+				                        </div>
+				                        <div class="user-detail clearfix">
+				                        <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+				                                <dt>闸机状态:</dt>
+				                                <dd>{{ gateDetail.is_use=="0"?"常开":gateDetail.is_use=="1"?"正常":"常闭" }}</dd>
+				                            </dl>
+				                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+				                                <dt>闸机Ip:</dt>
+				                                <dd>{{ gateDetail.connect_ip }}</dd>
+				                            </dl>
+				                            <dl class="dl-horizontal col-md-4 col-sm-6 col-xs-12">
+				                                <dt>闸机端口:</dt>
+				                                <dd>{{ gateDetail.connect_port }}</dd>
+				                            </dl>
+				                        </div>
+				                        <div class="user-detail clearfix">
+				                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+				                                <dt>是否为主机:</dt>
+				                                <dd>{{ gateDetail.is_master?"是":"否" }}</dd>
+				                            </dl>
+				                            <dl class="dl-horizontal  col-md-4 col-sm-6 col-xs-12">
+				                                <dt>密码:</dt>
+				                                <dd>{{ gateDetail.password }}</dd>
+				                            </dl>
+				                            <dl class="dl-horizontal col-md-4 col-sm-6 col-xs-12">
+				                                <dt>备注:</dt>
+				                                <dd>{{ gateDetail.common }}</dd>
+				                            </dl>
+				                        </div>
+				                    </div>
+				                </div>
+					        </div>
+                            <div class="adv-table">
+                            	<!-- 按钮组  -->
+                                <div class="row" style="margin-bottom: 20px">
+                                    <div class="col-lg-6">
+                                        <button class="btn btn-primary" onclick="openModal('')">
+                                            <i class="fa fa-plus"></i> 添加权限
+                                        </button>
+                                        <button class="btn btn-danger" id="delRow">
+                                            <i class="fa fa-times"></i> 删除
+                                        </button>
+                                    </div>
+                                    <div class="pull-right" style="margin-right: 30px" >
+                                        <div class="col-lg-5">
+                                        	<input class="form-control" type="text" placeholder="工号" id="gonghao">
+                                        </div>
+                                        <div class="col-lg-5">
+                                        	<input class="form-control" type="text" placeholder="人员姓名" id="username">
+                                        </div>
+                                        <div class="col-lg-2">
+                                        	<button class="btn btn-primary" id="searchBtn"><i class="fa fa-search"></i>搜索</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="span12" id="div-table-container">
+	                                <table class="display table general-table table-striped" id="gatePloe">
+	                                    <thead>
+	                                    <tr>
+				                            <th style=" width:28px; padding:0"></th>
+				                            <th style="width:30px; padding:10px 0 10px 10px">
+				                                <input type="checkbox" id="checkAll" name="checkAll"></th>
+				                            <th>工号</th>
+				                            <th>人员姓名</th>
+				                            <th>人员类别</th>
+				                            <th>工种</th>
+				                            <th>班组</th>
+				                            <th>删除</th>
+				                        </tr>
+	                                    </thead>
+	                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!--body wrapper end-->
+
+        
+
+    </div>
+    <!-- main content end-->
+    <!--footer section start-->
+    <footer>
+        Copyright © 2017 Lanlyc
+    </footer>
+    <!--footer section end-->
+</section>
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../public/js/jquery-1.11.3.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/modernizr.min.js"></script>
+<script src="../public/js/jquery.nicescroll.js"></script>
+<!-- <script src="../public/js/scripts.js"></script> -->
+<script src="../public/js/vue.min.js"></script>
+<script type="text/javascript" src="../public/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+<script type="text/javascript" src="../public/js/jquery-confirm/jquery.spin.merge.js"></script>
+<script type="text/javascript" src="../public/js/jquery-confirm/jquery-confirm.js"></script>
+<script type="text/javascript" src="../public/js/bootstrapValidator/bootstrapValidator.js"></script>
+<script type="text/javascript" src="../public/js/zyupload-1.0.0/zyupload.tailor-1.0.0.js"></script>
+
+<!--dynamic table-->
+<script src="../public/js/data-tables/jquery.dataTables1.js"></script>
+<script type="text/javascript" src="../public/js/data-tables/dataTables.bootstrap.js"></script>
+
+<script src="html-js/main.js"></script>
+<script src="html-js/gatePloe/gatePloe.js"></script>
+
+</body>
+</html>

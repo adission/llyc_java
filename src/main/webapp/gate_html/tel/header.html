@@ -1,0 +1,37 @@
+<!--logo-->
+<div class="header-logo col-md-1">
+    <a href="userManage.html">
+        <img src="images/logo-light.png" alt="">
+    </a>
+</div>
+<!--左侧导航点击-->
+<div class="header-imgs col-md-1">
+	<img src="images/sidebar-toggle-light.png" alt=""/>
+</div>
+<!--右侧个人信息-->
+<div class="header-user pull-right">
+    <ul class="list-inline">
+        <li class="dropdown">
+            <span class="admin_user"></span>
+            <a href="javascript:;"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            	<img src="" alt=""  id="userImg" style="width: 50px"></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li>
+                    <a onclick=""><i class="glyphicon glyphicon-question-sign"></i><span id="top_menu_password">修改密码</span></a>
+                </li>
+                <li>
+                    <a onclick="loginOut()"><i class="glyphicon glyphicon-circle-arrow-right"></i><span id="top_menu_signout">退出登录</span></a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script>
+	var img = getCookie("img");
+	if(img!=null){
+		$('.header-img img').attr('src',img);
+	}else {
+		$('.header-img img').attr('src',"images/sidebar-toggle-light.png");
+	}
+	
+</script>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>视频设备管理</title>
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../public/js/bootstrap-colorpicker/css/colorpicker.css" />
+	<link rel="stylesheet" href="css/main.css"/>
+	<link rel="stylesheet" href="css/video.css"/>
+	<link href="../public/js/openlayer/ol.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="horizontal-menu-page">
+<section>
+    <div class="header"></div>
+<!--表格数据-->
+    <div class="wrapper">
+
+        <!--处理弹出框-->
+        <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" data-backdrop="static" tabindex="-1"
+             id="myModal" class="modal fade">
+        </div>
+       
+        <div class="col-sm-12">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="adv-table">
+                        <div class="domab">
+                            <div id="dynamic-table_filter" class="dataTables_filter">
+                                <label>模糊查询：
+                                    <input type="search" class="form-control input-sm" placeholder=""
+                                           aria-controls="dynamic-table"  id="searchs">
+                                </label>
+                            </div>
+                            <div class="btnClass">
+                                <form class="" method="get">
+                                    <div class="form-group"  id="map_name">
+                                        <select class="form-control m-bot15" onchange="changeForm()" id="layer_name">
+                                            <option value="">全部</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div style="clear:both;"></div>
+                        </div>
+						<div class="span12" id="div-table-container">
+	                        <table class="display table general-table table-striped" id="dynamic-table">
+	                            <thead>
+	                            <tr>
+	                                <th class="text-center">序号</th>
+	                                <th>摄像头名称</th>
+	                                <th>编号</th>
+	                                <th>所在地图</th>
+	                                <th>坐标（X）</th>
+	                                <th>坐标（Y）</th>
+	                                <th>操作</th>
+	                            </tr>
+	                            </thead>
+	                        </table>
+                       	</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    	<div id="videoMap">
+        	<section class="panel">
+                <div class="panel-body" style="padding: 0">
+                	<div id="map" style="width: 100%;height: 100%"></div>
+                	<div id="pathControl1">
+	                    <div onclick="selectMap(this)" id="currentMap">
+	                    	<span class="map1"></span> <i class="fa fa-angle-double-down"></i></a>  
+	                    </div>
+	                    <ul class="dropdown-menu pull-right maps">
+	                	</ul>
+	                </div>
+	                <div id="video"></div>
+	                <!--右侧控件-->
+	                <div id="pathControl2">
+	                    <ul class="nav navbar-nav clearfix">
+	                      <!--   <li class="dropdown">
+	                            <a href="#" class="dropdown-toggle pathIcon" data-toggle="dropdown">
+	                                <span><i class="fa fa-users"></i></span>
+	                            </a>
+	                            <ul class="dropdown-menu" style="">
+	                                <li><a href="#"><i class="fa fa-eye-slash"></i>全部</a></li>
+	                                <li><a href="#"><i class="fa fa-eye-slash"></i>李沁</a></li>
+	                                <li><a href="#"><i class="fa fa-eye-slash"></i>张三</a></li>
+	                                <li><a href="#"><i class="fa fa-eye-slash"></i>李四</a></li>
+	                            </ul>
+	                        </li> -->
+	                        <li><a class="pathIcon" title="关闭" onclick="closeVideoMap()"><span style="padding: 3px 5px"><i
+	                                class="fa fa-times"></i></span></a></li>
+	                    </ul>
+	                </div>
+                </div>
+                <div class="panel-footer clearfix">
+                	<button type="button" class="btn btn-default pull-right" onclick="closeVideoMap()">取消</button>
+                    <button type="button" class="btn btn-info pull-right" onclick="sureLg()">确定</button>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../public/js/jquery-1.10.2.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/openlayer/ol1.js"></script>
+<script type="text/javascript" src="../public/js/data-tables/jquery.dataTables1.js"></script>
+<script type="text/javascript" src="../public/js/data-tables/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="../public/js/jquery.spin.merge.js"></script>
+
+
+<!--common scripts for all pages-->
+<script src="html-js/main.js"></script>
+<script src="html-js/videoManage/videoManage.js"></script>
+</body>
+</html>

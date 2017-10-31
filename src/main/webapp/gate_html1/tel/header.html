@@ -1,0 +1,69 @@
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="userList.html">
+                <img src="../public/images/logo.png" alt="">
+                <span style="color: #ffffff">闸机管理系统系统</span>
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav mainnav">
+                <li class="active"><a href="userList.html">用户列表</a></li>
+                <li ><a href="recordList.html">记录列表</a></li>
+               	<li ><a href="gateList.html">闸机列表管理</a></li>
+               	<li class="dropdown">
+                   	<a href="#" class="dropdown-toggle" data-toggle="dropdown">人员列表<b class="caret"></b></a>
+                   	<ul class="dropdown-menu">
+                       	<li><a href="personList.html">人员列表管理</a></li>
+                       	<li><a href="visitList.html">访客列表管理</a></li>
+                       	<li><a href="personTotal.html">人员统计</a></li>
+                   	</ul>
+               	</li>
+               	<li ><a href="logList.html">日志列表</a></li>
+               	<li class="dropdown">
+                   	<a href="#" class="dropdown-toggle" data-toggle="dropdown">设置<b class="caret"></b></a>
+                   	<ul class="dropdown-menu">
+                       	<li><a href="settingBlock.html">闸机分区设置</a></li>
+                       	<li><a href="settingPersonType.html">人员类别设置</a></li>
+                       	<li><a href="settingWorkerType.html">人员工种设置</a></li>
+                       	<!-- <li><a href="settingPapType.html">证件类型设置</a></li> -->
+                       	<!-- <li><a href="settingCarType.html">车辆类型设置</a></li> -->
+                       	<li><a href="settingSystem.html">系统设置</a></li>
+                   	</ul>
+               	</li>
+                
+                <li ><a href="screenShow.html">屏幕显示</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a  class="dropdown-toggle header-img" data-toggle="dropdown"> <img alt="" id="userImg" > <span id="user_name"></span> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a onclick="loginOut()">退出登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+<link rel="stylesheet" type="text/css" href="../public/js/jquery-confirm/jquery-confirm.css" />
+<script>
+	$('#user_name').html(getCookie("user_name"));	
+	var uimg = getCookie("img");
+	if(uimg!=null){
+		$('#userImg').attr('src',urlpath+""+uimg);
+	}else {
+		$('#userImg').attr('src',"images/sidebar-toggle-light.png");
+	}
+	
+</script>

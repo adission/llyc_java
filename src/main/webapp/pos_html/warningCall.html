@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报警管理</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<!--头部导航-->
+<div class="header row"></div>
+<!--身体-->
+<div class="content row">
+    <!--左侧--导航-->
+    <div class="content-left col-md-2 col-sm-1"></div>
+
+    <!--右侧table-->
+    <div class="content-right col-md-10 col-sm-11 col-xs-12">
+        <div class="right-body">
+            <!--路径导航-->
+            <div class="body-navbar">
+                <ol class="breadcrumb">
+                    <li>报警</li>
+                    <li class="active">报警管理</li>
+                </ol>
+            </div>
+
+            <!--搜索框-->
+            <div class="search-content">
+                <form class="form-inline well  clearfix">
+                    <div class="form-group col-md-4  col-xs-6">
+                        <select class="form-control" style="width: 172px">
+                            <option value="1" selected>选择警告类型</option>
+                            <option value="2">未授权人员进入重点区域</option>
+                            <option value="3">人员长期未动</option>
+                            <option value="4">区域超员</option>
+                            <option value="5">人员长期未出作业区</option>
+                            <option value="6">未授权人员使用设备</option>
+                            <option value="7">物料过少</option>
+                            <option value="8">定位设备电池电压过低</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4 col-xs-6">
+                        <select class="form-control" style="width: 172px">
+                            <option value="1" selected>选择区域</option>
+                            <option value="2">重点区域</option>
+                            <option value="3">普通区域</option>
+                            <option value="4">危险区域</option>
+                            <option value="4">禁止入内区域</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4 col-xs-6">
+                        <select class="form-control" style="width: 172px">
+                            <option value="1" selected>选择警告状态</option>
+                            <option value="2">已处理</option>
+                            <option value="3">未处理</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-7 col-xs-12">
+                        <input type="date" class="form-control" value="2017-05-08">----
+                        <input type="date" class="form-control" value="2017-05-08">
+                    </div>
+                    <button type="button" class="btn btn-primary pull-right">
+                        <i class="fa fa-search"></i> 查询
+                    </button>
+                </form>
+            </div>
+
+            <!--功能按钮-->
+            <div class="body-content">
+                <div style=" position:relative; z-index:9;height:100%; margin-bottom: 10px">
+                    <!--<button class="btn btn-primary inline-block" data-toggle="modal" data-target="#myModal">-->
+                        <!--<i class="glyphicon glyphicon-plus"></i>添加-->
+                    <!--</button>-->
+
+                    <button class="btn btn-danger inline-block" id="delRow">
+                        <i class="glyphicon glyphicon-remove"></i>删除
+                    </button>
+                    <button class="btn btn-primary pull-right ">
+                        <i class="glyphicon glyphicon-print"></i>导出execl
+                    </button>
+                    <!--<button class="btn btn-primary pull-right" style="margin-right: 10px">-->
+                    <!--<i class="glyphicon glyphicon-cloud"></i>云端同步数据-->
+                    <!--</button>-->
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <!--警告列表-->
+            <div class="wt100  container" style="position:relative; height:100%">
+                <div class="span12" id="div-table-container">
+                    <table class="table table-striped table-bordered table-hover table-condensed text-center" id="table-detail"
+                           cellspacing="0" width="100%" style="margin-bottom: 0">
+                        <thead>
+                        <tr>
+                            <th style="width:50px; padding:10px 0 10px 10px">
+                                <input type="checkbox" id="checkAll" name="checkList"></th>
+                            <th>时间</th>
+                            <th>报警类型</th>
+                            <th>工地区域</th>
+                            <th>报警内容</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--底部-->
+<div class="text-center">
+    <div class=""> 2017 &copy; 蓝领劳务管理系统 By <a href="index.html">管理系统</a>
+    </div>
+</div>
+<script src="js/publicJS/jquery-1.11.3.min.js"></script>
+<script src="js/publicJS/bootstrap.min.js"></script>
+<script src="js/publicJS/jquery.dataTables.js"></script>
+<script src="js/publicJS/dataTables.bootstrap.js"></script>
+<script src="js/main.js"></script>
+<script src="html-js/warningCall/warningCall.js"></script>
+</body>
+</html>

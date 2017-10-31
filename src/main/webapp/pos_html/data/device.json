@@ -1,0 +1,64 @@
+{
+  "draw": 1,
+  "recordsTotal": 7,
+  "recordsFiltered": 7,
+  "data": [
+    {
+      "name": "塔式吊车",
+      "tno": "QTZ80",
+      "belong": "金华项目部",
+      "operator": "刘大飞",
+      "repairPerson": "张伟欣",
+      "repairContent": "正常",
+      "location": "车身"
+    },{
+      "name": "塔式吊车",
+      "tno": "QTZ80",
+      "belong": "金华项目部",
+      "operator": "刘大飞",
+      "repairPerson": "张伟欣",
+      "repairContent": "正常",
+      "location": "车身"
+    },{
+      "name": "塔式吊车",
+      "tno": "QTZ80",
+      "belong": "金华项目部",
+      "operator": "刘大飞",
+      "repairPerson": "张伟欣",
+      "repairContent": "正常",
+      "location": "车身"
+    },{
+      "name": "塔式吊车",
+      "tno": "QTZ80",
+      "belong": "金华项目部",
+      "operator": "刘大飞",
+      "repairPerson": "张伟欣",
+      "repairContent": "正常",
+      "location": "车身"
+    },{
+      "name": "塔式吊车",
+      "tno": "QTZ80",
+      "belong": "金华项目部",
+      "operator": "刘大飞",
+      "repairPerson": "张伟欣",
+      "repairContent": "正常",
+      "location": "车身"
+    },{
+      "name": "塔式吊车",
+      "tno": "QTZ80",
+      "belong": "金华项目部",
+      "operator": "刘大飞",
+      "repairPerson": "张伟欣",
+      "repairContent": "正常",
+      "location": "车身"
+    },{
+      "name": "塔式吊车",
+      "tno": "QTZ80",
+      "belong": "金华项目部",
+      "operator": "刘大飞",
+      "repairPerson": "张伟欣",
+      "repairContent": "正常",
+      "location": "车身"
+    }
+  ]
+}

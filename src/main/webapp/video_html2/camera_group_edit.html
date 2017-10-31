@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+
+    <title>分组编辑</title>
+
+    <!--nestable css-->
+    <link rel="stylesheet" type="text/css" href="../public/js/nestable/jquery.nestable.css" />
+
+    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="../public/css/style-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/html5shiv.js"></script>
+    <script src="../public/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="horizontal-menu-page">
+
+<div id="header"></div>
+
+
+<!--body wrapper start-->
+<div class="wrapper">
+    <div class="container content" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-body">
+                        <!-- page heading start-->
+                        <div class="page-heading">
+                            <h3>
+                                	编辑分组
+                            </h3>
+                            <ul class="breadcrumb">
+                                <li>
+                                    <a href="#">摄像头管理</a>
+                                </li>
+                                <li>
+                                    <a href="#">分组管理</a>
+                                </li>
+                                <li class="active"> 编辑分组 </li>
+                            </ul>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="pull-right">
+                                    <button type="button" class="btn btn-warning" data-action="collapse-all" v-on:click="editGroup()">确认修改</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <section class="panel panel-default" style="border: 1px solid #ccc;">
+                                    <header class="panel-heading">
+                                        	摄像头列表
+                                    </header>
+                                    <div class="panel-body" style="height: 500px; overflow: auto;">
+                                        <div class="dd nestable_list_1" id="nestable_list_1">
+                                            <div class="dd-empty"></div>
+                                            <!--<ol class="dd-list">-->
+                                            <!--<li v-for="i in cameraList" class="dd-item" data-id="{{i.id}}" cid="{{i.id}}">-->
+                                            <!--<div class="dd-handle">{{i.id}}{{i.name}}</div>-->
+                                            <!--</li>-->
+                                            <!--</ol>-->
+                                        </div>
+                                    </div>
+                                </section>
+
+                            </div>
+                            <div class="col-lg-10">
+                                <section class="panel panel-default" style="border: 1px solid #ccc;">
+                                    <header class="panel-heading clearfix form-horizontal" style="padding: 10px 15px;">
+                                        <label class="control-label pull-left">分组名称</label>
+                                        <div class="col-md-4">
+                                            <input id="group_name" type="text" class="form-control input-sm" placeholder="请输入分组名称">
+                                        </div>
+                                    </header>
+                                    <div class="panel-body fPright" style="height: 500px; overflow: auto;">
+                                        <div class="col-md-3" v-for="i in all_screen">
+                                            <section class="panel all_screen">
+                                                <header class="panel-heading">
+                                                    <input type="text" class="form-control input-sm" value="{{i.screen_name}}" />
+                                                </header>
+                                                <div class="panel-body">
+                                                    <div class="dd nestable_list_100" id="nestable_list_100">
+                                                        <ol class="dd-list">
+                                                        <li v-for="j in i.all_vidicon" class="dd-item" data-id="{{j.vidicon_id}}" cid="{{j.vidicon_id}}">
+                                                        <div class="dd-handle">{{j.vidicon_number}}{{j.vidicon_name}}</div>
+                                                        </li>
+                                                        </ol>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                        <!--<div class="col-md-3">-->
+                                        <!--<section class="panel">-->
+                                        <!--<header class="panel-heading">-->
+                                        <!--分屏名称1-->
+                                        <!--</header>-->
+                                        <!--<div class="panel-body">-->
+                                        <!--<div class="dd" id="nestable_list_2">-->
+                                        <!--<div class="dd-empty"></div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</section>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-md-3">-->
+                                        <!--<section class="panel">-->
+                                        <!--<header class="panel-heading">-->
+                                        <!--分屏名称2-->
+                                        <!--</header>-->
+                                        <!--<div class="panel-body">-->
+                                        <!--<div class="dd" id="nestable_list_3">-->
+                                        <!--<div class="dd-empty"></div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</section>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-md-3">-->
+                                        <!--<section class="panel">-->
+                                        <!--<header class="panel-heading">-->
+                                        <!--分屏名称3-->
+                                        <!--</header>-->
+                                        <!--<div class="panel-body">-->
+                                        <!--<div class="dd" id="nestable_list_4">-->
+                                        <!--<div class="dd-empty"></div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</section>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-md-3">-->
+                                        <!--<section class="panel">-->
+                                        <!--<header class="panel-heading">-->
+                                        <!--分屏名称4-->
+                                        <!--</header>-->
+                                        <!--<div class="panel-body">-->
+                                        <!--<div class="dd" id="nestable_list_5">-->
+                                        <!--<div class="dd-empty"></div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</section>-->
+                                        <!--</div>-->
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--body wrapper end-->
+
+<div id="footer"></div>
+
+
+
+<script src="../public/js/jquery-1.10.2.min.js"></script>
+<script src="../public/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../public/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/modernizr.min.js"></script>
+<script src="../public/js/jquery.nicescroll.js"></script>
+
+<script src="../public/js/nestable/jquery.nestable.js"></script>
+<!--<script src="../public/js/nestable-init.js"></script>-->
+
+<!--common scripts for all pages-->
+<script src="../public/js/scripts.js"></script>
+
+<script src="js/vue.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/camera_group_edit.js"></script>
+
+<script>
+    $(function(){
+        $("#header").load("template/header.html",function(){
+
+        });
+        $("#footer").load("template/footer.html");
+    });
+</script>
+
+</body>
+</html>

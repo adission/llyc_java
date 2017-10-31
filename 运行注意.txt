@@ -1,0 +1,25 @@
+运行前注意:	
+	1:将 mfz-rxtx-2.2-20081207-win-x64 文件夹下面的 复制的相应 的Java 安装目录(JAVA_HOME)
+		Copy RXTXcomm.jar ---> <JAVA_HOME>\jre\lib\ext
+		Copy rxtxSerial.dll ---> <JAVA_HOME>\jre\bin
+		Copy rxtxParallel.dll ---> <JAVA_HOME>\jre\bin
+		
+	2:将Eclipse 导入的项目 右键 target文件夹 Ignored  避免以后代码提交时 冲突
+	3:将window=>Team=>Ignored Resources 下 加一个git忽略规则
+		/target/ 
+		
+关于视频监控报错java.lang.UnsatisfiedLinkError: Unable to load library 'HCNetSDK': ÕҲ»µ½ָ¶¨的解决 方案
+	将项目中sdk-lib下的所有文件夹和文件全部拷贝到C:\Windows\System32下即可
+	
+	
+	2017年9月12日10:29:48  杨威
+	如果下载项目报错——将  java Build Path Entries 中 poi-3.14-20160309.jar、poi-ooxml-3.14-20160309.jar
+	将两个jar build以下
+	实际使用excel时  要将这两个jar包 add 入 Web Deployment Assembly
+	
+	2017-10-11 16:36:56  杨威
+	如果下载项目报错——将 java Build Path Entries  src/lib/mina-core-2.0.4.jar  
+	要将jar包 add 入 Web Deployment Assembly
+	
+	2017-10-11 16:36:56  杨威
+	如果下载项目报错 将start_webservice文件夹放D盘下

@@ -1,0 +1,44 @@
+.wrapper {
+    padding: 30px;
+}
+.panel-heading.custom-tab {
+    padding: 8px 50px;
+    border-bottom: 1px solid;
+}
+.panel-heading .nav {
+    margin: -8px -15px;
+}
+.nav-tabs > li {
+    width: 125px;
+    text-align: center;
+}
+.nav-tabs > li > a {
+    margin-right: 5px;
+    padding: 0 10px;
+}
+.general-table {
+    border: 1px solid #909090;
+}
+.panel-heading.custom-tab {
+    padding: 8px 50px;
+    border-bottom: 1px solid;
+}
+.panel-heading .nav {
+    margin: -8px -15px;
+}
+.nav-tabs > li {
+    width: 125px;
+    text-align: center;
+}
+.nav-tabs > li > a {
+    margin-right: 5px;
+    padding: 0 10px;
+}
+
+.contentOver {
+    width: 150px;
+    display:block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
